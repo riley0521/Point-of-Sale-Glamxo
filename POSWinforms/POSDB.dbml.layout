@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="POSDB">
+  <DataContextMoniker Name="/POSDBDataContext" />
+  <nestedChildShapes>
+    <classShape Id="8bec62a0-ce7e-4d44-9a27-b71fcc3722f7" absoluteBounds="0.75, 0.75, 2, 1.1939925130208335">
+      <DataClassMoniker Name="/POSDBDataContext/tblCategory" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6fdb51bb-2e9f-4f15-a970-00e49dd39d75" absoluteBounds="0.765, 1.21, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="42d857e2-6a5f-4e12-a770-5a9c2cb85c18" absoluteBounds="0.75, 2.75, 2, 2.5401025390625005">
+      <DataClassMoniker Name="/POSDBDataContext/tblUser" />
+      <nestedChildShapes>
+        <elementListCompartment Id="fdbc7a0f-2814-41d0-ae9f-ba753829cf9d" absoluteBounds="0.765, 3.21, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="506ab06a-8ecb-49c9-9686-dbcc4070b767" absoluteBounds="6.5, 1, 2, 1.193992513020834">
+      <DataClassMoniker Name="/POSDBDataContext/tblPosition" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a643ad36-bc2d-481f-b3a6-c468d97be4dd" absoluteBounds="6.515, 1.46, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="2a098fb0-de58-460a-be1d-48a959cb5abc" absoluteBounds="3.5, 0.75, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/POSDBDataContext/tblItem" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e14df174-7031-40e2-a7b5-d7532c2d3297" absoluteBounds="3.515, 1.21, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b2752606-5ac6-4e3c-bbe7-bef1f6405741" absoluteBounds="6.375, 3.375, 2, 2.5401025390625005">
+      <DataClassMoniker Name="/POSDBDataContext/tblOrderDetail" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e843effa-815b-48c7-88e5-1186962b9695" absoluteBounds="6.39, 3.835, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c5203e39-dc8a-4f61-bf88-44448f39eb82" absoluteBounds="3.625, 3.75, 2, 1.7708968098958327">
+      <DataClassMoniker Name="/POSDBDataContext/tblOrder" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ebee10ac-6250-43d4-931c-b7eec4328083" absoluteBounds="3.64, 4.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.625 : 4.63544840494792); (6.375 : 4.63544840494792)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/POSDBDataContext/tblOrder/tblOrder_tblOrderDetail" />
+      <nodes>
+        <classShapeMoniker Id="c5203e39-dc8a-4f61-bf88-44448f39eb82" />
+        <classShapeMoniker Id="b2752606-5ac6-4e3c-bbe7-bef1f6405741" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
