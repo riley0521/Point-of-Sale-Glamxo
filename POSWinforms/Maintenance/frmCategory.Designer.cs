@@ -40,8 +40,8 @@ namespace POSWinforms.Maintenance
             this.dgvCategories = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.metroSetControlBox1 = new MetroSet_UI.Controls.MetroSetControlBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.btnClose = new MetroSet_UI.Controls.MetroSetButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCategories)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
@@ -59,7 +59,6 @@ namespace POSWinforms.Maintenance
             this.btnUpdate.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
             this.btnUpdate.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
             this.btnUpdate.DisabledForeColor = System.Drawing.Color.Gray;
-            this.btnUpdate.Enabled = false;
             this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.btnUpdate.HoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
             this.btnUpdate.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
@@ -157,7 +156,7 @@ namespace POSWinforms.Maintenance
             this.txtItemCode.MaxLength = 10;
             this.txtItemCode.Multiline = false;
             this.txtItemCode.Name = "txtItemCode";
-            this.txtItemCode.ReadOnly = true;
+            this.txtItemCode.ReadOnly = false;
             this.txtItemCode.Size = new System.Drawing.Size(121, 30);
             this.txtItemCode.Style = MetroSet_UI.Enums.Style.Light;
             this.txtItemCode.StyleManager = this.styleManager1;
@@ -207,9 +206,11 @@ namespace POSWinforms.Maintenance
             this.Column1,
             this.Column2});
             this.dgvCategories.Location = new System.Drawing.Point(15, 148);
+            this.dgvCategories.MultiSelect = false;
             this.dgvCategories.Name = "dgvCategories";
             this.dgvCategories.ReadOnly = true;
             this.dgvCategories.RowHeadersVisible = false;
+            this.dgvCategories.RowTemplate.Height = 30;
             this.dgvCategories.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCategories.Size = new System.Drawing.Size(507, 107);
             this.dgvCategories.TabIndex = 0;
@@ -227,42 +228,43 @@ namespace POSWinforms.Maintenance
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
             // 
-            // metroSetControlBox1
-            // 
-            this.metroSetControlBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.metroSetControlBox1.CloseHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.metroSetControlBox1.CloseHoverForeColor = System.Drawing.Color.White;
-            this.metroSetControlBox1.CloseNormalForeColor = System.Drawing.Color.Gray;
-            this.metroSetControlBox1.DisabledForeColor = System.Drawing.Color.DimGray;
-            this.metroSetControlBox1.IsDerivedStyle = true;
-            this.metroSetControlBox1.Location = new System.Drawing.Point(426, 2);
-            this.metroSetControlBox1.MaximizeBox = true;
-            this.metroSetControlBox1.MaximizeHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.metroSetControlBox1.MaximizeHoverForeColor = System.Drawing.Color.Gray;
-            this.metroSetControlBox1.MaximizeNormalForeColor = System.Drawing.Color.Gray;
-            this.metroSetControlBox1.MinimizeBox = true;
-            this.metroSetControlBox1.MinimizeHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.metroSetControlBox1.MinimizeHoverForeColor = System.Drawing.Color.Gray;
-            this.metroSetControlBox1.MinimizeNormalForeColor = System.Drawing.Color.Gray;
-            this.metroSetControlBox1.Name = "metroSetControlBox1";
-            this.metroSetControlBox1.Size = new System.Drawing.Size(100, 25);
-            this.metroSetControlBox1.Style = MetroSet_UI.Enums.Style.Light;
-            this.metroSetControlBox1.StyleManager = this.styleManager1;
-            this.metroSetControlBox1.TabIndex = 109;
-            this.metroSetControlBox1.Text = "metroSetControlBox1";
-            this.metroSetControlBox1.ThemeAuthor = null;
-            this.metroSetControlBox1.ThemeName = null;
-            // 
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
+            // 
+            // btnClose
+            // 
+            this.btnClose.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.btnClose.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.btnClose.DisabledForeColor = System.Drawing.Color.Gray;
+            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnClose.HoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
+            this.btnClose.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
+            this.btnClose.HoverTextColor = System.Drawing.Color.White;
+            this.btnClose.IsDerivedStyle = true;
+            this.btnClose.Location = new System.Drawing.Point(388, 347);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.btnClose.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.btnClose.NormalTextColor = System.Drawing.Color.White;
+            this.btnClose.PressBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
+            this.btnClose.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
+            this.btnClose.PressTextColor = System.Drawing.Color.White;
+            this.btnClose.Size = new System.Drawing.Size(138, 28);
+            this.btnClose.Style = MetroSet_UI.Enums.Style.Light;
+            this.btnClose.StyleManager = this.styleManager1;
+            this.btnClose.TabIndex = 110;
+            this.btnClose.Text = "Close";
+            this.btnClose.ThemeAuthor = null;
+            this.btnClose.ThemeName = null;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // frmCategory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(541, 390);
-            this.Controls.Add(this.metroSetControlBox1);
+            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.txtDescription);
@@ -271,6 +273,7 @@ namespace POSWinforms.Maintenance
             this.Controls.Add(this.metroSetLabel1);
             this.Controls.Add(this.dgvCategories);
             this.Name = "frmCategory";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.StyleManager = this.styleManager1;
             this.Text = "Category";
             this.ThemeAuthor = null;
@@ -285,7 +288,6 @@ namespace POSWinforms.Maintenance
         #endregion
 
         private MetroSet_UI.Components.StyleManager styleManager1;
-        private MetroSet_UI.Controls.MetroSetControlBox metroSetControlBox1;
         private MetroSet_UI.Controls.MetroSetButton btnUpdate;
         private MetroSet_UI.Controls.MetroSetButton btnAdd;
         private MetroSet_UI.Controls.MetroSetTextBox txtDescription;
@@ -296,5 +298,6 @@ namespace POSWinforms.Maintenance
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private MetroSet_UI.Controls.MetroSetButton btnClose;
     }
 }

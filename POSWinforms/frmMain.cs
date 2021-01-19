@@ -36,7 +36,7 @@ namespace POSWinforms
 
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-            new frmLogin().Show();
+            DatabaseHelper.frmLogin.Show();
         }
 
         private void positionToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -62,9 +62,14 @@ namespace POSWinforms
             Console.WriteLine(user.LastName + ", " + user.FirstName + " " + user.MiddleName);
         }
 
-        private void openTransactionToolStripMenuItem_Click(object sender, EventArgs e)
+        private void transactionToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new frmTransaction().ShowDialog();
+        }
+
+        private void ordersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new frmOrders().ShowDialog();
         }
     }
 }

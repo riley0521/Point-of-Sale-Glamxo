@@ -17,6 +17,9 @@ namespace POSWinforms.Maintenance
     {
 
         private string currentUsername = "";
+        private tblUser selectedUser;
+
+        private string contactNo = "";
 
         public frmAddEditUser()
         {
@@ -48,9 +51,13 @@ namespace POSWinforms.Maintenance
             }
         }
 
-        public void updateUser(User user)
+        public void updateUser(tblUser user)
         {
+            this.selectedUser = user;
             this.Text = "Update User";
+
+            contactNo = user.ContactNo;
+
             currentUsername = user.Username;
             txtStaffID.Enabled = false;
             txtStaffID.Text = user.ID.ToString();
@@ -60,11 +67,16 @@ namespace POSWinforms.Maintenance
             txtLastName.Text = user.LastName;
             txtMI.Text = user.MiddleName;
             txtAddress.Text = user.Address;
-            txtContactNo.Text = user.ContactNo;
+            txtContactNo.Text = contactNo;
             cmbPositions.SelectedIndex = cmbPositions.Items.IndexOf(user.Position);
         }
 
         private void btnSave_Click(object sender, EventArgs e)
+        {
+            saveUser();
+        }
+
+        private void saveUser()
         {
             if (ValidateChildren(ValidationConstraints.Enabled))
             {
@@ -80,26 +92,24 @@ namespace POSWinforms.Maintenance
                         MiddleName = txtMI.Text,
                         LastName = txtLastName.Text,
                         Address = txtAddress.Text,
-                        ContactNo = txtContactNo.Text
+                        ContactNo = contactNo
                     };
                     DatabaseHelper.db.tblUsers.InsertOnSubmit(newUser);
                     DatabaseHelper.db.SubmitChanges();
                     MetroSetMessageBox.Show(this, "User created successfully!", "INFORMATION", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Close();
                 }
-                else if(this.Text.Equals("Update User"))
+                else if (this.Text.Equals("Update User"))
                 {
-                    var updateUser = (from s in DatabaseHelper.db.tblUsers
-                                     where s.ID == long.Parse(txtStaffID.Text)
-                                     select s).FirstOrDefault();
-                    updateUser.Username = txtUsername.Text;
-                    updateUser.Password = txtPassword.Text;
-                    updateUser.FirstName = txtFirstName.Text;
-                    updateUser.MiddleName = txtMI.Text;
-                    updateUser.LastName = txtLastName.Text;
-                    updateUser.Address = txtAddress.Text;
-                    updateUser.ContactNo = txtContactNo.Text;
-                    updateUser.Position = cmbPositions.SelectedItem.ToString();
+
+                    selectedUser.Username = txtUsername.Text;
+                    selectedUser.Password = txtPassword.Text;
+                    selectedUser.FirstName = txtFirstName.Text;
+                    selectedUser.MiddleName = txtMI.Text;
+                    selectedUser.LastName = txtLastName.Text;
+                    selectedUser.Address = txtAddress.Text;
+                    selectedUser.ContactNo = contactNo;
+                    selectedUser.Position = cmbPositions.SelectedItem.ToString();
 
                     DatabaseHelper.db.SubmitChanges();
                     MetroSetMessageBox.Show(this, "User updated successfully!", "INFORMATION", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -189,11 +199,6 @@ namespace POSWinforms.Maintenance
                 e.Cancel = true;
                 errorProvider1.SetError(txtFirstName, "Please enter your first name!");
             }
-            else if (Regex.IsMatch(txtFirstName.Text, @"^[0-9]+$"))
-            {
-                e.Cancel = true;
-                errorProvider1.SetError(txtFirstName, "Please input letters only!");
-            }
             else
             {
                 e.Cancel = false;
@@ -269,6 +274,61 @@ namespace POSWinforms.Maintenance
             {
                 e.Cancel = false;
                 errorProvider1.SetError(cmbPositions, null);
+            }
+        }
+
+        private void txtContactNo_TextChanged(object sender, EventArgs e)
+        {
+            if (long.TryParse(txtContactNo.Text, out long contactNo))
+            {
+                this.contactNo = contactNo.ToString();
+            }
+        }
+
+        private void txtLastName_TextChanged(object sender, EventArgs e)
+        {
+            if(txtLastName.Text.Length > 0)
+            {
+                char[] lastCharacter = txtLastName.Text.ToCharArray();
+                if(int.TryParse(lastCharacter[lastCharacter.Length - 1].ToString(), out int s))
+                {
+                    txtLastName.Text = "";
+                    errorProvider1.SetError(txtLastName, "Please enter letters only!");
+                }
+            }
+        }
+
+        private void txtFirstName_TextChanged(object sender, EventArgs e)
+        {
+            if (txtFirstName.Text.Length > 0)
+            {
+                char[] lastCharacter = txtFirstName.Text.ToCharArray();
+                if (int.TryParse(lastCharacter[lastCharacter.Length - 1].ToString(), out int s))
+                {
+                    txtFirstName.Text = "";
+                    errorProvider1.SetError(txtFirstName, "Please enter letters only!");
+                }
+            }
+        }
+
+        private void txtMI_TextChanged(object sender, EventArgs e)
+        {
+            if (txtMI.Text.Length > 0)
+            {
+                char[] lastCharacter = txtMI.Text.ToCharArray();
+                if (int.TryParse(lastCharacter[lastCharacter.Length - 1].ToString(), out int s))
+                {
+                    txtMI.Text = "";
+                    errorProvider1.SetError(txtMI, "Please enter letters only!");
+                }
+            }
+        }
+
+        private void frmAddEditUser_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                saveUser();
             }
         }
     }

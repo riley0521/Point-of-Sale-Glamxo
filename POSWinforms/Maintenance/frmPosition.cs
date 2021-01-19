@@ -16,7 +16,8 @@ namespace POSWinforms.Maintenance
     public partial class frmPosition : MetroSetForm
     {
 
-        private Position position;
+        private long ID;
+        private List<tblPosition> allPositions = new List<tblPosition>();
 
         public frmPosition()
         {
@@ -26,13 +27,15 @@ namespace POSWinforms.Maintenance
 
         private void frmPosition_Load(object sender, EventArgs e)
         {
+            dgvPositions.CellClick -= new DataGridViewCellEventHandler(dgvPositions_CellClick);
             LoadAllPositions();
         }
 
         private void LoadAllPositions()
         {
-            var allPositions = from s in DatabaseHelper.db.tblPositions
-                               select s;
+            allPositions.Clear();
+            allPositions = (from s in DatabaseHelper.db.tblPositions
+                               select s).ToList();
             dgvPositions.Rows.Clear();
             foreach(var pos in allPositions)
             {
@@ -44,22 +47,30 @@ namespace POSWinforms.Maintenance
             dgvPositions.ClearSelection();
         }
 
-        private void addPositionMode()
-        {
-            txtDescription.Text = "";
-            txtID.ReadOnly = true;
-            dgvPositions.ClearSelection();
-            position = null;
-            btnUpdate.Enabled = false;
-            btnDelete.Enabled = false;
-        }
-
         private void btnAdd_Click(object sender, EventArgs e)
         {
             if(btnAdd.Text.Equals("Add"))
             {
                 btnAdd.Text = "Save";
-                addPositionMode();
+                
+                if(btnUpdate.Text.Equals("Save"))
+                {
+                    DialogResult dialogResult = MetroSetMessageBox.Show(this, "Would you like to cancel updating position?",
+                        "QUESTION", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        btnUpdate.Text = "Update";
+                        txtDescription.Text = "";
+                    }
+                    else
+                    {
+                        return;
+                    }
+                }
+                btnCancel.Text = "Cancel";
+                dgvPositions.CellClick -= new DataGridViewCellEventHandler(dgvPositions_CellClick);
+                dgvPositions.ClearSelection();
+                txtID.Enabled = false;
                 var nextID = (from s in DatabaseHelper.db.tblPositions
                              orderby s.ID descending
                              select s.ID).FirstOrDefault();
@@ -100,18 +111,12 @@ namespace POSWinforms.Maintenance
         {
             txtID.Text = "";
             txtDescription.Text = "";
-            btnAdd.Text = "Add";
-            txtID.ReadOnly = false;
-            btnUpdate.Enabled = false;
-            btnDelete.Enabled = false;
         }
 
         private void updatePosition()
         {
 
-            var updatePosition = (from s in DatabaseHelper.db.tblPositions
-                                 where s.ID == long.Parse(txtID.Text)
-                                 select s).FirstOrDefault();
+            var updatePosition = allPositions.Where(x=> x.ID == ID).FirstOrDefault();
 
             if(updatePosition != null)
             {
@@ -132,10 +137,38 @@ namespace POSWinforms.Maintenance
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            if (ValidateChildren(ValidationConstraints.Enabled))
+            
+            if(btnUpdate.Text.Equals("Update"))
             {
-                btnAdd.Text = "Add";
-                updatePosition();
+                btnUpdate.Text = "Save";
+                
+                if (btnAdd.Text.Equals("Save"))
+                {
+                    DialogResult dialogResult = MetroSetMessageBox.Show(this, "Would you like to cancel adding position?",
+                    "QUESTION", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        btnAdd.Text = "Add";
+                    }
+                    else
+                    {
+                        return;
+                    }
+                }
+                btnCancel.Text = "Cancel";
+                dgvPositions.CellClick += new DataGridViewCellEventHandler(dgvPositions_CellClick);
+            }
+            else if(btnUpdate.Text.Equals("Save"))
+            {
+                DialogResult dialogResult = MetroSetMessageBox.Show(this, "Would you like to update this position?",
+                "QUESTION", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if(dialogResult == DialogResult.Yes)
+                {
+                    if (ValidateChildren(ValidationConstraints.Enabled))
+                    {
+                        updatePosition();
+                    }
+                }
             }
         }
 
@@ -143,59 +176,12 @@ namespace POSWinforms.Maintenance
         {
             if (e.RowIndex >= 0)
             {
-                position = new Position();
-                position.ID = long.Parse(dgvPositions.Rows[e.RowIndex].Cells[0].Value.ToString());
-                position.PosDescription = dgvPositions.Rows[e.RowIndex].Cells[1].Value.ToString();
+                
+                ID = long.Parse(dgvPositions.Rows[e.RowIndex].Cells[0].Value.ToString());
 
-                txtID.Text = position.ID.ToString();
-                txtDescription.Text = position.PosDescription;
-
-                txtID.ReadOnly = true;
-                btnAdd.Text = "Add";
-                btnUpdate.Enabled = true;
-                btnDelete.Enabled = true;
+                txtID.Text = ID.ToString();
+                txtDescription.Text = dgvPositions.Rows[e.RowIndex].Cells[1].Value.ToString();
             }
-        }
-
-        private void deletePosition()
-        {
-
-            var deletePosition = (from s in DatabaseHelper.db.tblPositions
-                                  where s.ID == long.Parse(txtID.Text)
-                                  select s).FirstOrDefault();
-
-            if(deletePosition != null)
-            {
-                DialogResult dialogResult = MetroSetMessageBox.Show(this, "Would you like to delete this position?",
-                    "QUESTION", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (dialogResult == DialogResult.Yes)
-                {
-
-                    DatabaseHelper.db.tblPositions.DeleteOnSubmit(deletePosition);
-                    DatabaseHelper.db.SubmitChanges();
-                    MetroSetMessageBox.Show(this, "Position with ID: " + txtID.Text + " was deleted successfully!",
-                        "DELETE POSITION", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    return;
-                }
-            }
-            else
-            {
-                MetroSetMessageBox.Show(this, "No ID is selected",
-                    "WARNING", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-
-            clearFields();
-            LoadAllPositions();
-        }
-
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            btnAdd.Text = "Add";
-            deletePosition();
-            
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -208,18 +194,22 @@ namespace POSWinforms.Maintenance
                 if(dialogResult == DialogResult.Yes)
                 {
                     clearFields();
+                    btnAdd.Text = "Add";
+                    btnCancel.Text = "Close";
                 }
             }
-            else if (btnUpdate.Enabled || btnDelete.Enabled)
+            else if (btnUpdate.Text.Equals("Save"))
             {
-                dialogResult = MetroSetMessageBox.Show(this, "Would you like to cancel updating/deleting position?",
+                dialogResult = MetroSetMessageBox.Show(this, "Would you like to cancel updating position?",
                     "QUESTION", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dialogResult == DialogResult.Yes)
                 {
                     clearFields();
+                    btnUpdate.Text = "Update";
+                    btnCancel.Text = "Close";
                 }
             }
-            else
+            else if(btnCancel.Text.Equals("Close"))
             {
                 dialogResult = MetroSetMessageBox.Show(this, "Would you like to exit?",
                     "QUESTION", MessageBoxButtons.YesNo, MessageBoxIcon.Question);

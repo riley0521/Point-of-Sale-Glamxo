@@ -12,6 +12,8 @@ namespace POSWinforms.Models
         public long CustomerID { get; set; }
         public string OrderStatus { get; set; }
         public string OrderDate { get; set; }
-        public double Total { get; set; }
+        public decimal Total { get; set; }
+        public decimal Cash { get; set; }
+        public decimal Change { get; set; }
     }
 }

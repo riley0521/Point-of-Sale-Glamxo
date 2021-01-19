@@ -569,11 +569,11 @@ namespace POSWinforms
 		
 		private string _ItemDescription;
 		
-		private int _Stocks;
-		
 		private string _Size;
 		
-		private double _UnitPrice;
+		private decimal _UnitPrice;
+		
+		private int _Stocks;
 		
 		private int _ReStockLevel;
 		
@@ -589,12 +589,12 @@ namespace POSWinforms
     partial void OnItemCodeChanged();
     partial void OnItemDescriptionChanging(string value);
     partial void OnItemDescriptionChanged();
-    partial void OnStocksChanging(int value);
-    partial void OnStocksChanged();
     partial void OnSizeChanging(string value);
     partial void OnSizeChanged();
-    partial void OnUnitPriceChanging(double value);
+    partial void OnUnitPriceChanging(decimal value);
     partial void OnUnitPriceChanged();
+    partial void OnStocksChanging(int value);
+    partial void OnStocksChanged();
     partial void OnReStockLevelChanging(int value);
     partial void OnReStockLevelChanged();
     #endregion
@@ -664,7 +664,7 @@ namespace POSWinforms
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemDescription", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemDescription", DbType="VarChar(255) NOT NULL", CanBeNull=false)]
 		public string ItemDescription
 		{
 			get
@@ -680,6 +680,46 @@ namespace POSWinforms
 					this._ItemDescription = value;
 					this.SendPropertyChanged("ItemDescription");
 					this.OnItemDescriptionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Size", DbType="VarChar(255) NOT NULL", CanBeNull=false)]
+		public string Size
+		{
+			get
+			{
+				return this._Size;
+			}
+			set
+			{
+				if ((this._Size != value))
+				{
+					this.OnSizeChanging(value);
+					this.SendPropertyChanging();
+					this._Size = value;
+					this.SendPropertyChanged("Size");
+					this.OnSizeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UnitPrice", DbType="Money NOT NULL")]
+		public decimal UnitPrice
+		{
+			get
+			{
+				return this._UnitPrice;
+			}
+			set
+			{
+				if ((this._UnitPrice != value))
+				{
+					this.OnUnitPriceChanging(value);
+					this.SendPropertyChanging();
+					this._UnitPrice = value;
+					this.SendPropertyChanged("UnitPrice");
+					this.OnUnitPriceChanged();
 				}
 			}
 		}
@@ -700,46 +740,6 @@ namespace POSWinforms
 					this._Stocks = value;
 					this.SendPropertyChanged("Stocks");
 					this.OnStocksChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Size", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string Size
-		{
-			get
-			{
-				return this._Size;
-			}
-			set
-			{
-				if ((this._Size != value))
-				{
-					this.OnSizeChanging(value);
-					this.SendPropertyChanging();
-					this._Size = value;
-					this.SendPropertyChanged("Size");
-					this.OnSizeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UnitPrice", DbType="Float NOT NULL")]
-		public double UnitPrice
-		{
-			get
-			{
-				return this._UnitPrice;
-			}
-			set
-			{
-				if ((this._UnitPrice != value))
-				{
-					this.OnUnitPriceChanging(value);
-					this.SendPropertyChanging();
-					this._UnitPrice = value;
-					this.SendPropertyChanged("UnitPrice");
-					this.OnUnitPriceChanged();
 				}
 			}
 		}
@@ -801,11 +801,11 @@ namespace POSWinforms
 		
 		private int _Quantity;
 		
-		private double _Price;
+		private decimal _Price;
 		
 		private int _Discount;
 		
-		private double _Total;
+		private decimal _Total;
 		
 		private long _OrderID;
 		
@@ -825,11 +825,11 @@ namespace POSWinforms
     partial void OnItemDescriptionChanged();
     partial void OnQuantityChanging(int value);
     partial void OnQuantityChanged();
-    partial void OnPriceChanging(double value);
+    partial void OnPriceChanging(decimal value);
     partial void OnPriceChanged();
     partial void OnDiscountChanging(int value);
     partial void OnDiscountChanged();
-    partial void OnTotalChanging(double value);
+    partial void OnTotalChanging(decimal value);
     partial void OnTotalChanged();
     partial void OnOrderIDChanging(long value);
     partial void OnOrderIDChanged();
@@ -901,7 +901,7 @@ namespace POSWinforms
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemDescription", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemDescription", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
 		public string ItemDescription
 		{
 			get
@@ -941,8 +941,8 @@ namespace POSWinforms
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Price", DbType="Float NOT NULL")]
-		public double Price
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Price", DbType="Money NOT NULL")]
+		public decimal Price
 		{
 			get
 			{
@@ -981,8 +981,8 @@ namespace POSWinforms
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Total", DbType="Float NOT NULL")]
-		public double Total
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Total", DbType="Money NOT NULL")]
+		public decimal Total
 		{
 			get
 			{
@@ -1094,7 +1094,11 @@ namespace POSWinforms
 		
 		private System.DateTime _OrderDate;
 		
-		private double _Total;
+		private decimal _Total;
+		
+		private decimal _Cash;
+		
+		private decimal _Change;
 		
 		private EntitySet<tblOrderDetail> _tblOrderDetails;
 		
@@ -1110,8 +1114,12 @@ namespace POSWinforms
     partial void OnOrderStatusChanged();
     partial void OnOrderDateChanging(System.DateTime value);
     partial void OnOrderDateChanged();
-    partial void OnTotalChanging(double value);
+    partial void OnTotalChanging(decimal value);
     partial void OnTotalChanged();
+    partial void OnCashChanging(decimal value);
+    partial void OnCashChanged();
+    partial void OnChangeChanging(decimal value);
+    partial void OnChangeChanged();
     #endregion
 		
 		public tblOrder()
@@ -1200,8 +1208,8 @@ namespace POSWinforms
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Total", DbType="Float NOT NULL")]
-		public double Total
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Total", DbType="Money NOT NULL")]
+		public decimal Total
 		{
 			get
 			{
@@ -1216,6 +1224,46 @@ namespace POSWinforms
 					this._Total = value;
 					this.SendPropertyChanged("Total");
 					this.OnTotalChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Cash", DbType="Money NOT NULL")]
+		public decimal Cash
+		{
+			get
+			{
+				return this._Cash;
+			}
+			set
+			{
+				if ((this._Cash != value))
+				{
+					this.OnCashChanging(value);
+					this.SendPropertyChanging();
+					this._Cash = value;
+					this.SendPropertyChanged("Cash");
+					this.OnCashChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Change", DbType="Money NOT NULL")]
+		public decimal Change
+		{
+			get
+			{
+				return this._Change;
+			}
+			set
+			{
+				if ((this._Change != value))
+				{
+					this.OnChangeChanging(value);
+					this.SendPropertyChanging();
+					this._Change = value;
+					this.SendPropertyChanged("Change");
+					this.OnChangeChanged();
 				}
 			}
 		}

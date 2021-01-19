@@ -45,7 +45,7 @@ namespace POSWinforms
             this.metroSetControlBox1.DisabledForeColor = System.Drawing.Color.DimGray;
             this.metroSetControlBox1.IsDerivedStyle = true;
             this.metroSetControlBox1.Location = new System.Drawing.Point(265, 6);
-            this.metroSetControlBox1.MaximizeBox = true;
+            this.metroSetControlBox1.MaximizeBox = false;
             this.metroSetControlBox1.MaximizeHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.metroSetControlBox1.MaximizeHoverForeColor = System.Drawing.Color.Gray;
             this.metroSetControlBox1.MaximizeNormalForeColor = System.Drawing.Color.Gray;
@@ -101,6 +101,7 @@ namespace POSWinforms
             this.txtUsername.WatermarkText = "";
             this.txtUsername.Leave += new System.EventHandler(this.txtUsername_Leave);
             this.txtUsername.Enter += new System.EventHandler(this.txtUsername_Enter);
+            this.txtUsername.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtUsername_KeyDown);
             // 
             // txtPassword
             // 
@@ -133,6 +134,7 @@ namespace POSWinforms
             this.txtPassword.WatermarkText = "";
             this.txtPassword.Leave += new System.EventHandler(this.txtPassword_Leave);
             this.txtPassword.Enter += new System.EventHandler(this.txtPassword_Enter);
+            this.txtPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtUsername_KeyDown);
             // 
             // btnLogin
             // 
@@ -170,11 +172,15 @@ namespace POSWinforms
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.metroSetControlBox1);
+            this.MaximumSize = new System.Drawing.Size(380, 449);
+            this.MinimumSize = new System.Drawing.Size(380, 449);
             this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.StyleManager = this.styleManager1;
             this.Text = "Login";
             this.ThemeName = "MetroLight";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmLogin_FormClosing);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtUsername_KeyDown);
             this.ResumeLayout(false);
 
         }

@@ -29,32 +29,25 @@ namespace POSWinforms.Maintenance
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.styleManager1 = new MetroSet_UI.Components.StyleManager();
             this.metroSetLabel1 = new MetroSet_UI.Controls.MetroSetLabel();
             this.txtSearch = new MetroSet_UI.Controls.MetroSetTextBox();
             this.btnAdd = new MetroSet_UI.Controls.MetroSetButton();
             this.btnUpdate = new MetroSet_UI.Controls.MetroSetButton();
             this.btnStockIn = new MetroSet_UI.Controls.MetroSetButton();
-            this.tblItemsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.posdbItems = new POSWinforms.posdbItems();
-            this.tblItemsTableAdapter = new POSWinforms.posdbItemsTableAdapters.tblItemsTableAdapter();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.metroSetLabel2 = new MetroSet_UI.Controls.MetroSetLabel();
             this.metroSetLabel3 = new MetroSet_UI.Controls.MetroSetLabel();
             this.metroSetControlBox1 = new MetroSet_UI.Controls.MetroSetControlBox();
             this.dgvItems = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colRepLvl = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.tblItemsBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.posdbItems)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItems)).BeginInit();
             this.SuspendLayout();
             // 
@@ -120,7 +113,7 @@ namespace POSWinforms.Maintenance
             this.btnAdd.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
             this.btnAdd.HoverTextColor = System.Drawing.Color.White;
             this.btnAdd.IsDerivedStyle = true;
-            this.btnAdd.Location = new System.Drawing.Point(462, 97);
+            this.btnAdd.Location = new System.Drawing.Point(691, 97);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
             this.btnAdd.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
@@ -128,7 +121,7 @@ namespace POSWinforms.Maintenance
             this.btnAdd.PressBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
             this.btnAdd.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
             this.btnAdd.PressTextColor = System.Drawing.Color.White;
-            this.btnAdd.Size = new System.Drawing.Size(93, 35);
+            this.btnAdd.Size = new System.Drawing.Size(165, 35);
             this.btnAdd.Style = MetroSet_UI.Enums.Style.Light;
             this.btnAdd.StyleManager = this.styleManager1;
             this.btnAdd.TabIndex = 2;
@@ -147,7 +140,7 @@ namespace POSWinforms.Maintenance
             this.btnUpdate.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
             this.btnUpdate.HoverTextColor = System.Drawing.Color.White;
             this.btnUpdate.IsDerivedStyle = true;
-            this.btnUpdate.Location = new System.Drawing.Point(561, 97);
+            this.btnUpdate.Location = new System.Drawing.Point(862, 97);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
             this.btnUpdate.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
@@ -155,7 +148,7 @@ namespace POSWinforms.Maintenance
             this.btnUpdate.PressBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
             this.btnUpdate.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
             this.btnUpdate.PressTextColor = System.Drawing.Color.White;
-            this.btnUpdate.Size = new System.Drawing.Size(93, 35);
+            this.btnUpdate.Size = new System.Drawing.Size(165, 35);
             this.btnUpdate.Style = MetroSet_UI.Enums.Style.Light;
             this.btnUpdate.StyleManager = this.styleManager1;
             this.btnUpdate.TabIndex = 3;
@@ -174,7 +167,7 @@ namespace POSWinforms.Maintenance
             this.btnStockIn.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
             this.btnStockIn.HoverTextColor = System.Drawing.Color.White;
             this.btnStockIn.IsDerivedStyle = true;
-            this.btnStockIn.Location = new System.Drawing.Point(660, 97);
+            this.btnStockIn.Location = new System.Drawing.Point(1033, 97);
             this.btnStockIn.Name = "btnStockIn";
             this.btnStockIn.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
             this.btnStockIn.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
@@ -182,7 +175,7 @@ namespace POSWinforms.Maintenance
             this.btnStockIn.PressBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
             this.btnStockIn.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
             this.btnStockIn.PressTextColor = System.Drawing.Color.White;
-            this.btnStockIn.Size = new System.Drawing.Size(93, 35);
+            this.btnStockIn.Size = new System.Drawing.Size(165, 35);
             this.btnStockIn.Style = MetroSet_UI.Enums.Style.Light;
             this.btnStockIn.StyleManager = this.styleManager1;
             this.btnStockIn.TabIndex = 4;
@@ -191,24 +184,10 @@ namespace POSWinforms.Maintenance
             this.btnStockIn.ThemeName = null;
             this.btnStockIn.Click += new System.EventHandler(this.metroSetButton3_Click);
             // 
-            // tblItemsBindingSource
-            // 
-            this.tblItemsBindingSource.DataMember = "tblItems";
-            this.tblItemsBindingSource.DataSource = this.posdbItems;
-            // 
-            // posdbItems
-            // 
-            this.posdbItems.DataSetName = "posdbItems";
-            this.posdbItems.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // tblItemsTableAdapter
-            // 
-            this.tblItemsTableAdapter.ClearBeforeFill = true;
-            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Lime;
-            this.panel1.Location = new System.Drawing.Point(49, 155);
+            this.panel1.Location = new System.Drawing.Point(294, 155);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(40, 40);
             this.panel1.TabIndex = 6;
@@ -216,7 +195,7 @@ namespace POSWinforms.Maintenance
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.OrangeRed;
-            this.panel2.Location = new System.Drawing.Point(402, 155);
+            this.panel2.Location = new System.Drawing.Point(601, 155);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(40, 40);
             this.panel2.TabIndex = 7;
@@ -225,7 +204,7 @@ namespace POSWinforms.Maintenance
             // 
             this.metroSetLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.metroSetLabel2.IsDerivedStyle = true;
-            this.metroSetLabel2.Location = new System.Drawing.Point(95, 172);
+            this.metroSetLabel2.Location = new System.Drawing.Point(340, 172);
             this.metroSetLabel2.Name = "metroSetLabel2";
             this.metroSetLabel2.Size = new System.Drawing.Size(153, 23);
             this.metroSetLabel2.Style = MetroSet_UI.Enums.Style.Light;
@@ -239,7 +218,7 @@ namespace POSWinforms.Maintenance
             // 
             this.metroSetLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.metroSetLabel3.IsDerivedStyle = true;
-            this.metroSetLabel3.Location = new System.Drawing.Point(448, 172);
+            this.metroSetLabel3.Location = new System.Drawing.Point(647, 172);
             this.metroSetLabel3.Name = "metroSetLabel3";
             this.metroSetLabel3.Size = new System.Drawing.Size(153, 23);
             this.metroSetLabel3.Style = MetroSet_UI.Enums.Style.Light;
@@ -257,8 +236,8 @@ namespace POSWinforms.Maintenance
             this.metroSetControlBox1.CloseNormalForeColor = System.Drawing.Color.Gray;
             this.metroSetControlBox1.DisabledForeColor = System.Drawing.Color.DimGray;
             this.metroSetControlBox1.IsDerivedStyle = true;
-            this.metroSetControlBox1.Location = new System.Drawing.Point(650, 3);
-            this.metroSetControlBox1.MaximizeBox = true;
+            this.metroSetControlBox1.Location = new System.Drawing.Point(1099, 3);
+            this.metroSetControlBox1.MaximizeBox = false;
             this.metroSetControlBox1.MaximizeHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.metroSetControlBox1.MaximizeHoverForeColor = System.Drawing.Color.Gray;
             this.metroSetControlBox1.MaximizeNormalForeColor = System.Drawing.Color.Gray;
@@ -281,30 +260,24 @@ namespace POSWinforms.Maintenance
             this.dgvItems.AllowUserToDeleteRows = false;
             this.dgvItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvItems.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
             this.Column4,
             this.Column2,
             this.Column3,
-            this.colQty,
             this.Column5,
             this.Column6,
+            this.colQty,
             this.colRepLvl});
             this.dgvItems.Location = new System.Drawing.Point(15, 201);
             this.dgvItems.MultiSelect = false;
             this.dgvItems.Name = "dgvItems";
             this.dgvItems.ReadOnly = true;
             this.dgvItems.RowHeadersVisible = false;
+            this.dgvItems.RowTemplate.Height = 30;
             this.dgvItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvItems.Size = new System.Drawing.Size(735, 281);
+            this.dgvItems.Size = new System.Drawing.Size(1183, 281);
             this.dgvItems.TabIndex = 11;
             this.dgvItems.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvItems_CellClick);
             this.dgvItems.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvItems_CellDoubleClick);
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "ID";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
             // 
             // Column4
             // 
@@ -325,13 +298,7 @@ namespace POSWinforms.Maintenance
             this.Column3.HeaderText = "Item Description";
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
-            this.Column3.Width = 200;
-            // 
-            // colQty
-            // 
-            this.colQty.HeaderText = "Quantity";
-            this.colQty.Name = "colQty";
-            this.colQty.ReadOnly = true;
+            this.Column3.Width = 350;
             // 
             // Column5
             // 
@@ -346,6 +313,12 @@ namespace POSWinforms.Maintenance
             this.Column6.ReadOnly = true;
             this.Column6.Width = 150;
             // 
+            // colQty
+            // 
+            this.colQty.HeaderText = "Quantity";
+            this.colQty.Name = "colQty";
+            this.colQty.ReadOnly = true;
+            // 
             // colRepLvl
             // 
             this.colRepLvl.HeaderText = "Re-Produce Level";
@@ -357,7 +330,7 @@ namespace POSWinforms.Maintenance
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(765, 517);
+            this.ClientSize = new System.Drawing.Size(1214, 517);
             this.Controls.Add(this.dgvItems);
             this.Controls.Add(this.metroSetControlBox1);
             this.Controls.Add(this.metroSetLabel3);
@@ -369,14 +342,15 @@ namespace POSWinforms.Maintenance
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.metroSetLabel1);
+            this.MaximumSize = new System.Drawing.Size(1214, 517);
+            this.MinimumSize = new System.Drawing.Size(1214, 517);
             this.Name = "frmItem";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.StyleManager = this.styleManager1;
             this.Text = "Items";
             this.ThemeAuthor = null;
             this.ThemeName = null;
             this.Load += new System.EventHandler(this.frmItem_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.tblItemsBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.posdbItems)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItems)).EndInit();
             this.ResumeLayout(false);
 
@@ -390,22 +364,18 @@ namespace POSWinforms.Maintenance
         private MetroSet_UI.Controls.MetroSetButton btnAdd;
         private MetroSet_UI.Controls.MetroSetTextBox txtSearch;
         private MetroSet_UI.Controls.MetroSetLabel metroSetLabel1;
-        private posdbItems posdbItems;
-        private System.Windows.Forms.BindingSource tblItemsBindingSource;
-        private posdbItemsTableAdapters.tblItemsTableAdapter tblItemsTableAdapter;
         private MetroSet_UI.Controls.MetroSetControlBox metroSetControlBox1;
         private MetroSet_UI.Controls.MetroSetLabel metroSetLabel3;
         private MetroSet_UI.Controls.MetroSetLabel metroSetLabel2;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView dgvItems;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colQty;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colQty;
         private System.Windows.Forms.DataGridViewTextBoxColumn colRepLvl;
     }
 }

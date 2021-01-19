@@ -17,8 +17,8 @@ namespace POSWinforms.Maintenance
     public partial class frmItem : MetroSetForm
     {
 
-        private List<Item> itemList = new List<Item>();
-        private long id = 0;
+        private List<tblItem> allItems = new List<tblItem>();
+        private string itemCode = "";
 
         public frmItem()
         {
@@ -32,9 +32,8 @@ namespace POSWinforms.Maintenance
 
         private void loadAllItems(string searchItem)
         {
-            List<tblItem> allItems = new List<tblItem>();
+            allItems.Clear();
             dgvItems.Rows.Clear();
-            itemList.Clear();
 
             if (searchItem != null)
             {
@@ -53,26 +52,14 @@ namespace POSWinforms.Maintenance
             foreach (var item in allItems)
             {
                 dgvItems.Rows.Add(
-                        item.ID,
                         item.ItemNumber,
                         item.ItemCode,
                         item.ItemDescription,
-                        item.Stocks,
                         item.Size,
-                        item.UnitPrice,
+                        item.UnitPrice.ToString("0.00"),
+                        item.Stocks,
                         item.ReStockLevel
                     );
-                itemList.Add(new Item()
-                {
-                    ID = item.ID,
-                    ItemNumber = item.ItemNumber,
-                    ItemCode = item.ItemCode,
-                    ItemDescription = item.ItemDescription,
-                    Stocks = item.Stocks,
-                    Size = item.Size,
-                    UnitPrice = item.UnitPrice,
-                    ReStockLevel = item.ReStockLevel
-                });
             }
 
             foreach (DataGridViewRow row in dgvItems.Rows)
@@ -106,7 +93,7 @@ namespace POSWinforms.Maintenance
 
         private void metroSetButton2_Click(object sender, EventArgs e)
         {
-            Item item = itemList.Where(x => x.ID == id).FirstOrDefault();
+            tblItem item = allItems.Where(x => x.ItemCode.Equals(itemCode)).FirstOrDefault();
             if (item != null)
             {
                 var frm = new frmAddEditItem();
@@ -120,16 +107,16 @@ namespace POSWinforms.Maintenance
         {
             if (e.RowIndex >= 0)
             {
-                id = long.Parse(dgvItems.Rows[e.RowIndex].Cells[0].Value.ToString());
+                itemCode = dgvItems.Rows[e.RowIndex].Cells[1].Value.ToString();
             } 
         }
 
         private void metroSetButton3_Click(object sender, EventArgs e)
         {
-            if (id > 0)
+            if (itemCode.Length > 0)
             {
                 var frm = new frmItemStockEdit();
-                frm.setID(id);
+                frm.setItemCode(itemCode);
                 frm.ShowDialog();
                 loadAllItems(null);
             }
@@ -159,8 +146,8 @@ namespace POSWinforms.Maintenance
         {
             if (e.RowIndex >= 0)
             {
-                id = long.Parse(dgvItems.Rows[e.RowIndex].Cells[0].Value.ToString());
-                DatabaseHelper.item = itemList.Where(x => x.ID == id).FirstOrDefault();
+                itemCode = dgvItems.Rows[e.RowIndex].Cells[1].Value.ToString();
+                DatabaseHelper.item = allItems.Where(x => x.ItemCode.Equals(itemCode)).FirstOrDefault();
                 Close();
             }
         }

@@ -188,6 +188,7 @@ namespace POSWinforms.Maintenance
             this.cmbCategory.ThemeAuthor = null;
             this.cmbCategory.ThemeName = null;
             this.cmbCategory.SelectedIndexChanged += new System.EventHandler(this.cmbCategory_SelectedIndexChanged);
+            this.cmbCategory.Validating += new System.ComponentModel.CancelEventHandler(this.cmbCategory_Validating);
             // 
             // txtCode
             // 
@@ -307,6 +308,7 @@ namespace POSWinforms.Maintenance
             this.txtQuantity.ThemeName = null;
             this.txtQuantity.UseSystemPasswordChar = false;
             this.txtQuantity.WatermarkText = "";
+            this.txtQuantity.TextChanged += new System.EventHandler(this.txtQuantity_TextChanged);
             this.txtQuantity.Validating += new System.ComponentModel.CancelEventHandler(this.txtQuantity_Validating);
             // 
             // txtUnitPrice
@@ -337,6 +339,7 @@ namespace POSWinforms.Maintenance
             this.txtUnitPrice.ThemeName = null;
             this.txtUnitPrice.UseSystemPasswordChar = false;
             this.txtUnitPrice.WatermarkText = "";
+            this.txtUnitPrice.TextChanged += new System.EventHandler(this.txtUnitPrice_TextChanged);
             this.txtUnitPrice.Validating += new System.ComponentModel.CancelEventHandler(this.txtUnitPrice_Validating);
             // 
             // metroSetLabel6
@@ -382,6 +385,8 @@ namespace POSWinforms.Maintenance
             this.txtReProduceLevel.ThemeName = null;
             this.txtReProduceLevel.UseSystemPasswordChar = false;
             this.txtReProduceLevel.WatermarkText = "";
+            this.txtReProduceLevel.TextChanged += new System.EventHandler(this.txtReProduceLevel_TextChanged);
+            this.txtReProduceLevel.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtReProduceLevel_KeyDown);
             this.txtReProduceLevel.Validating += new System.ComponentModel.CancelEventHandler(this.txtReProduceLevel_Validating);
             // 
             // metroSetLabel7
@@ -452,11 +457,11 @@ namespace POSWinforms.Maintenance
             this.Controls.Add(this.metroSetLabel1);
             this.Controls.Add(this.metroSetControlBox1);
             this.Name = "frmAddEditItem";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.StyleManager = this.styleManager1;
             this.Text = "Item Modal";
             this.ThemeAuthor = null;
             this.ThemeName = null;
-            this.Load += new System.EventHandler(this.frmAddEditItem_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 

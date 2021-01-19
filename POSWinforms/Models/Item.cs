@@ -12,9 +12,9 @@ namespace POSWinforms.Models
         public long ItemNumber { get; set; }
         public string ItemCode { get; set; }
         public string ItemDescription { get; set; }
-        public int Stocks { get; set; }
         public string Size { get; set; }
-        public double UnitPrice { get; set; }
+        public decimal UnitPrice { get; set; }
+        public int Stocks { get; set; }
         public int ReStockLevel { get; set; }
 
     }

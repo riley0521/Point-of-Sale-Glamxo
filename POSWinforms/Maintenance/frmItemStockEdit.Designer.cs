@@ -72,7 +72,7 @@ namespace POSWinforms.Maintenance
             this.txtQuantity.Style = MetroSet_UI.Enums.Style.Light;
             this.txtQuantity.StyleManager = null;
             this.txtQuantity.TabIndex = 1;
-            this.txtQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtQuantity.ThemeAuthor = "Narwin";
             this.txtQuantity.ThemeName = "MetroLite";
             this.txtQuantity.UseSystemPasswordChar = false;
@@ -142,7 +142,10 @@ namespace POSWinforms.Maintenance
             this.Controls.Add(this.btnConfirm);
             this.Controls.Add(this.txtQuantity);
             this.Controls.Add(this.metroSetLabel1);
+            this.MaximumSize = new System.Drawing.Size(308, 231);
+            this.MinimumSize = new System.Drawing.Size(308, 231);
             this.Name = "frmItemStockEdit";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Stock In";
             this.ResumeLayout(false);
 

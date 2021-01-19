@@ -38,11 +38,11 @@ namespace POSWinforms
             this.categoryToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.itemToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.transactionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openTransactionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.metroSetLabel1 = new MetroSet_UI.Controls.MetroSetLabel();
             this.lblTime = new MetroSet_UI.Controls.MetroSetLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.metroSetControlBox1 = new MetroSet_UI.Controls.MetroSetControlBox();
+            this.ordersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,7 +58,8 @@ namespace POSWinforms
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.maintenanceToolStripMenuItem,
-            this.transactionToolStripMenuItem});
+            this.transactionToolStripMenuItem,
+            this.ordersToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(12, 70);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(776, 24);
@@ -106,18 +107,10 @@ namespace POSWinforms
             // 
             // transactionToolStripMenuItem
             // 
-            this.transactionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.openTransactionToolStripMenuItem});
             this.transactionToolStripMenuItem.Name = "transactionToolStripMenuItem";
             this.transactionToolStripMenuItem.Size = new System.Drawing.Size(79, 20);
             this.transactionToolStripMenuItem.Text = "Transaction";
-            // 
-            // openTransactionToolStripMenuItem
-            // 
-            this.openTransactionToolStripMenuItem.Name = "openTransactionToolStripMenuItem";
-            this.openTransactionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.openTransactionToolStripMenuItem.Text = "Open Transaction";
-            this.openTransactionToolStripMenuItem.Click += new System.EventHandler(this.openTransactionToolStripMenuItem_Click);
+            this.transactionToolStripMenuItem.Click += new System.EventHandler(this.transactionToolStripMenuItem_Click);
             // 
             // metroSetLabel1
             // 
@@ -161,7 +154,7 @@ namespace POSWinforms
             this.metroSetControlBox1.DisabledForeColor = System.Drawing.Color.DimGray;
             this.metroSetControlBox1.IsDerivedStyle = true;
             this.metroSetControlBox1.Location = new System.Drawing.Point(685, 1);
-            this.metroSetControlBox1.MaximizeBox = true;
+            this.metroSetControlBox1.MaximizeBox = false;
             this.metroSetControlBox1.MaximizeHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.metroSetControlBox1.MaximizeHoverForeColor = System.Drawing.Color.Gray;
             this.metroSetControlBox1.MaximizeNormalForeColor = System.Drawing.Color.Gray;
@@ -178,6 +171,13 @@ namespace POSWinforms
             this.metroSetControlBox1.ThemeAuthor = "Narwin";
             this.metroSetControlBox1.ThemeName = "MetroLight";
             // 
+            // ordersToolStripMenuItem
+            // 
+            this.ordersToolStripMenuItem.Name = "ordersToolStripMenuItem";
+            this.ordersToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
+            this.ordersToolStripMenuItem.Text = "Orders";
+            this.ordersToolStripMenuItem.Click += new System.EventHandler(this.ordersToolStripMenuItem_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
@@ -188,7 +188,10 @@ namespace POSWinforms
             this.Controls.Add(this.metroSetLabel1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
+            this.MaximumSize = new System.Drawing.Size(800, 449);
+            this.MinimumSize = new System.Drawing.Size(800, 449);
             this.Name = "frmMain";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.StyleManager = this.styleManager1;
             this.Text = "Main";
             this.ThemeName = "MetroLight";
@@ -211,10 +214,10 @@ namespace POSWinforms
         private System.Windows.Forms.ToolStripMenuItem categoryToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem itemToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem transactionToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem openTransactionToolStripMenuItem;
         private MetroSet_UI.Controls.MetroSetLabel metroSetLabel1;
         private MetroSet_UI.Controls.MetroSetLabel lblTime;
         private System.Windows.Forms.Timer timer1;
         private MetroSet_UI.Controls.MetroSetControlBox metroSetControlBox1;
+        private System.Windows.Forms.ToolStripMenuItem ordersToolStripMenuItem;
     }
 }

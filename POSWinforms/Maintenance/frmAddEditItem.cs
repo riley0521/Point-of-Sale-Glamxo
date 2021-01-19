@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Linq.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -16,22 +17,44 @@ namespace POSWinforms.Maintenance
     {
 
         private string itemCode = "";
-        private long newItemNo = 0;
+        private decimal unitPrice = 0;
+        private int quantity = 0;
+        private int restockLevel = 0;
+        private long newItemNo = 1;
+        private tblItem item;
+        private List<tblCategory> categories = new List<tblCategory>();
         public frmAddEditItem()
         {
             InitializeComponent();
+            categories = (from s in DatabaseHelper.db.tblCategories
+                          select s).ToList();
+            foreach (var category in categories)
+            {
+                cmbCategory.Items.Add(category.ItemDescription);
+            }
         }
 
-        public void updateItem(Item item)
+        public void updateItem(tblItem item)
         {
+            this.item = item;
             this.Text = "Update Item";
             cmbCategory.Enabled = false;
-            txtCode.Text = item.ItemCode + "-" + item.ItemNumber.ToString("000");
+            txtCode.Enabled = false;
+
+            string[] descriptionFromCode = item.ItemCode.Split('-');
+            string description = categories.Where(x => x.ItemCode.Equals(descriptionFromCode[0])).Select(x => x.ItemDescription).FirstOrDefault();
+            cmbCategory.SelectedIndex = cmbCategory.Items.IndexOf(description);
+
+            unitPrice = item.UnitPrice;
+            quantity = item.Stocks;
+            restockLevel = item.ReStockLevel;
+
+            txtCode.Text = item.ItemCode;
             txtDescription.Text = item.ItemDescription;
             txtSize.Text = item.Size;
-            txtUnitPrice.Text = item.UnitPrice.ToString();
-            txtQuantity.Text = item.Stocks.ToString();
-            txtReProduceLevel.Text = item.ReStockLevel.ToString();
+            txtUnitPrice.Text = unitPrice.ToString();
+            txtQuantity.Text = quantity.ToString();
+            txtReProduceLevel.Text = restockLevel.ToString();
         }
 
         public void addItem()
@@ -43,21 +66,21 @@ namespace POSWinforms.Maintenance
         {
             if(cmbCategory.SelectedIndex >= 0)
             {
+                string letterCode = categories[cmbCategory.SelectedIndex].ItemCode;
                 var itemNo = (from s in DatabaseHelper.db.tblItems
-                              where s.ItemCode == cmbCategory.SelectedItem.ToString()
-                              orderby s.ItemNumber descending
-                              select s).FirstOrDefault();
-                if (itemNo != null)
+                              where SqlMethods.Like(s.ItemCode, "%" + letterCode + "%")
+                              orderby s.ItemCode descending
+                              select s.ItemNumber).FirstOrDefault();
+                if (itemNo > 0)
                 {
-                    newItemNo = itemNo.ID + 1;
-                    itemCode = newItemNo.ToString("000");
+                    newItemNo = itemNo + 1;
                 }
                 else
                 {
                     newItemNo = 1;
-                    itemCode = newItemNo.ToString("000");
                 }
-                txtCode.Text = cmbCategory.SelectedItem.ToString() + "-" + itemCode;
+                txtCode.Text = letterCode + "-" + newItemNo.ToString("000");
+                itemCode = letterCode + "-" + newItemNo.ToString("000");
             }
         }
 
@@ -148,19 +171,30 @@ namespace POSWinforms.Maintenance
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if(ValidateChildren(ValidationConstraints.Enabled))
+            saveItem();
+        }
+
+        private void saveItem()
+        {
+            if (cmbCategory.SelectedIndex < 0)
+            {
+                MetroSetMessageBox.Show(this, "Please choose a category!", "WARNING", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (ValidateChildren(ValidationConstraints.Enabled))
             {
                 if (this.Text.Equals("Add Item"))
                 {
                     var newItem = new tblItem
                     {
                         ItemNumber = newItemNo,
-                        ItemCode = cmbCategory.SelectedItem.ToString(),
+                        ItemCode = itemCode,
                         ItemDescription = txtDescription.Text,
-                        ReStockLevel = int.Parse(txtReProduceLevel.Text),
+                        ReStockLevel = restockLevel,
                         Size = txtSize.Text,
-                        Stocks = int.Parse(txtQuantity.Text),
-                        UnitPrice = double.Parse(txtUnitPrice.Text)
+                        Stocks = quantity,
+                        UnitPrice = unitPrice
                     };
                     DatabaseHelper.db.tblItems.InsertOnSubmit(newItem);
                     DatabaseHelper.db.SubmitChanges();
@@ -169,21 +203,75 @@ namespace POSWinforms.Maintenance
                 }
                 else if (this.Text.Equals("Update Item"))
                 {
-                    MetroSetMessageBox.Show(this, "Updating...", "INFORMATION", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    item.ItemDescription = txtDescription.Text;
+                    item.Size = txtSize.Text;
+                    item.ReStockLevel = restockLevel;
+                    item.Stocks = quantity;
+                    item.UnitPrice = unitPrice;
+                    DatabaseHelper.db.SubmitChanges();
+
+                    MetroSetMessageBox.Show(this, "Item updated successfully!", "INFORMATION", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Close();
                 }
             }
         }
 
-        private void frmAddEditItem_Load(object sender, EventArgs e)
+        private void cmbCategory_Validating(object sender, CancelEventArgs e)
         {
-            
-            var allCategory = from s in DatabaseHelper.db.tblCategories
-                           select s.ItemCode;
-            foreach(var category in allCategory)
+            if (cmbCategory.SelectedIndex < 0)
             {
-                cmbCategory.Items.Add(category);
+                e.Cancel = true;
+                errorProvider1.SetError(cmbCategory, "Please choose a category!");
             }
+            else
+            {
+                e.Cancel = false;
+                errorProvider1.SetError(cmbCategory, null);
+            }
+        }
 
+        private void txtUnitPrice_TextChanged(object sender, EventArgs e)
+        {
+            if (decimal.TryParse(txtUnitPrice.Text, out decimal price))
+            {
+                this.unitPrice = price;
+            }
+            else
+            {
+                txtUnitPrice.Text = "";
+            }
+        }
+
+        private void txtQuantity_TextChanged(object sender, EventArgs e)
+        {
+            if (int.TryParse(txtQuantity.Text, out int qty))
+            {
+                this.quantity = qty;
+            }
+            else
+            {
+                txtQuantity.Text = "";
+            }
+        }
+
+        private void txtReProduceLevel_TextChanged(object sender, EventArgs e)
+        {
+            if (int.TryParse(txtReProduceLevel.Text, out int level))
+            {
+                this.restockLevel = level;
+            }
+            else
+            {
+                txtReProduceLevel.Text = "";
+            }
+        }
+
+        private void txtReProduceLevel_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                saveItem();
+            }
         }
     }
 }

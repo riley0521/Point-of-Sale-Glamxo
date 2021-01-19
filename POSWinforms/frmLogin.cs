@@ -55,7 +55,12 @@ namespace POSWinforms
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            if(txtUsername.Text.Length == 0 || txtPassword.Text.Length == 0
+            loginUser();
+        }
+
+        private void loginUser()
+        {
+            if (txtUsername.Text.Length == 0 || txtPassword.Text.Length == 0
                 || txtUsername.Text.Equals("Username") || txtPassword.Text.Equals("Password"))
             {
                 MetroSetMessageBox.Show(this, "Please enter your username and password.", "WARNING", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -63,12 +68,12 @@ namespace POSWinforms
             else
             {
                 var user = (from s in DatabaseHelper.db.tblUsers
-                           where s.Username == txtUsername.Text
-                           select s).FirstOrDefault();
+                            where s.Username == txtUsername.Text
+                            select s).FirstOrDefault();
 
-                if(user != null)
+                if (user != null)
                 {
-                    if(user.Password.Equals(txtPassword.Text))
+                    if (user.Password.Equals(txtPassword.Text))
                     {
                         DatabaseHelper.user = new User()
                         {
@@ -82,18 +87,35 @@ namespace POSWinforms
                             Position = user.Position,
                             Username = user.Username
                         };
+                        txtUsername.Text = "Username";
+                        txtPassword.Text = "Password";
+                        txtPassword.UseSystemPasswordChar = false;
+                        metroSetControlBox1.Focus();
                         new frmMain().Show();
                         Hide();
                     }
                     else
                     {
-                        MetroSetMessageBox.Show(this,"Invalid username or password.", "WARNING", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MetroSetMessageBox.Show(this, "Invalid username or password.", "WARNING", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
                 else
                 {
                     MetroSetMessageBox.Show(this, "Invalid username or password.", "WARNING", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
+            }
+        }
+
+        private void frmLogin_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void txtUsername_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.KeyCode)
+            {
+                loginUser();
             }
         }
     }

@@ -18,7 +18,7 @@ namespace POSWinforms
     {
 
         private string username = "";
-        private List<User> userList = new List<User>();
+        private List<tblUser> userList = new List<tblUser>();
 
         public frmUser()
         {
@@ -27,15 +27,15 @@ namespace POSWinforms
 
         private void LoadAllUsers(string searchedUser)
         {
-            List<tblUser> allUsers = new List<tblUser>();
+            userList.Clear();
             if (searchedUser == null)
             {
-                allUsers = (from s in DatabaseHelper.db.tblUsers
+                userList = (from s in DatabaseHelper.db.tblUsers
                             select s).ToList();
             }
             else 
             {
-                 allUsers = (from s in DatabaseHelper.db.tblUsers
+                userList = (from s in DatabaseHelper.db.tblUsers
                                     where SqlMethods.Like(s.FirstName, "%" + searchedUser + "%") ||
                                     SqlMethods.Like(s.LastName, "%" + searchedUser + "%") ||
                                     SqlMethods.Like(s.MiddleName, "%" + searchedUser + "%") ||
@@ -43,30 +43,18 @@ namespace POSWinforms
                                     SqlMethods.Like(s.Username, "%" + searchedUser + "%")
                                     select s).ToList();
             }
-            //var allUsers = from s in DatabaseHelper.db.tblUsers
-            //               select s;
             dgvUsers.Rows.Clear();
-            userList.Clear();
-            foreach(var user in allUsers)
+            foreach(var user in userList)
             {
                 string fullName = (user.LastName + ", " + user.FirstName + " " + user.MiddleName).Trim();
                 dgvUsers.Rows.Add(
                         user.ID,
                         fullName,
                         user.Position,
-                        user.Username
+                        user.Username,
+                        user.Address,
+                        user.ContactNo
                     );
-                User addUser = new User();
-                addUser.ID = user.ID;
-                addUser.Username = user.Username;
-                addUser.Password = user.Password;
-                addUser.FirstName = user.FirstName;
-                addUser.MiddleName = user.MiddleName;
-                addUser.LastName = user.LastName;
-                addUser.Address = user.Address;
-                addUser.ContactNo = user.ContactNo;
-                addUser.Position = user.Position;
-                userList.Add(addUser);
             }
             dgvUsers.ClearSelection();
         }
@@ -88,7 +76,7 @@ namespace POSWinforms
         {
             
 
-            User user = userList.Where(x => x.Username.Equals(username)).FirstOrDefault();
+            tblUser user = userList.Where(x => x.Username.Equals(username)).FirstOrDefault();
 
             if (user != null)
             {

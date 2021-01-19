@@ -15,7 +15,8 @@ namespace POSWinforms.Maintenance
 {
     public partial class frmCategory : MetroSetForm
     {
-        private Category category;
+        private List<tblCategory> allCategories = new List<tblCategory>();
+        private string itemCode = "";
 
         public frmCategory()
         {
@@ -24,16 +25,14 @@ namespace POSWinforms.Maintenance
 
         private void txtItemCode_Validating(object sender, CancelEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtItemCode.Text))
+            if (string.IsNullOrWhiteSpace(txtItemCode.Text) && txtItemCode.Enabled)
             {
                 e.Cancel = true;
-                txtItemCode.Focus();
                 errorProvider1.SetError(txtItemCode, "Please enter item code!");
             }
             else if (Regex.IsMatch(txtItemCode.Text, @"^[0-9]+$"))
             {
                 e.Cancel = true;
-                txtItemCode.Focus();
                 errorProvider1.SetError(txtItemCode, "Please input letters only!");
             }
             else
@@ -45,17 +44,11 @@ namespace POSWinforms.Maintenance
 
         private void txtDescription_Validating(object sender, CancelEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtDescription.Text))
+
+            if (string.IsNullOrWhiteSpace(txtDescription.Text) && txtItemCode.Enabled)
             {
                 e.Cancel = true;
-                txtDescription.Focus();
                 errorProvider1.SetError(txtDescription, "Please enter the description!");
-            }
-            else if (Regex.IsMatch(txtDescription.Text, @"^[0-9]+$"))
-            {
-                e.Cancel = true;
-                txtDescription.Focus();
-                errorProvider1.SetError(txtDescription, "Please input letters only!");
             }
             else
             {
@@ -66,12 +59,12 @@ namespace POSWinforms.Maintenance
 
         private void clearFields()
         {
-            category = null;
             dgvCategories.ClearSelection();
-            btnAdd.Text = "Add";
             txtItemCode.Text = "";
             txtDescription.Text = "";
-            btnUpdate.Enabled = false;
+            txtItemCode.Enabled = false;
+            btnClose.Text = "Close";
+            dgvCategories.Focus();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -79,11 +72,23 @@ namespace POSWinforms.Maintenance
             if (btnAdd.Text.Equals("Add"))
             {
                 btnAdd.Text = "Save";
-                txtItemCode.ReadOnly = false;
-                txtItemCode.Text = "";
-                txtDescription.Text = "";
-                btnUpdate.Enabled = false;
-                category = null;
+                if (btnUpdate.Text.Equals("Save"))
+                {
+                    DialogResult dialogResult = MetroSetMessageBox.Show(this, "Would you like to cancel updating position?",
+                        "QUESTION", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        btnUpdate.Text = "Update";
+                        txtDescription.Text = "";
+                    }
+                    else
+                    {
+                        return;
+                    }
+                }
+                txtItemCode.Enabled = true;
+                btnClose.Text = "Cancel";
+                dgvCategories.CellClick -= new DataGridViewCellEventHandler(dgvCategories_CellClick);
                 dgvCategories.ClearSelection();
             }
             else if (btnAdd.Text.Equals("Save"))
@@ -110,26 +115,65 @@ namespace POSWinforms.Maintenance
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            if (ValidateChildren(ValidationConstraints.Enabled))
+            if(btnUpdate.Text.Equals("Update"))
             {
-                var updateCategory = (from s in DatabaseHelper.db.tblCategories
-                                     where s.ItemCode == txtItemCode.Text
-                                     select s).FirstOrDefault();
-                if(updateCategory != null)
+                btnUpdate.Text = "Save";
+                if (btnAdd.Text.Equals("Save"))
                 {
-                    updateCategory.ItemDescription = txtDescription.Text;
-                    DatabaseHelper.db.SubmitChanges();
-                    MetroSetMessageBox.Show(this, "Item '" + updateCategory.ItemCode + "' successfully!", "INFORMATION", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    clearFields();
-                    LoadAllCategories();
+                    DialogResult dialogResult = MetroSetMessageBox.Show(this, "Would you like to cancel adding category?",
+                    "QUESTION", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        btnAdd.Text = "Add";
+                    }
+                    else
+                    {
+                        return;
+                    }
                 }
+                txtItemCode.Enabled = false;
+                btnClose.Text = "Cancel";
+                dgvCategories.CellClick += new DataGridViewCellEventHandler(dgvCategories_CellClick);
+            }
+            else if (btnUpdate.Text.Equals("Save"))
+            {
+                if (string.IsNullOrWhiteSpace(txtDescription.Text))
+                {
+                    MetroSetMessageBox.Show(this, "Please enter new description and do not leave that field empty.", "WARNING", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                var updateCategory = allCategories.Where(x => x.ItemCode.Equals(itemCode)).FirstOrDefault();
+                if (updateCategory != null)
+                {
+                    DialogResult dialogResult = MetroSetMessageBox.Show(this, "Would you like to update this category?",
+                        "QUESTION", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+
+                        
+
+                        if (ValidateChildren(ValidationConstraints.Enabled))
+                        {
+                            updateCategory.ItemDescription = txtDescription.Text;
+                            DatabaseHelper.db.SubmitChanges();
+                            MetroSetMessageBox.Show(this, "Item '" + updateCategory.ItemCode + "' successfully!", "INFORMATION", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            btnUpdate.Text = "Update";
+                            clearFields();
+                            LoadAllCategories();
+                        }
+                    }
+                    
+                }
+                
+                
             }
         }
 
         private void LoadAllCategories()
         {
-            var allCategories = from s in DatabaseHelper.db.tblCategories
-                                select s;
+            allCategories.Clear();
+            allCategories = (from s in DatabaseHelper.db.tblCategories
+                                select s).ToList();
             dgvCategories.Rows.Clear();
             foreach(var category in allCategories)
             {
@@ -143,6 +187,7 @@ namespace POSWinforms.Maintenance
 
         private void frmCategory_Load(object sender, EventArgs e)
         {
+            dgvCategories.CellClick -= new DataGridViewCellEventHandler(dgvCategories_CellClick);
             LoadAllCategories();
         }
 
@@ -150,16 +195,47 @@ namespace POSWinforms.Maintenance
         {
             if(e.RowIndex >= 0)
             {
-                category = new Category();
-                category.ItemCode = dgvCategories.Rows[e.RowIndex].Cells[0].Value.ToString();
-                category.ItemDescription = dgvCategories.Rows[e.RowIndex].Cells[1].Value.ToString();
+                itemCode = dgvCategories.Rows[e.RowIndex].Cells[0].Value.ToString();
+                txtItemCode.Text = itemCode;
+                txtDescription.Text = dgvCategories.Rows[e.RowIndex].Cells[1].Value.ToString();
 
-                txtItemCode.Text = category.ItemCode;
-                txtDescription.Text = category.ItemDescription;
-                btnUpdate.Enabled = true;
+                txtItemCode.Enabled = true;
+            }
+        }
 
-                txtItemCode.ReadOnly = true;
-                btnAdd.Text = "Add";
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult;
+            if (btnAdd.Text.Equals("Save"))
+            {
+                dialogResult = MetroSetMessageBox.Show(this, "Would you like to cancel adding new category?",
+                   "QUESTION", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    clearFields();
+                    btnAdd.Text = "Add";
+                    btnClose.Text = "Close";
+                }
+            }
+            else if (btnUpdate.Text.Equals("Save"))
+            {
+                dialogResult = MetroSetMessageBox.Show(this, "Would you like to cancel updating category?",
+                    "QUESTION", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    clearFields();
+                    btnUpdate.Text = "Update";
+                    btnClose.Text = "Close";
+                }
+            }
+            else if (btnClose.Text.Equals("Close"))
+            {
+                dialogResult = MetroSetMessageBox.Show(this, "Would you like to exit?",
+                    "QUESTION", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    Close();
+                }
             }
         }
     }

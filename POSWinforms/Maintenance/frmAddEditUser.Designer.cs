@@ -31,7 +31,6 @@ namespace POSWinforms.Maintenance
         {
             this.components = new System.ComponentModel.Container();
             this.styleManager1 = new MetroSet_UI.Components.StyleManager();
-            this.metroSetControlBox1 = new MetroSet_UI.Controls.MetroSetControlBox();
             this.metroSetLabel1 = new MetroSet_UI.Controls.MetroSetLabel();
             this.metroSetLabel2 = new MetroSet_UI.Controls.MetroSetLabel();
             this.metroSetLabel3 = new MetroSet_UI.Controls.MetroSetLabel();
@@ -64,32 +63,6 @@ namespace POSWinforms.Maintenance
             this.styleManager1.Style = MetroSet_UI.Enums.Style.Light;
             this.styleManager1.ThemeAuthor = "Narwin";
             this.styleManager1.ThemeName = "MetroLight";
-            // 
-            // metroSetControlBox1
-            // 
-            this.metroSetControlBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.metroSetControlBox1.CloseHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.metroSetControlBox1.CloseHoverForeColor = System.Drawing.Color.White;
-            this.metroSetControlBox1.CloseNormalForeColor = System.Drawing.Color.Gray;
-            this.metroSetControlBox1.DisabledForeColor = System.Drawing.Color.DimGray;
-            this.metroSetControlBox1.IsDerivedStyle = true;
-            this.metroSetControlBox1.Location = new System.Drawing.Point(642, 2);
-            this.metroSetControlBox1.MaximizeBox = true;
-            this.metroSetControlBox1.MaximizeHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.metroSetControlBox1.MaximizeHoverForeColor = System.Drawing.Color.Gray;
-            this.metroSetControlBox1.MaximizeNormalForeColor = System.Drawing.Color.Gray;
-            this.metroSetControlBox1.MinimizeBox = true;
-            this.metroSetControlBox1.MinimizeHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.metroSetControlBox1.MinimizeHoverForeColor = System.Drawing.Color.Gray;
-            this.metroSetControlBox1.MinimizeNormalForeColor = System.Drawing.Color.Gray;
-            this.metroSetControlBox1.Name = "metroSetControlBox1";
-            this.metroSetControlBox1.Size = new System.Drawing.Size(100, 25);
-            this.metroSetControlBox1.Style = MetroSet_UI.Enums.Style.Light;
-            this.metroSetControlBox1.StyleManager = this.styleManager1;
-            this.metroSetControlBox1.TabIndex = 0;
-            this.metroSetControlBox1.Text = "metroSetControlBox1";
-            this.metroSetControlBox1.ThemeAuthor = "Narwin";
-            this.metroSetControlBox1.ThemeName = "MetroLight";
             // 
             // metroSetLabel1
             // 
@@ -208,6 +181,7 @@ namespace POSWinforms.Maintenance
             this.txtFirstName.ThemeName = "MetroLight";
             this.txtFirstName.UseSystemPasswordChar = false;
             this.txtFirstName.WatermarkText = "";
+            this.txtFirstName.TextChanged += new System.EventHandler(this.txtFirstName_TextChanged);
             this.txtFirstName.Validating += new System.ComponentModel.CancelEventHandler(this.txtFirstName_Validating);
             // 
             // txtMI
@@ -238,6 +212,7 @@ namespace POSWinforms.Maintenance
             this.txtMI.ThemeName = "MetroLight";
             this.txtMI.UseSystemPasswordChar = false;
             this.txtMI.WatermarkText = "";
+            this.txtMI.TextChanged += new System.EventHandler(this.txtMI_TextChanged);
             this.txtMI.Validating += new System.ComponentModel.CancelEventHandler(this.txtMI_Validating);
             // 
             // metroSetLabel5
@@ -370,6 +345,7 @@ namespace POSWinforms.Maintenance
             this.txtLastName.ThemeName = "MetroLight";
             this.txtLastName.UseSystemPasswordChar = false;
             this.txtLastName.WatermarkText = "";
+            this.txtLastName.TextChanged += new System.EventHandler(this.txtLastName_TextChanged);
             this.txtLastName.Validating += new System.ComponentModel.CancelEventHandler(this.txtLastName_Validating);
             // 
             // metroSetLabel8
@@ -415,6 +391,7 @@ namespace POSWinforms.Maintenance
             this.txtContactNo.ThemeName = "MetroLight";
             this.txtContactNo.UseSystemPasswordChar = false;
             this.txtContactNo.WatermarkText = "";
+            this.txtContactNo.TextChanged += new System.EventHandler(this.txtContactNo_TextChanged);
             this.txtContactNo.Validating += new System.ComponentModel.CancelEventHandler(this.txtContactNo_Validating);
             // 
             // metroSetLabel9
@@ -590,11 +567,12 @@ namespace POSWinforms.Maintenance
             this.Controls.Add(this.metroSetLabel3);
             this.Controls.Add(this.metroSetLabel2);
             this.Controls.Add(this.metroSetLabel1);
-            this.Controls.Add(this.metroSetControlBox1);
             this.Name = "frmAddEditUser";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.StyleManager = this.styleManager1;
             this.Text = "User Modal";
             this.ThemeName = "MetroLight";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmAddEditUser_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
@@ -623,7 +601,6 @@ namespace POSWinforms.Maintenance
         private MetroSet_UI.Controls.MetroSetLabel metroSetLabel3;
         private MetroSet_UI.Controls.MetroSetLabel metroSetLabel2;
         private MetroSet_UI.Controls.MetroSetLabel metroSetLabel1;
-        private MetroSet_UI.Controls.MetroSetControlBox metroSetControlBox1;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private MetroSet_UI.Controls.MetroSetTextBox txtAddress;
     }

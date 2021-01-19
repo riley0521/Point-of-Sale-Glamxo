@@ -15,16 +15,16 @@ namespace POSWinforms.Maintenance
     public partial class frmItemStockEdit : MetroSetForm
     {
 
-        private long id = 0;
+        private string itemCode = "";
 
         public frmItemStockEdit()
         {
             InitializeComponent();
         }
 
-        public void setID(long id)
+        public void setItemCode(string itemCode)
         {
-            this.id = id;
+            this.itemCode = itemCode;
         }
 
         private void txtQuantity_Validating(object sender, CancelEventArgs e)
@@ -49,7 +49,7 @@ namespace POSWinforms.Maintenance
         private void btnConfirm_Click(object sender, EventArgs e)
         {
             var editStocks = (from s in DatabaseHelper.db.tblItems
-                             where s.ID == id
+                             where s.ItemCode.Equals(itemCode)
                              select s).FirstOrDefault();
             if(editStocks != null)
             {

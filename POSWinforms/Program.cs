@@ -1,4 +1,5 @@
-﻿using System;
+﻿using POSWinforms.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +17,8 @@ namespace POSWinforms
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmLogin());
+            DatabaseHelper.frmLogin = new frmLogin();
+            Application.Run(DatabaseHelper.frmLogin);
         }
     }
 }
