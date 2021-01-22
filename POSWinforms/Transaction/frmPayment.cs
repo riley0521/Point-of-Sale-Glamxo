@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace POSWinforms.Maintenance
 {
-    public partial class frmPayment : MetroSetForm
+    public partial class frmPayment : Form
     {
 
         private decimal total = 0;

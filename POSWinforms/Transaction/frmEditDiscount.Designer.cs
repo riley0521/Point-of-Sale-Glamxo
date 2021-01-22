@@ -29,102 +29,84 @@ namespace POSWinforms.Maintenance
         /// </summary>
         private void InitializeComponent()
         {
-            this.metroSetLabel1 = new MetroSet_UI.Controls.MetroSetLabel();
-            this.btnConfirm = new MetroSet_UI.Controls.MetroSetButton();
-            this.btnCancel = new MetroSet_UI.Controls.MetroSetButton();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEditDiscount));
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.btnConfirm = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
-            // metroSetLabel1
-            // 
-            this.metroSetLabel1.AutoSize = true;
-            this.metroSetLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.metroSetLabel1.IsDerivedStyle = true;
-            this.metroSetLabel1.Location = new System.Drawing.Point(15, 97);
-            this.metroSetLabel1.Name = "metroSetLabel1";
-            this.metroSetLabel1.Size = new System.Drawing.Size(127, 17);
-            this.metroSetLabel1.Style = MetroSet_UI.Enums.Style.Light;
-            this.metroSetLabel1.StyleManager = null;
-            this.metroSetLabel1.TabIndex = 0;
-            this.metroSetLabel1.Text = "Enter the discount:";
-            this.metroSetLabel1.ThemeAuthor = "Narwin";
-            this.metroSetLabel1.ThemeName = "MetroLite";
-            // 
-            // btnConfirm
-            // 
-            this.btnConfirm.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btnConfirm.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btnConfirm.DisabledForeColor = System.Drawing.Color.Gray;
-            this.btnConfirm.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnConfirm.HoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
-            this.btnConfirm.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
-            this.btnConfirm.HoverTextColor = System.Drawing.Color.White;
-            this.btnConfirm.IsDerivedStyle = true;
-            this.btnConfirm.Location = new System.Drawing.Point(15, 150);
-            this.btnConfirm.Name = "btnConfirm";
-            this.btnConfirm.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btnConfirm.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btnConfirm.NormalTextColor = System.Drawing.Color.White;
-            this.btnConfirm.PressBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
-            this.btnConfirm.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
-            this.btnConfirm.PressTextColor = System.Drawing.Color.White;
-            this.btnConfirm.Size = new System.Drawing.Size(75, 29);
-            this.btnConfirm.Style = MetroSet_UI.Enums.Style.Light;
-            this.btnConfirm.StyleManager = null;
-            this.btnConfirm.TabIndex = 0;
-            this.btnConfirm.Text = "Confirm";
-            this.btnConfirm.ThemeAuthor = "Narwin";
-            this.btnConfirm.ThemeName = "MetroLite";
-            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btnCancel.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btnCancel.DisabledForeColor = System.Drawing.Color.Gray;
-            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnCancel.HoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
-            this.btnCancel.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
-            this.btnCancel.HoverTextColor = System.Drawing.Color.White;
-            this.btnCancel.IsDerivedStyle = true;
-            this.btnCancel.Location = new System.Drawing.Point(96, 150);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btnCancel.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btnCancel.NormalTextColor = System.Drawing.Color.White;
-            this.btnCancel.PressBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
-            this.btnCancel.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
-            this.btnCancel.PressTextColor = System.Drawing.Color.White;
-            this.btnCancel.Size = new System.Drawing.Size(75, 29);
-            this.btnCancel.Style = MetroSet_UI.Enums.Style.Light;
-            this.btnCancel.StyleManager = null;
-            this.btnCancel.TabIndex = 2;
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.ThemeAuthor = "Narwin";
-            this.btnCancel.ThemeName = "MetroLite";
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(15, 117);
+            this.numericUpDown1.BackColor = System.Drawing.Color.Snow;
+            this.numericUpDown1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericUpDown1.Location = new System.Drawing.Point(29, 101);
+            this.numericUpDown1.Margin = new System.Windows.Forms.Padding(2);
             this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(156, 27);
+            this.numericUpDown1.Size = new System.Drawing.Size(154, 26);
             this.numericUpDown1.TabIndex = 3;
             this.numericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             // 
+            // btnConfirm
+            // 
+            this.btnConfirm.BackColor = System.Drawing.Color.MistyRose;
+            this.btnConfirm.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
+            this.btnConfirm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnConfirm.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConfirm.ForeColor = System.Drawing.Color.Maroon;
+            this.btnConfirm.Location = new System.Drawing.Point(29, 131);
+            this.btnConfirm.Margin = new System.Windows.Forms.Padding(2);
+            this.btnConfirm.Name = "btnConfirm";
+            this.btnConfirm.Size = new System.Drawing.Size(76, 32);
+            this.btnConfirm.TabIndex = 110;
+            this.btnConfirm.Text = "Confirm";
+            this.btnConfirm.UseVisualStyleBackColor = false;
+            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.BackColor = System.Drawing.Color.MistyRose;
+            this.btnCancel.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.ForeColor = System.Drawing.Color.Maroon;
+            this.btnCancel.Location = new System.Drawing.Point(109, 131);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(74, 32);
+            this.btnCancel.TabIndex = 111;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.DarkSalmon;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(26, 69);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(153, 21);
+            this.label1.TabIndex = 112;
+            this.label1.Text = "Enter the discount:";
+            // 
             // frmEditDiscount
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(194, 199);
-            this.Controls.Add(this.numericUpDown1);
+            this.BackColor = System.Drawing.Color.DarkSalmon;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.ClientSize = new System.Drawing.Size(209, 192);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnConfirm);
-            this.Controls.Add(this.metroSetLabel1);
-            this.MaximumSize = new System.Drawing.Size(194, 199);
-            this.MinimumSize = new System.Drawing.Size(194, 199);
+            this.Controls.Add(this.numericUpDown1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(2);
+            this.MaximumSize = new System.Drawing.Size(209, 192);
+            this.MinimumSize = new System.Drawing.Size(209, 192);
             this.Name = "frmEditDiscount";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Discount";
@@ -135,10 +117,9 @@ namespace POSWinforms.Maintenance
         }
 
         #endregion
-
-        private MetroSet_UI.Controls.MetroSetLabel metroSetLabel1;
-        private MetroSet_UI.Controls.MetroSetButton btnConfirm;
-        private MetroSet_UI.Controls.MetroSetButton btnCancel;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.Button btnConfirm;
+        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Label label1;
     }
 }

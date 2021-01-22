@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace POSWinforms.Maintenance
 {
-    public partial class frmAddEditItem : MetroSetForm
+    public partial class frmAddEditItem : Form
     {
 
         private string itemCode = "";
@@ -37,7 +37,8 @@ namespace POSWinforms.Maintenance
         public void updateItem(tblItem item)
         {
             this.item = item;
-            this.Text = "Update Item";
+            lbTitle.Text = "Update Item";
+            btnSave.Text = "Update";
             cmbCategory.Enabled = false;
             txtCode.Enabled = false;
 
@@ -55,11 +56,6 @@ namespace POSWinforms.Maintenance
             txtUnitPrice.Text = unitPrice.ToString();
             txtQuantity.Text = quantity.ToString();
             txtReProduceLevel.Text = restockLevel.ToString();
-        }
-
-        public void addItem()
-        {
-            this.Text = "Add Item";
         }
 
         private void cmbCategory_SelectedIndexChanged(object sender, EventArgs e)
@@ -178,13 +174,13 @@ namespace POSWinforms.Maintenance
         {
             if (cmbCategory.SelectedIndex < 0)
             {
-                MetroSetMessageBox.Show(this, "Please choose a category!", "WARNING", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please choose a category!", "WARNING", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             if (ValidateChildren(ValidationConstraints.Enabled))
             {
-                if (this.Text.Equals("Add Item"))
+                if (btnSave.Text.Equals("Save"))
                 {
                     var newItem = new tblItem
                     {
@@ -198,10 +194,10 @@ namespace POSWinforms.Maintenance
                     };
                     DatabaseHelper.db.tblItems.InsertOnSubmit(newItem);
                     DatabaseHelper.db.SubmitChanges();
-                    MetroSetMessageBox.Show(this, "Item added successfully!", "INFORMATION", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Item added successfully!", "INFORMATION", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Close();
                 }
-                else if (this.Text.Equals("Update Item"))
+                else if (btnSave.Text.Equals("Update"))
                 {
                     item.ItemDescription = txtDescription.Text;
                     item.Size = txtSize.Text;
@@ -210,7 +206,7 @@ namespace POSWinforms.Maintenance
                     item.UnitPrice = unitPrice;
                     DatabaseHelper.db.SubmitChanges();
 
-                    MetroSetMessageBox.Show(this, "Item updated successfully!", "INFORMATION", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Item updated successfully!", "INFORMATION", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Close();
                 }
             }
@@ -272,6 +268,11 @@ namespace POSWinforms.Maintenance
             {
                 saveItem();
             }
+        }
+
+        private void frmAddEditItem_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

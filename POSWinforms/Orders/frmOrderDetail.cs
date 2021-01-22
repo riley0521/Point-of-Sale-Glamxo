@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace POSWinforms
 {
-    public partial class frmOrderDetail : MetroSetForm
+    public partial class frmOrderDetail : Form
     {
 
         public frmOrderDetail()
@@ -15,7 +16,7 @@ namespace POSWinforms
 
         public void setOrderDetail(List<tblOrderDetail> orderDetails)
         {
-            lbOrderID.Text = orderDetails.Select(s => s.OrderID).FirstOrDefault().ToString();
+            lbOrderId.Text = orderDetails.Select(s => s.OrderID).FirstOrDefault().ToString();
             dgvOrderDetails.Rows.Clear();
             foreach (var order in orderDetails)
             {

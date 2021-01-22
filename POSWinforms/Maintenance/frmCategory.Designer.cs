@@ -30,9 +30,7 @@ namespace POSWinforms.Maintenance
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.styleManager1 = new MetroSet_UI.Components.StyleManager();
-            this.btnUpdate = new MetroSet_UI.Controls.MetroSetButton();
-            this.btnAdd = new MetroSet_UI.Controls.MetroSetButton();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCategory));
             this.txtDescription = new MetroSet_UI.Controls.MetroSetTextBox();
             this.txtItemCode = new MetroSet_UI.Controls.MetroSetTextBox();
             this.metroSetLabel2 = new MetroSet_UI.Controls.MetroSetLabel();
@@ -41,95 +39,36 @@ namespace POSWinforms.Maintenance
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.btnClose = new MetroSet_UI.Controls.MetroSetButton();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCategories)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // styleManager1
-            // 
-            this.styleManager1.CustomTheme = "C:\\Users\\riley\\AppData\\Roaming\\Microsoft\\Windows\\Templates\\ThemeFile.xml";
-            this.styleManager1.MetroForm = this;
-            this.styleManager1.Style = MetroSet_UI.Enums.Style.Light;
-            this.styleManager1.ThemeAuthor = null;
-            this.styleManager1.ThemeName = null;
-            // 
-            // btnUpdate
-            // 
-            this.btnUpdate.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btnUpdate.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btnUpdate.DisabledForeColor = System.Drawing.Color.Gray;
-            this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnUpdate.HoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
-            this.btnUpdate.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
-            this.btnUpdate.HoverTextColor = System.Drawing.Color.White;
-            this.btnUpdate.IsDerivedStyle = true;
-            this.btnUpdate.Location = new System.Drawing.Point(159, 348);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btnUpdate.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btnUpdate.NormalTextColor = System.Drawing.Color.White;
-            this.btnUpdate.PressBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
-            this.btnUpdate.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
-            this.btnUpdate.PressTextColor = System.Drawing.Color.White;
-            this.btnUpdate.Size = new System.Drawing.Size(138, 28);
-            this.btnUpdate.Style = MetroSet_UI.Enums.Style.Light;
-            this.btnUpdate.StyleManager = this.styleManager1;
-            this.btnUpdate.TabIndex = 4;
-            this.btnUpdate.Text = "Update";
-            this.btnUpdate.ThemeAuthor = null;
-            this.btnUpdate.ThemeName = null;
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btnAdd.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btnAdd.DisabledForeColor = System.Drawing.Color.Gray;
-            this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnAdd.HoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
-            this.btnAdd.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
-            this.btnAdd.HoverTextColor = System.Drawing.Color.White;
-            this.btnAdd.IsDerivedStyle = true;
-            this.btnAdd.Location = new System.Drawing.Point(15, 348);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btnAdd.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btnAdd.NormalTextColor = System.Drawing.Color.White;
-            this.btnAdd.PressBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
-            this.btnAdd.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
-            this.btnAdd.PressTextColor = System.Drawing.Color.White;
-            this.btnAdd.Size = new System.Drawing.Size(138, 28);
-            this.btnAdd.Style = MetroSet_UI.Enums.Style.Light;
-            this.btnAdd.StyleManager = this.styleManager1;
-            this.btnAdd.TabIndex = 3;
-            this.btnAdd.Text = "Add";
-            this.btnAdd.ThemeAuthor = null;
-            this.btnAdd.ThemeName = null;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // txtDescription
             // 
             this.txtDescription.AutoCompleteCustomSource = null;
             this.txtDescription.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
             this.txtDescription.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
-            this.txtDescription.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
+            this.txtDescription.BorderColor = System.Drawing.Color.Sienna;
             this.txtDescription.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             this.txtDescription.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
             this.txtDescription.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
             this.txtDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.txtDescription.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.txtDescription.Image = null;
-            this.txtDescription.IsDerivedStyle = true;
+            this.txtDescription.IsDerivedStyle = false;
             this.txtDescription.Lines = null;
-            this.txtDescription.Location = new System.Drawing.Point(109, 297);
+            this.txtDescription.Location = new System.Drawing.Point(108, 294);
             this.txtDescription.MaxLength = 32767;
             this.txtDescription.Multiline = false;
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.ReadOnly = false;
             this.txtDescription.Size = new System.Drawing.Size(224, 30);
             this.txtDescription.Style = MetroSet_UI.Enums.Style.Light;
-            this.txtDescription.StyleManager = this.styleManager1;
+            this.txtDescription.StyleManager = null;
             this.txtDescription.TabIndex = 2;
             this.txtDescription.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtDescription.ThemeAuthor = null;
@@ -143,23 +82,23 @@ namespace POSWinforms.Maintenance
             this.txtItemCode.AutoCompleteCustomSource = null;
             this.txtItemCode.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
             this.txtItemCode.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
-            this.txtItemCode.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
+            this.txtItemCode.BorderColor = System.Drawing.Color.Sienna;
             this.txtItemCode.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             this.txtItemCode.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
             this.txtItemCode.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
             this.txtItemCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.txtItemCode.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.txtItemCode.Image = null;
-            this.txtItemCode.IsDerivedStyle = true;
+            this.txtItemCode.IsDerivedStyle = false;
             this.txtItemCode.Lines = null;
-            this.txtItemCode.Location = new System.Drawing.Point(109, 261);
+            this.txtItemCode.Location = new System.Drawing.Point(108, 258);
             this.txtItemCode.MaxLength = 10;
             this.txtItemCode.Multiline = false;
             this.txtItemCode.Name = "txtItemCode";
             this.txtItemCode.ReadOnly = false;
             this.txtItemCode.Size = new System.Drawing.Size(121, 30);
             this.txtItemCode.Style = MetroSet_UI.Enums.Style.Light;
-            this.txtItemCode.StyleManager = this.styleManager1;
+            this.txtItemCode.StyleManager = null;
             this.txtItemCode.TabIndex = 1;
             this.txtItemCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtItemCode.ThemeAuthor = null;
@@ -170,13 +109,14 @@ namespace POSWinforms.Maintenance
             // 
             // metroSetLabel2
             // 
-            this.metroSetLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.metroSetLabel2.IsDerivedStyle = true;
-            this.metroSetLabel2.Location = new System.Drawing.Point(15, 304);
+            this.metroSetLabel2.AutoSize = true;
+            this.metroSetLabel2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.metroSetLabel2.IsDerivedStyle = false;
+            this.metroSetLabel2.Location = new System.Drawing.Point(4, 303);
             this.metroSetLabel2.Name = "metroSetLabel2";
-            this.metroSetLabel2.Size = new System.Drawing.Size(88, 23);
-            this.metroSetLabel2.Style = MetroSet_UI.Enums.Style.Light;
-            this.metroSetLabel2.StyleManager = this.styleManager1;
+            this.metroSetLabel2.Size = new System.Drawing.Size(98, 21);
+            this.metroSetLabel2.Style = MetroSet_UI.Enums.Style.Custom;
+            this.metroSetLabel2.StyleManager = null;
             this.metroSetLabel2.TabIndex = 104;
             this.metroSetLabel2.Text = "Description:";
             this.metroSetLabel2.ThemeAuthor = null;
@@ -184,13 +124,14 @@ namespace POSWinforms.Maintenance
             // 
             // metroSetLabel1
             // 
-            this.metroSetLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.metroSetLabel1.IsDerivedStyle = true;
-            this.metroSetLabel1.Location = new System.Drawing.Point(15, 268);
+            this.metroSetLabel1.AutoSize = true;
+            this.metroSetLabel1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.metroSetLabel1.IsDerivedStyle = false;
+            this.metroSetLabel1.Location = new System.Drawing.Point(11, 267);
             this.metroSetLabel1.Name = "metroSetLabel1";
-            this.metroSetLabel1.Size = new System.Drawing.Size(88, 23);
-            this.metroSetLabel1.Style = MetroSet_UI.Enums.Style.Light;
-            this.metroSetLabel1.StyleManager = this.styleManager1;
+            this.metroSetLabel1.Size = new System.Drawing.Size(91, 21);
+            this.metroSetLabel1.Style = MetroSet_UI.Enums.Style.Custom;
+            this.metroSetLabel1.StyleManager = null;
             this.metroSetLabel1.TabIndex = 102;
             this.metroSetLabel1.Text = "Item Code:";
             this.metroSetLabel1.ThemeAuthor = null;
@@ -201,18 +142,20 @@ namespace POSWinforms.Maintenance
             this.dgvCategories.AllowUserToAddRows = false;
             this.dgvCategories.AllowUserToDeleteRows = false;
             this.dgvCategories.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvCategories.BackgroundColor = System.Drawing.Color.PeachPuff;
             this.dgvCategories.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCategories.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2});
-            this.dgvCategories.Location = new System.Drawing.Point(15, 148);
+            this.dgvCategories.GridColor = System.Drawing.SystemColors.ButtonShadow;
+            this.dgvCategories.Location = new System.Drawing.Point(14, 96);
             this.dgvCategories.MultiSelect = false;
             this.dgvCategories.Name = "dgvCategories";
             this.dgvCategories.ReadOnly = true;
             this.dgvCategories.RowHeadersVisible = false;
             this.dgvCategories.RowTemplate.Height = 30;
             this.dgvCategories.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCategories.Size = new System.Drawing.Size(507, 107);
+            this.dgvCategories.Size = new System.Drawing.Size(511, 156);
             this.dgvCategories.TabIndex = 0;
             this.dgvCategories.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCategories_CellClick);
             // 
@@ -232,38 +175,67 @@ namespace POSWinforms.Maintenance
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // btnAdd
+            // 
+            this.btnAdd.BackColor = System.Drawing.Color.MistyRose;
+            this.btnAdd.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
+            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdd.ForeColor = System.Drawing.Color.Maroon;
+            this.btnAdd.Location = new System.Drawing.Point(14, 343);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(129, 34);
+            this.btnAdd.TabIndex = 105;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.BackColor = System.Drawing.Color.MistyRose;
+            this.btnUpdate.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
+            this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUpdate.ForeColor = System.Drawing.Color.Maroon;
+            this.btnUpdate.Location = new System.Drawing.Point(149, 343);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(129, 34);
+            this.btnUpdate.TabIndex = 106;
+            this.btnUpdate.Text = "Update";
+            this.btnUpdate.UseVisualStyleBackColor = false;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
             // btnClose
             // 
-            this.btnClose.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btnClose.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btnClose.DisabledForeColor = System.Drawing.Color.Gray;
-            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnClose.HoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
-            this.btnClose.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
-            this.btnClose.HoverTextColor = System.Drawing.Color.White;
-            this.btnClose.IsDerivedStyle = true;
-            this.btnClose.Location = new System.Drawing.Point(388, 347);
+            this.btnClose.BackColor = System.Drawing.Color.MistyRose;
+            this.btnClose.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.ForeColor = System.Drawing.Color.Maroon;
+            this.btnClose.Location = new System.Drawing.Point(396, 343);
             this.btnClose.Name = "btnClose";
-            this.btnClose.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btnClose.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btnClose.NormalTextColor = System.Drawing.Color.White;
-            this.btnClose.PressBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
-            this.btnClose.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
-            this.btnClose.PressTextColor = System.Drawing.Color.White;
-            this.btnClose.Size = new System.Drawing.Size(138, 28);
-            this.btnClose.Style = MetroSet_UI.Enums.Style.Light;
-            this.btnClose.StyleManager = this.styleManager1;
-            this.btnClose.TabIndex = 110;
+            this.btnClose.Size = new System.Drawing.Size(129, 34);
+            this.btnClose.TabIndex = 107;
             this.btnClose.Text = "Close";
-            this.btnClose.ThemeAuthor = null;
-            this.btnClose.ThemeName = null;
+            this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Maroon;
+            this.label1.Location = new System.Drawing.Point(12, 29);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(94, 25);
+            this.label1.TabIndex = 108;
+            this.label1.Text = "Category";
             // 
             // frmCategory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.DarkSalmon;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(541, 390);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnAdd);
@@ -272,24 +244,22 @@ namespace POSWinforms.Maintenance
             this.Controls.Add(this.metroSetLabel2);
             this.Controls.Add(this.metroSetLabel1);
             this.Controls.Add(this.dgvCategories);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.MaximumSize = new System.Drawing.Size(541, 390);
+            this.MinimumSize = new System.Drawing.Size(541, 390);
             this.Name = "frmCategory";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.StyleManager = this.styleManager1;
             this.Text = "Category";
-            this.ThemeAuthor = null;
-            this.ThemeName = null;
             this.Load += new System.EventHandler(this.frmCategory_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCategories)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-
-        private MetroSet_UI.Components.StyleManager styleManager1;
-        private MetroSet_UI.Controls.MetroSetButton btnUpdate;
-        private MetroSet_UI.Controls.MetroSetButton btnAdd;
         private MetroSet_UI.Controls.MetroSetTextBox txtDescription;
         private MetroSet_UI.Controls.MetroSetTextBox txtItemCode;
         private MetroSet_UI.Controls.MetroSetLabel metroSetLabel2;
@@ -298,6 +268,9 @@ namespace POSWinforms.Maintenance
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.ErrorProvider errorProvider1;
-        private MetroSet_UI.Controls.MetroSetButton btnClose;
+        private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Label label1;
     }
 }

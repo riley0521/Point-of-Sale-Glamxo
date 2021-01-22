@@ -30,10 +30,9 @@ namespace POSWinforms
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.styleManager1 = new MetroSet_UI.Components.StyleManager();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmOrderDetail));
             this.metroSetControlBox1 = new MetroSet_UI.Controls.MetroSetControlBox();
-            this.metroSetLabel1 = new MetroSet_UI.Controls.MetroSetLabel();
-            this.lbOrderID = new MetroSet_UI.Controls.MetroSetLabel();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,16 +42,11 @@ namespace POSWinforms
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvOrderDetails = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lbOrderId = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrderDetails)).BeginInit();
             this.SuspendLayout();
-            // 
-            // styleManager1
-            // 
-            this.styleManager1.CustomTheme = "C:\\Users\\riley\\AppData\\Roaming\\Microsoft\\Windows\\Templates\\ThemeFile.xml";
-            this.styleManager1.MetroForm = this;
-            this.styleManager1.Style = MetroSet_UI.Enums.Style.Light;
-            this.styleManager1.ThemeAuthor = "Narwin";
-            this.styleManager1.ThemeName = "MetroLight";
             // 
             // metroSetControlBox1
             // 
@@ -62,7 +56,8 @@ namespace POSWinforms
             this.metroSetControlBox1.CloseNormalForeColor = System.Drawing.Color.Gray;
             this.metroSetControlBox1.DisabledForeColor = System.Drawing.Color.DimGray;
             this.metroSetControlBox1.IsDerivedStyle = true;
-            this.metroSetControlBox1.Location = new System.Drawing.Point(1271, 2);
+            this.metroSetControlBox1.Location = new System.Drawing.Point(972, 11);
+            this.metroSetControlBox1.Margin = new System.Windows.Forms.Padding(2);
             this.metroSetControlBox1.MaximizeBox = false;
             this.metroSetControlBox1.MaximizeHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.metroSetControlBox1.MaximizeHoverForeColor = System.Drawing.Color.Gray;
@@ -74,41 +69,11 @@ namespace POSWinforms
             this.metroSetControlBox1.Name = "metroSetControlBox1";
             this.metroSetControlBox1.Size = new System.Drawing.Size(100, 25);
             this.metroSetControlBox1.Style = MetroSet_UI.Enums.Style.Light;
-            this.metroSetControlBox1.StyleManager = this.styleManager1;
+            this.metroSetControlBox1.StyleManager = null;
             this.metroSetControlBox1.TabIndex = 0;
             this.metroSetControlBox1.Text = "metroSetControlBox1";
             this.metroSetControlBox1.ThemeAuthor = "Narwin";
             this.metroSetControlBox1.ThemeName = "MetroLight";
-            // 
-            // metroSetLabel1
-            // 
-            this.metroSetLabel1.AutoSize = true;
-            this.metroSetLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.metroSetLabel1.IsDerivedStyle = true;
-            this.metroSetLabel1.Location = new System.Drawing.Point(15, 97);
-            this.metroSetLabel1.Name = "metroSetLabel1";
-            this.metroSetLabel1.Size = new System.Drawing.Size(83, 20);
-            this.metroSetLabel1.Style = MetroSet_UI.Enums.Style.Light;
-            this.metroSetLabel1.StyleManager = this.styleManager1;
-            this.metroSetLabel1.TabIndex = 1;
-            this.metroSetLabel1.Text = "Order ID:";
-            this.metroSetLabel1.ThemeAuthor = "Narwin";
-            this.metroSetLabel1.ThemeName = "MetroLight";
-            // 
-            // lbOrderID
-            // 
-            this.lbOrderID.AutoSize = true;
-            this.lbOrderID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbOrderID.IsDerivedStyle = true;
-            this.lbOrderID.Location = new System.Drawing.Point(104, 97);
-            this.lbOrderID.Name = "lbOrderID";
-            this.lbOrderID.Size = new System.Drawing.Size(19, 20);
-            this.lbOrderID.Style = MetroSet_UI.Enums.Style.Light;
-            this.lbOrderID.StyleManager = this.styleManager1;
-            this.lbOrderID.TabIndex = 1;
-            this.lbOrderID.Text = "0";
-            this.lbOrderID.ThemeAuthor = "Narwin";
-            this.lbOrderID.ThemeName = "MetroLight";
             // 
             // Column7
             // 
@@ -170,6 +135,15 @@ namespace POSWinforms
             // 
             this.dgvOrderDetails.AllowUserToAddRows = false;
             this.dgvOrderDetails.AllowUserToDeleteRows = false;
+            this.dgvOrderDetails.BackgroundColor = System.Drawing.Color.PeachPuff;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvOrderDetails.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvOrderDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvOrderDetails.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -180,39 +154,74 @@ namespace POSWinforms
             this.Column5,
             this.Column6,
             this.Column7});
-            this.dgvOrderDetails.Location = new System.Drawing.Point(15, 137);
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvOrderDetails.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvOrderDetails.Location = new System.Drawing.Point(11, 146);
+            this.dgvOrderDetails.Margin = new System.Windows.Forms.Padding(2);
             this.dgvOrderDetails.MultiSelect = false;
             this.dgvOrderDetails.Name = "dgvOrderDetails";
             this.dgvOrderDetails.ReadOnly = true;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvOrderDetails.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvOrderDetails.RowHeadersVisible = false;
             this.dgvOrderDetails.RowTemplate.Height = 30;
             this.dgvOrderDetails.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvOrderDetails.Size = new System.Drawing.Size(1355, 381);
+            this.dgvOrderDetails.Size = new System.Drawing.Size(1054, 248);
             this.dgvOrderDetails.TabIndex = 5;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(14, 123);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(73, 21);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Order ID:";
+            // 
+            // lbOrderId
+            // 
+            this.lbOrderId.AutoSize = true;
+            this.lbOrderId.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbOrderId.Location = new System.Drawing.Point(93, 123);
+            this.lbOrderId.Name = "lbOrderId";
+            this.lbOrderId.Size = new System.Drawing.Size(19, 21);
+            this.lbOrderId.TabIndex = 6;
+            this.lbOrderId.Text = "0";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(12, 15);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(120, 25);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Order Detail";
             // 
             // frmOrderDetail
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1386, 554);
+            this.BackColor = System.Drawing.Color.DarkSalmon;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.ClientSize = new System.Drawing.Size(1083, 405);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lbOrderId);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvOrderDetails);
-            this.Controls.Add(this.lbOrderID);
-            this.Controls.Add(this.metroSetLabel1);
             this.Controls.Add(this.metroSetControlBox1);
-            this.MinimumSize = new System.Drawing.Size(1095, 464);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(2);
+            this.MaximumSize = new System.Drawing.Size(1083, 405);
+            this.MinimumSize = new System.Drawing.Size(1083, 405);
             this.Name = "frmOrderDetail";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.StyleManager = this.styleManager1;
             this.Text = "Order Detail";
-            this.ThemeName = "MetroLight";
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrderDetails)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -220,11 +229,7 @@ namespace POSWinforms
         }
 
         #endregion
-
-        private MetroSet_UI.Components.StyleManager styleManager1;
         private MetroSet_UI.Controls.MetroSetControlBox metroSetControlBox1;
-        private MetroSet_UI.Controls.MetroSetLabel metroSetLabel1;
-        private MetroSet_UI.Controls.MetroSetLabel lbOrderID;
         private System.Windows.Forms.DataGridView dgvOrderDetails;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
@@ -234,5 +239,8 @@ namespace POSWinforms
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbOrderId;
+        private System.Windows.Forms.Label label2;
     }
 }

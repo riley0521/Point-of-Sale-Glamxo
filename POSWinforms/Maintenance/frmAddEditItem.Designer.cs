@@ -30,7 +30,7 @@ namespace POSWinforms.Maintenance
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.styleManager1 = new MetroSet_UI.Components.StyleManager();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddEditItem));
             this.metroSetControlBox1 = new MetroSet_UI.Controls.MetroSetControlBox();
             this.metroSetLabel1 = new MetroSet_UI.Controls.MetroSetLabel();
             this.metroSetLabel2 = new MetroSet_UI.Controls.MetroSetLabel();
@@ -46,18 +46,11 @@ namespace POSWinforms.Maintenance
             this.metroSetLabel6 = new MetroSet_UI.Controls.MetroSetLabel();
             this.txtReProduceLevel = new MetroSet_UI.Controls.MetroSetTextBox();
             this.metroSetLabel7 = new MetroSet_UI.Controls.MetroSetLabel();
-            this.btnSave = new MetroSet_UI.Controls.MetroSetButton();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.btnSave = new System.Windows.Forms.Button();
+            this.lbTitle = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // styleManager1
-            // 
-            this.styleManager1.CustomTheme = "C:\\Users\\riley\\AppData\\Roaming\\Microsoft\\Windows\\Templates\\ThemeFile.xml";
-            this.styleManager1.MetroForm = this;
-            this.styleManager1.Style = MetroSet_UI.Enums.Style.Light;
-            this.styleManager1.ThemeAuthor = null;
-            this.styleManager1.ThemeName = null;
             // 
             // metroSetControlBox1
             // 
@@ -66,9 +59,10 @@ namespace POSWinforms.Maintenance
             this.metroSetControlBox1.CloseHoverForeColor = System.Drawing.Color.White;
             this.metroSetControlBox1.CloseNormalForeColor = System.Drawing.Color.Gray;
             this.metroSetControlBox1.DisabledForeColor = System.Drawing.Color.DimGray;
+            this.metroSetControlBox1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.metroSetControlBox1.IsDerivedStyle = true;
-            this.metroSetControlBox1.Location = new System.Drawing.Point(699, 2);
-            this.metroSetControlBox1.MaximizeBox = true;
+            this.metroSetControlBox1.Location = new System.Drawing.Point(548, 12);
+            this.metroSetControlBox1.MaximizeBox = false;
             this.metroSetControlBox1.MaximizeHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.metroSetControlBox1.MaximizeHoverForeColor = System.Drawing.Color.Gray;
             this.metroSetControlBox1.MaximizeNormalForeColor = System.Drawing.Color.Gray;
@@ -79,7 +73,7 @@ namespace POSWinforms.Maintenance
             this.metroSetControlBox1.Name = "metroSetControlBox1";
             this.metroSetControlBox1.Size = new System.Drawing.Size(100, 25);
             this.metroSetControlBox1.Style = MetroSet_UI.Enums.Style.Light;
-            this.metroSetControlBox1.StyleManager = this.styleManager1;
+            this.metroSetControlBox1.StyleManager = null;
             this.metroSetControlBox1.TabIndex = 0;
             this.metroSetControlBox1.Text = "metroSetControlBox1";
             this.metroSetControlBox1.ThemeAuthor = null;
@@ -87,13 +81,14 @@ namespace POSWinforms.Maintenance
             // 
             // metroSetLabel1
             // 
-            this.metroSetLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.metroSetLabel1.IsDerivedStyle = true;
-            this.metroSetLabel1.Location = new System.Drawing.Point(15, 114);
+            this.metroSetLabel1.AutoSize = true;
+            this.metroSetLabel1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.metroSetLabel1.IsDerivedStyle = false;
+            this.metroSetLabel1.Location = new System.Drawing.Point(37, 122);
             this.metroSetLabel1.Name = "metroSetLabel1";
-            this.metroSetLabel1.Size = new System.Drawing.Size(87, 23);
-            this.metroSetLabel1.Style = MetroSet_UI.Enums.Style.Light;
-            this.metroSetLabel1.StyleManager = this.styleManager1;
+            this.metroSetLabel1.Size = new System.Drawing.Size(82, 21);
+            this.metroSetLabel1.Style = MetroSet_UI.Enums.Style.Custom;
+            this.metroSetLabel1.StyleManager = null;
             this.metroSetLabel1.TabIndex = 1;
             this.metroSetLabel1.Text = "Category:";
             this.metroSetLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -102,13 +97,14 @@ namespace POSWinforms.Maintenance
             // 
             // metroSetLabel2
             // 
-            this.metroSetLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.metroSetLabel2.IsDerivedStyle = true;
-            this.metroSetLabel2.Location = new System.Drawing.Point(15, 151);
+            this.metroSetLabel2.AutoSize = true;
+            this.metroSetLabel2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.metroSetLabel2.IsDerivedStyle = false;
+            this.metroSetLabel2.Location = new System.Drawing.Point(66, 159);
             this.metroSetLabel2.Name = "metroSetLabel2";
-            this.metroSetLabel2.Size = new System.Drawing.Size(87, 23);
-            this.metroSetLabel2.Style = MetroSet_UI.Enums.Style.Light;
-            this.metroSetLabel2.StyleManager = this.styleManager1;
+            this.metroSetLabel2.Size = new System.Drawing.Size(53, 21);
+            this.metroSetLabel2.Style = MetroSet_UI.Enums.Style.Custom;
+            this.metroSetLabel2.StyleManager = null;
             this.metroSetLabel2.TabIndex = 2;
             this.metroSetLabel2.Text = "Code:";
             this.metroSetLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -117,13 +113,14 @@ namespace POSWinforms.Maintenance
             // 
             // metroSetLabel3
             // 
-            this.metroSetLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.metroSetLabel3.IsDerivedStyle = true;
-            this.metroSetLabel3.Location = new System.Drawing.Point(15, 187);
+            this.metroSetLabel3.AutoSize = true;
+            this.metroSetLabel3.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.metroSetLabel3.IsDerivedStyle = false;
+            this.metroSetLabel3.Location = new System.Drawing.Point(21, 195);
             this.metroSetLabel3.Name = "metroSetLabel3";
-            this.metroSetLabel3.Size = new System.Drawing.Size(87, 23);
-            this.metroSetLabel3.Style = MetroSet_UI.Enums.Style.Light;
-            this.metroSetLabel3.StyleManager = this.styleManager1;
+            this.metroSetLabel3.Size = new System.Drawing.Size(98, 21);
+            this.metroSetLabel3.Style = MetroSet_UI.Enums.Style.Custom;
+            this.metroSetLabel3.StyleManager = null;
             this.metroSetLabel3.TabIndex = 3;
             this.metroSetLabel3.Text = "Description:";
             this.metroSetLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -132,13 +129,14 @@ namespace POSWinforms.Maintenance
             // 
             // metroSetLabel4
             // 
-            this.metroSetLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.metroSetLabel4.IsDerivedStyle = true;
-            this.metroSetLabel4.Location = new System.Drawing.Point(15, 223);
+            this.metroSetLabel4.AutoSize = true;
+            this.metroSetLabel4.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.metroSetLabel4.IsDerivedStyle = false;
+            this.metroSetLabel4.Location = new System.Drawing.Point(76, 231);
             this.metroSetLabel4.Name = "metroSetLabel4";
-            this.metroSetLabel4.Size = new System.Drawing.Size(87, 23);
-            this.metroSetLabel4.Style = MetroSet_UI.Enums.Style.Light;
-            this.metroSetLabel4.StyleManager = this.styleManager1;
+            this.metroSetLabel4.Size = new System.Drawing.Size(43, 21);
+            this.metroSetLabel4.Style = MetroSet_UI.Enums.Style.Custom;
+            this.metroSetLabel4.StyleManager = null;
             this.metroSetLabel4.TabIndex = 4;
             this.metroSetLabel4.Text = "Size:";
             this.metroSetLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -147,13 +145,14 @@ namespace POSWinforms.Maintenance
             // 
             // metroSetLabel5
             // 
-            this.metroSetLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.metroSetLabel5.IsDerivedStyle = true;
-            this.metroSetLabel5.Location = new System.Drawing.Point(15, 259);
+            this.metroSetLabel5.AutoSize = true;
+            this.metroSetLabel5.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.metroSetLabel5.IsDerivedStyle = false;
+            this.metroSetLabel5.Location = new System.Drawing.Point(43, 267);
             this.metroSetLabel5.Name = "metroSetLabel5";
-            this.metroSetLabel5.Size = new System.Drawing.Size(87, 23);
-            this.metroSetLabel5.Style = MetroSet_UI.Enums.Style.Light;
-            this.metroSetLabel5.StyleManager = this.styleManager1;
+            this.metroSetLabel5.Size = new System.Drawing.Size(76, 21);
+            this.metroSetLabel5.Style = MetroSet_UI.Enums.Style.Custom;
+            this.metroSetLabel5.StyleManager = null;
             this.metroSetLabel5.TabIndex = 5;
             this.metroSetLabel5.Text = "Quantity:";
             this.metroSetLabel5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -165,25 +164,25 @@ namespace POSWinforms.Maintenance
             this.cmbCategory.AllowDrop = true;
             this.cmbCategory.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
             this.cmbCategory.BackColor = System.Drawing.Color.Transparent;
-            this.cmbCategory.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.cmbCategory.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
+            this.cmbCategory.BackgroundColor = System.Drawing.Color.Snow;
+            this.cmbCategory.BorderColor = System.Drawing.Color.Sienna;
             this.cmbCategory.CausesValidation = false;
             this.cmbCategory.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             this.cmbCategory.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
             this.cmbCategory.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
             this.cmbCategory.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.cmbCategory.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCategory.FormattingEnabled = true;
-            this.cmbCategory.IsDerivedStyle = true;
+            this.cmbCategory.IsDerivedStyle = false;
             this.cmbCategory.ItemHeight = 20;
-            this.cmbCategory.Location = new System.Drawing.Point(108, 111);
+            this.cmbCategory.Location = new System.Drawing.Point(125, 117);
             this.cmbCategory.Name = "cmbCategory";
             this.cmbCategory.SelectedItemBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
             this.cmbCategory.SelectedItemForeColor = System.Drawing.Color.White;
-            this.cmbCategory.Size = new System.Drawing.Size(180, 26);
+            this.cmbCategory.Size = new System.Drawing.Size(144, 26);
             this.cmbCategory.Style = MetroSet_UI.Enums.Style.Light;
-            this.cmbCategory.StyleManager = this.styleManager1;
+            this.cmbCategory.StyleManager = null;
             this.cmbCategory.TabIndex = 0;
             this.cmbCategory.ThemeAuthor = null;
             this.cmbCategory.ThemeName = null;
@@ -195,7 +194,7 @@ namespace POSWinforms.Maintenance
             this.txtCode.AutoCompleteCustomSource = null;
             this.txtCode.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
             this.txtCode.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
-            this.txtCode.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
+            this.txtCode.BorderColor = System.Drawing.Color.Sienna;
             this.txtCode.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             this.txtCode.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
             this.txtCode.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
@@ -203,16 +202,16 @@ namespace POSWinforms.Maintenance
             this.txtCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.txtCode.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.txtCode.Image = null;
-            this.txtCode.IsDerivedStyle = true;
+            this.txtCode.IsDerivedStyle = false;
             this.txtCode.Lines = null;
-            this.txtCode.Location = new System.Drawing.Point(108, 144);
+            this.txtCode.Location = new System.Drawing.Point(125, 150);
             this.txtCode.MaxLength = 32767;
             this.txtCode.Multiline = false;
             this.txtCode.Name = "txtCode";
             this.txtCode.ReadOnly = false;
-            this.txtCode.Size = new System.Drawing.Size(180, 30);
+            this.txtCode.Size = new System.Drawing.Size(144, 30);
             this.txtCode.Style = MetroSet_UI.Enums.Style.Light;
-            this.txtCode.StyleManager = this.styleManager1;
+            this.txtCode.StyleManager = null;
             this.txtCode.TabIndex = 1;
             this.txtCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtCode.ThemeAuthor = null;
@@ -225,23 +224,23 @@ namespace POSWinforms.Maintenance
             this.txtDescription.AutoCompleteCustomSource = null;
             this.txtDescription.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
             this.txtDescription.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
-            this.txtDescription.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
+            this.txtDescription.BorderColor = System.Drawing.Color.Sienna;
             this.txtDescription.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             this.txtDescription.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
             this.txtDescription.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
             this.txtDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.txtDescription.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.txtDescription.Image = null;
-            this.txtDescription.IsDerivedStyle = true;
+            this.txtDescription.IsDerivedStyle = false;
             this.txtDescription.Lines = null;
-            this.txtDescription.Location = new System.Drawing.Point(108, 180);
+            this.txtDescription.Location = new System.Drawing.Point(125, 186);
             this.txtDescription.MaxLength = 255;
             this.txtDescription.Multiline = false;
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.ReadOnly = false;
-            this.txtDescription.Size = new System.Drawing.Size(664, 30);
+            this.txtDescription.Size = new System.Drawing.Size(523, 30);
             this.txtDescription.Style = MetroSet_UI.Enums.Style.Light;
-            this.txtDescription.StyleManager = this.styleManager1;
+            this.txtDescription.StyleManager = null;
             this.txtDescription.TabIndex = 2;
             this.txtDescription.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtDescription.ThemeAuthor = null;
@@ -255,23 +254,23 @@ namespace POSWinforms.Maintenance
             this.txtSize.AutoCompleteCustomSource = null;
             this.txtSize.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
             this.txtSize.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
-            this.txtSize.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
+            this.txtSize.BorderColor = System.Drawing.Color.Sienna;
             this.txtSize.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             this.txtSize.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
             this.txtSize.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
             this.txtSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.txtSize.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.txtSize.Image = null;
-            this.txtSize.IsDerivedStyle = true;
+            this.txtSize.IsDerivedStyle = false;
             this.txtSize.Lines = null;
-            this.txtSize.Location = new System.Drawing.Point(108, 216);
+            this.txtSize.Location = new System.Drawing.Point(125, 222);
             this.txtSize.MaxLength = 100;
             this.txtSize.Multiline = false;
             this.txtSize.Name = "txtSize";
             this.txtSize.ReadOnly = false;
-            this.txtSize.Size = new System.Drawing.Size(213, 30);
+            this.txtSize.Size = new System.Drawing.Size(171, 30);
             this.txtSize.Style = MetroSet_UI.Enums.Style.Light;
-            this.txtSize.StyleManager = this.styleManager1;
+            this.txtSize.StyleManager = null;
             this.txtSize.TabIndex = 3;
             this.txtSize.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtSize.ThemeAuthor = null;
@@ -285,23 +284,23 @@ namespace POSWinforms.Maintenance
             this.txtQuantity.AutoCompleteCustomSource = null;
             this.txtQuantity.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
             this.txtQuantity.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
-            this.txtQuantity.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
+            this.txtQuantity.BorderColor = System.Drawing.Color.Sienna;
             this.txtQuantity.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             this.txtQuantity.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
             this.txtQuantity.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
             this.txtQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.txtQuantity.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.txtQuantity.Image = null;
-            this.txtQuantity.IsDerivedStyle = true;
+            this.txtQuantity.IsDerivedStyle = false;
             this.txtQuantity.Lines = null;
-            this.txtQuantity.Location = new System.Drawing.Point(108, 252);
+            this.txtQuantity.Location = new System.Drawing.Point(125, 258);
             this.txtQuantity.MaxLength = 10;
             this.txtQuantity.Multiline = false;
             this.txtQuantity.Name = "txtQuantity";
             this.txtQuantity.ReadOnly = false;
-            this.txtQuantity.Size = new System.Drawing.Size(213, 30);
+            this.txtQuantity.Size = new System.Drawing.Size(171, 30);
             this.txtQuantity.Style = MetroSet_UI.Enums.Style.Light;
-            this.txtQuantity.StyleManager = this.styleManager1;
+            this.txtQuantity.StyleManager = null;
             this.txtQuantity.TabIndex = 5;
             this.txtQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtQuantity.ThemeAuthor = null;
@@ -316,23 +315,23 @@ namespace POSWinforms.Maintenance
             this.txtUnitPrice.AutoCompleteCustomSource = null;
             this.txtUnitPrice.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
             this.txtUnitPrice.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
-            this.txtUnitPrice.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
+            this.txtUnitPrice.BorderColor = System.Drawing.Color.Sienna;
             this.txtUnitPrice.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             this.txtUnitPrice.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
             this.txtUnitPrice.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
             this.txtUnitPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.txtUnitPrice.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.txtUnitPrice.Image = null;
-            this.txtUnitPrice.IsDerivedStyle = true;
+            this.txtUnitPrice.IsDerivedStyle = false;
             this.txtUnitPrice.Lines = null;
-            this.txtUnitPrice.Location = new System.Drawing.Point(559, 216);
+            this.txtUnitPrice.Location = new System.Drawing.Point(477, 220);
             this.txtUnitPrice.MaxLength = 10;
             this.txtUnitPrice.Multiline = false;
             this.txtUnitPrice.Name = "txtUnitPrice";
             this.txtUnitPrice.ReadOnly = false;
-            this.txtUnitPrice.Size = new System.Drawing.Size(213, 30);
+            this.txtUnitPrice.Size = new System.Drawing.Size(171, 30);
             this.txtUnitPrice.Style = MetroSet_UI.Enums.Style.Light;
-            this.txtUnitPrice.StyleManager = this.styleManager1;
+            this.txtUnitPrice.StyleManager = null;
             this.txtUnitPrice.TabIndex = 4;
             this.txtUnitPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtUnitPrice.ThemeAuthor = null;
@@ -344,13 +343,14 @@ namespace POSWinforms.Maintenance
             // 
             // metroSetLabel6
             // 
-            this.metroSetLabel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.metroSetLabel6.IsDerivedStyle = true;
-            this.metroSetLabel6.Location = new System.Drawing.Point(453, 223);
+            this.metroSetLabel6.AutoSize = true;
+            this.metroSetLabel6.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.metroSetLabel6.IsDerivedStyle = false;
+            this.metroSetLabel6.Location = new System.Drawing.Point(387, 231);
             this.metroSetLabel6.Name = "metroSetLabel6";
-            this.metroSetLabel6.Size = new System.Drawing.Size(100, 23);
-            this.metroSetLabel6.Style = MetroSet_UI.Enums.Style.Light;
-            this.metroSetLabel6.StyleManager = this.styleManager1;
+            this.metroSetLabel6.Size = new System.Drawing.Size(84, 21);
+            this.metroSetLabel6.Style = MetroSet_UI.Enums.Style.Custom;
+            this.metroSetLabel6.StyleManager = null;
             this.metroSetLabel6.TabIndex = 11;
             this.metroSetLabel6.Text = "Unit Price:";
             this.metroSetLabel6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -362,23 +362,23 @@ namespace POSWinforms.Maintenance
             this.txtReProduceLevel.AutoCompleteCustomSource = null;
             this.txtReProduceLevel.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
             this.txtReProduceLevel.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
-            this.txtReProduceLevel.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
+            this.txtReProduceLevel.BorderColor = System.Drawing.Color.Sienna;
             this.txtReProduceLevel.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             this.txtReProduceLevel.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
             this.txtReProduceLevel.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
             this.txtReProduceLevel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.txtReProduceLevel.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.txtReProduceLevel.Image = null;
-            this.txtReProduceLevel.IsDerivedStyle = true;
+            this.txtReProduceLevel.IsDerivedStyle = false;
             this.txtReProduceLevel.Lines = null;
-            this.txtReProduceLevel.Location = new System.Drawing.Point(559, 252);
+            this.txtReProduceLevel.Location = new System.Drawing.Point(477, 256);
             this.txtReProduceLevel.MaxLength = 10;
             this.txtReProduceLevel.Multiline = false;
             this.txtReProduceLevel.Name = "txtReProduceLevel";
             this.txtReProduceLevel.ReadOnly = false;
-            this.txtReProduceLevel.Size = new System.Drawing.Size(213, 30);
+            this.txtReProduceLevel.Size = new System.Drawing.Size(171, 30);
             this.txtReProduceLevel.Style = MetroSet_UI.Enums.Style.Light;
-            this.txtReProduceLevel.StyleManager = this.styleManager1;
+            this.txtReProduceLevel.StyleManager = null;
             this.txtReProduceLevel.TabIndex = 6;
             this.txtReProduceLevel.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtReProduceLevel.ThemeAuthor = null;
@@ -391,55 +391,56 @@ namespace POSWinforms.Maintenance
             // 
             // metroSetLabel7
             // 
-            this.metroSetLabel7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.metroSetLabel7.IsDerivedStyle = true;
-            this.metroSetLabel7.Location = new System.Drawing.Point(416, 259);
+            this.metroSetLabel7.AutoSize = true;
+            this.metroSetLabel7.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.metroSetLabel7.IsDerivedStyle = false;
+            this.metroSetLabel7.Location = new System.Drawing.Point(329, 267);
             this.metroSetLabel7.Name = "metroSetLabel7";
-            this.metroSetLabel7.Size = new System.Drawing.Size(137, 23);
-            this.metroSetLabel7.Style = MetroSet_UI.Enums.Style.Light;
-            this.metroSetLabel7.StyleManager = this.styleManager1;
+            this.metroSetLabel7.Size = new System.Drawing.Size(142, 21);
+            this.metroSetLabel7.Style = MetroSet_UI.Enums.Style.Custom;
+            this.metroSetLabel7.StyleManager = null;
             this.metroSetLabel7.TabIndex = 13;
             this.metroSetLabel7.Text = "Re-Produce Level:";
             this.metroSetLabel7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.metroSetLabel7.ThemeAuthor = null;
             this.metroSetLabel7.ThemeName = null;
             // 
-            // btnSave
-            // 
-            this.btnSave.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btnSave.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btnSave.DisabledForeColor = System.Drawing.Color.Gray;
-            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnSave.HoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
-            this.btnSave.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
-            this.btnSave.HoverTextColor = System.Drawing.Color.White;
-            this.btnSave.IsDerivedStyle = true;
-            this.btnSave.Location = new System.Drawing.Point(698, 300);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btnSave.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btnSave.NormalTextColor = System.Drawing.Color.White;
-            this.btnSave.PressBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
-            this.btnSave.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
-            this.btnSave.PressTextColor = System.Drawing.Color.White;
-            this.btnSave.Size = new System.Drawing.Size(75, 29);
-            this.btnSave.Style = MetroSet_UI.Enums.Style.Light;
-            this.btnSave.StyleManager = this.styleManager1;
-            this.btnSave.TabIndex = 7;
-            this.btnSave.Text = "Save";
-            this.btnSave.ThemeAuthor = null;
-            this.btnSave.ThemeName = null;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // btnSave
+            // 
+            this.btnSave.BackColor = System.Drawing.Color.MistyRose;
+            this.btnSave.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSave.ForeColor = System.Drawing.Color.Maroon;
+            this.btnSave.Location = new System.Drawing.Point(477, 323);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(171, 34);
+            this.btnSave.TabIndex = 14;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // lbTitle
+            // 
+            this.lbTitle.AutoSize = true;
+            this.lbTitle.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTitle.Location = new System.Drawing.Point(13, 26);
+            this.lbTitle.Name = "lbTitle";
+            this.lbTitle.Size = new System.Drawing.Size(94, 25);
+            this.lbTitle.TabIndex = 15;
+            this.lbTitle.Text = "Add Item";
+            // 
             // frmAddEditItem
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(814, 340);
+            this.BackColor = System.Drawing.Color.DarkSalmon;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.ClientSize = new System.Drawing.Size(661, 372);
+            this.Controls.Add(this.lbTitle);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.txtReProduceLevel);
             this.Controls.Add(this.metroSetLabel7);
@@ -456,22 +457,23 @@ namespace POSWinforms.Maintenance
             this.Controls.Add(this.metroSetLabel2);
             this.Controls.Add(this.metroSetLabel1);
             this.Controls.Add(this.metroSetControlBox1);
+            this.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.MaximumSize = new System.Drawing.Size(661, 372);
+            this.MinimumSize = new System.Drawing.Size(661, 372);
             this.Name = "frmAddEditItem";
+            this.Padding = new System.Windows.Forms.Padding(10, 70, 10, 12);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.StyleManager = this.styleManager1;
             this.Text = "Item Modal";
-            this.ThemeAuthor = null;
-            this.ThemeName = null;
+            this.Load += new System.EventHandler(this.frmAddEditItem_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-
-        private MetroSet_UI.Components.StyleManager styleManager1;
         private MetroSet_UI.Controls.MetroSetControlBox metroSetControlBox1;
-        private MetroSet_UI.Controls.MetroSetButton btnSave;
         private MetroSet_UI.Controls.MetroSetTextBox txtReProduceLevel;
         private MetroSet_UI.Controls.MetroSetLabel metroSetLabel7;
         private MetroSet_UI.Controls.MetroSetTextBox txtUnitPrice;
@@ -487,5 +489,7 @@ namespace POSWinforms.Maintenance
         private MetroSet_UI.Controls.MetroSetLabel metroSetLabel2;
         private MetroSet_UI.Controls.MetroSetLabel metroSetLabel1;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Label lbTitle;
     }
 }

@@ -13,7 +13,7 @@ using POSWinforms.Models;
 
 namespace POSWinforms.Transaction
 {
-    public partial class frmSelectItem : MetroSetForm
+    public partial class frmSelectItem : Form
     {
         private int quantity = 1;
         private int discount = 0;
@@ -121,7 +121,7 @@ namespace POSWinforms.Transaction
             }
             else
             {
-                MetroSetMessageBox.Show(this, "No item was selected!", "WARNING", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(this, "No item was selected!", "WARNING", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 

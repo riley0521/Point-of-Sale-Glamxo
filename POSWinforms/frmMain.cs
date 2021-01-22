@@ -14,7 +14,7 @@ using System.Windows.Forms;
 
 namespace POSWinforms
 {
-    public partial class frmMain : MetroSetForm
+    public partial class frmMain : Form
     {
         
         public frmMain()
@@ -26,7 +26,7 @@ namespace POSWinforms
         private void timer1_Tick(object sender, EventArgs e)
         {
             string date = DateTime.Now.ToString("dddd MMMM dd, yyyy  hh:mm:ss tt");
-            lblTime.Text = date;
+            lbTime.Text = date;
         }
 
         private void userToolStripMenuItem1_Click(object sender, EventArgs e)

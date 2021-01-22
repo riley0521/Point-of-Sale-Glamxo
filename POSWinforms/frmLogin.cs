@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace POSWinforms
 {
-    public partial class frmLogin : MetroSetForm
+    public partial class frmLogin : Form
     {
         public frmLogin()
         {
@@ -63,7 +63,7 @@ namespace POSWinforms
             if (txtUsername.Text.Length == 0 || txtPassword.Text.Length == 0
                 || txtUsername.Text.Equals("Username") || txtPassword.Text.Equals("Password"))
             {
-                MetroSetMessageBox.Show(this, "Please enter your username and password.", "WARNING", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please enter your username and password.", "WARNING", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
@@ -96,12 +96,12 @@ namespace POSWinforms
                     }
                     else
                     {
-                        MetroSetMessageBox.Show(this, "Invalid username or password.", "WARNING", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("Invalid username or password.", "WARNING", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
                 else
                 {
-                    MetroSetMessageBox.Show(this, "Invalid username or password.", "WARNING", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Invalid username or password.", "WARNING", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
         }
@@ -113,7 +113,7 @@ namespace POSWinforms
 
         private void txtUsername_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.KeyCode)
+            if (e.KeyCode == Keys.Enter)
             {
                 loginUser();
             }

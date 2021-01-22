@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace POSWinforms.Maintenance
 {
-    public partial class frmCategory : MetroSetForm
+    public partial class frmCategory : Form
     {
         private List<tblCategory> allCategories = new List<tblCategory>();
         private string itemCode = "";
@@ -74,17 +74,8 @@ namespace POSWinforms.Maintenance
                 btnAdd.Text = "Save";
                 if (btnUpdate.Text.Equals("Save"))
                 {
-                    DialogResult dialogResult = MetroSetMessageBox.Show(this, "Would you like to cancel updating position?",
-                        "QUESTION", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (dialogResult == DialogResult.Yes)
-                    {
-                        btnUpdate.Text = "Update";
-                        txtDescription.Text = "";
-                    }
-                    else
-                    {
-                        return;
-                    }
+                    btnUpdate.Text = "Update";
+                    txtDescription.Text = "";
                 }
                 txtItemCode.Enabled = true;
                 btnClose.Text = "Cancel";
@@ -105,7 +96,7 @@ namespace POSWinforms.Maintenance
                     DatabaseHelper.db.tblCategories.InsertOnSubmit(newCategory);
                     DatabaseHelper.db.SubmitChanges();
 
-                    MetroSetMessageBox.Show(this, "Category added successfully!", "INFORMATION", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(this, "Category added successfully!", "INFORMATION", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     btnAdd.Text = "Add";
                     clearFields();
                     LoadAllCategories();
@@ -120,16 +111,7 @@ namespace POSWinforms.Maintenance
                 btnUpdate.Text = "Save";
                 if (btnAdd.Text.Equals("Save"))
                 {
-                    DialogResult dialogResult = MetroSetMessageBox.Show(this, "Would you like to cancel adding category?",
-                    "QUESTION", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (dialogResult == DialogResult.Yes)
-                    {
-                        btnAdd.Text = "Add";
-                    }
-                    else
-                    {
-                        return;
-                    }
+                    btnAdd.Text = "Add";
                 }
                 txtItemCode.Enabled = false;
                 btnClose.Text = "Cancel";
@@ -139,24 +121,21 @@ namespace POSWinforms.Maintenance
             {
                 if (string.IsNullOrWhiteSpace(txtDescription.Text))
                 {
-                    MetroSetMessageBox.Show(this, "Please enter new description and do not leave that field empty.", "WARNING", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show(this, "Please enter new description and do not leave that field empty.", "WARNING", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
                 var updateCategory = allCategories.Where(x => x.ItemCode.Equals(itemCode)).FirstOrDefault();
                 if (updateCategory != null)
                 {
-                    DialogResult dialogResult = MetroSetMessageBox.Show(this, "Would you like to update this category?",
+                    DialogResult dialogResult = MessageBox.Show(this, "Would you like to update this category?",
                         "QUESTION", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (dialogResult == DialogResult.Yes)
                     {
-
-                        
-
                         if (ValidateChildren(ValidationConstraints.Enabled))
                         {
                             updateCategory.ItemDescription = txtDescription.Text;
                             DatabaseHelper.db.SubmitChanges();
-                            MetroSetMessageBox.Show(this, "Item '" + updateCategory.ItemCode + "' successfully!", "INFORMATION", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show(this, "Item '" + updateCategory.ItemCode + "' successfully!", "INFORMATION", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             btnUpdate.Text = "Update";
                             clearFields();
                             LoadAllCategories();
@@ -208,7 +187,7 @@ namespace POSWinforms.Maintenance
             DialogResult dialogResult;
             if (btnAdd.Text.Equals("Save"))
             {
-                dialogResult = MetroSetMessageBox.Show(this, "Would you like to cancel adding new category?",
+                dialogResult = MessageBox.Show(this, "Would you like to cancel adding new category?",
                    "QUESTION", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dialogResult == DialogResult.Yes)
                 {
@@ -219,7 +198,7 @@ namespace POSWinforms.Maintenance
             }
             else if (btnUpdate.Text.Equals("Save"))
             {
-                dialogResult = MetroSetMessageBox.Show(this, "Would you like to cancel updating category?",
+                dialogResult = MessageBox.Show(this, "Would you like to cancel updating category?",
                     "QUESTION", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dialogResult == DialogResult.Yes)
                 {
@@ -230,9 +209,16 @@ namespace POSWinforms.Maintenance
             }
             else if (btnClose.Text.Equals("Close"))
             {
-                dialogResult = MetroSetMessageBox.Show(this, "Would you like to exit?",
-                    "QUESTION", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (dialogResult == DialogResult.Yes)
+                if (txtDescription.Text.Length > 0)
+                {
+                    dialogResult = MessageBox.Show(this, "Would you like to exit?",
+                        "QUESTION", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        Close();
+                    }
+                }
+                else 
                 {
                     Close();
                 }

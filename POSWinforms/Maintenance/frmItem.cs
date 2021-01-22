@@ -14,7 +14,7 @@ using System.Windows.Forms;
 
 namespace POSWinforms.Maintenance
 {
-    public partial class frmItem : MetroSetForm
+    public partial class frmItem : Form
     {
 
         private List<tblItem> allItems = new List<tblItem>();
@@ -66,16 +66,18 @@ namespace POSWinforms.Maintenance
             {
                 row.DefaultCellStyle.ForeColor = Color.White;
                 if(int.Parse(row.Cells["colQty"].Value.ToString()) <= int.Parse(row.Cells["colRepLvl"].Value.ToString())) {
-                    row.DefaultCellStyle.BackColor = Color.OrangeRed;
+                    row.DefaultCellStyle.BackColor = Color.DarkViolet;
                 }
                 else
                 {
-                    row.DefaultCellStyle.BackColor = Color.Lime;
+                    row.DefaultCellStyle.BackColor = Color.Salmon;
                 }
                 //More code here
             }
 
             dgvItems.ClearSelection();
+            btnUpdate.Enabled = false;
+            btnStockIn.Enabled = false;
         }
 
         private void frmItem_Load(object sender, EventArgs e)
@@ -83,44 +85,14 @@ namespace POSWinforms.Maintenance
             loadAllItems(null);
         }
 
-        private void metroSetButton1_Click(object sender, EventArgs e)
-        {
-            var frm = new frmAddEditItem();
-            frm.addItem();
-            frm.ShowDialog();
-            loadAllItems(null);
-        }
-
-        private void metroSetButton2_Click(object sender, EventArgs e)
-        {
-            tblItem item = allItems.Where(x => x.ItemCode.Equals(itemCode)).FirstOrDefault();
-            if (item != null)
-            {
-                var frm = new frmAddEditItem();
-                frm.updateItem(item);
-                frm.ShowDialog();
-                loadAllItems(null);
-            }
-        }
-
         private void dgvItems_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
                 itemCode = dgvItems.Rows[e.RowIndex].Cells[1].Value.ToString();
+                btnUpdate.Enabled = true;
+                btnStockIn.Enabled = true;
             } 
-        }
-
-        private void metroSetButton3_Click(object sender, EventArgs e)
-        {
-            if (itemCode.Length > 0)
-            {
-                var frm = new frmItemStockEdit();
-                frm.setItemCode(itemCode);
-                frm.ShowDialog();
-                loadAllItems(null);
-            }
-            
         }
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
@@ -149,6 +121,36 @@ namespace POSWinforms.Maintenance
                 itemCode = dgvItems.Rows[e.RowIndex].Cells[1].Value.ToString();
                 DatabaseHelper.item = allItems.Where(x => x.ItemCode.Equals(itemCode)).FirstOrDefault();
                 Close();
+            }
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            var frm = new frmAddEditItem();
+            frm.ShowDialog();
+            loadAllItems(null);
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            tblItem item = allItems.Where(x => x.ItemCode.Equals(itemCode)).FirstOrDefault();
+            if (item != null)
+            {
+                var frm = new frmAddEditItem();
+                frm.updateItem(item);
+                frm.ShowDialog();
+                loadAllItems(null);
+            }
+        }
+
+        private void btnStockIn_Click(object sender, EventArgs e)
+        {
+            if (itemCode.Length > 0)
+            {
+                var frm = new frmItemStockEdit();
+                frm.setItemCode(itemCode);
+                frm.ShowDialog();
+                loadAllItems(null);
             }
         }
     }

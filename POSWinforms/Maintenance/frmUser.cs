@@ -14,7 +14,7 @@ using System.Windows.Forms;
 
 namespace POSWinforms
 {
-    public partial class frmUser : MetroSetForm
+    public partial class frmUser : Form
     {
 
         private string username = "";
@@ -57,6 +57,7 @@ namespace POSWinforms
                     );
             }
             dgvUsers.ClearSelection();
+            btnUpdate.Enabled = false;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -88,14 +89,6 @@ namespace POSWinforms
             
         }
 
-        private void dgvUsers_RowEnter(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0) {
-
-                username = dgvUsers.Rows[e.RowIndex].Cells["colUsername"].Value.ToString();
-            }
-        }
-
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
             if(txtSearch.Text.Length == 0)
@@ -105,6 +98,16 @@ namespace POSWinforms
             else if(txtSearch.Text.Length > 0)
             {
                 LoadAllUsers(txtSearch.Text);
+            }
+        }
+
+        private void dgvUsers_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+
+                username = dgvUsers.Rows[e.RowIndex].Cells["colUsername"].Value.ToString();
+                btnUpdate.Enabled = true;
             }
         }
     }

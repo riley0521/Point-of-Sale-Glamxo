@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace POSWinforms.Maintenance
 {
-    public partial class frmPosition : MetroSetForm
+    public partial class frmPosition : Form
     {
 
         private long ID;
@@ -55,19 +55,10 @@ namespace POSWinforms.Maintenance
                 
                 if(btnUpdate.Text.Equals("Save"))
                 {
-                    DialogResult dialogResult = MetroSetMessageBox.Show(this, "Would you like to cancel updating position?",
-                        "QUESTION", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (dialogResult == DialogResult.Yes)
-                    {
-                        btnUpdate.Text = "Update";
-                        txtDescription.Text = "";
-                    }
-                    else
-                    {
-                        return;
-                    }
+                    btnUpdate.Text = "Update";
+                    txtDescription.Text = "";
                 }
-                btnCancel.Text = "Cancel";
+                btnClose.Text = "Cancel";
                 dgvPositions.CellClick -= new DataGridViewCellEventHandler(dgvPositions_CellClick);
                 dgvPositions.ClearSelection();
                 txtID.Enabled = false;
@@ -98,7 +89,7 @@ namespace POSWinforms.Maintenance
                     DatabaseHelper.db.tblPositions.InsertOnSubmit(newPos);
                     DatabaseHelper.db.SubmitChanges();
 
-                    MetroSetMessageBox.Show(this, "Position added successfully!", "INFORMATION", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(this, "Position added successfully!", "INFORMATION", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     btnAdd.Text = "Add";
                     clearFields();
                     LoadAllPositions();
@@ -122,12 +113,12 @@ namespace POSWinforms.Maintenance
             {
                 updatePosition.Position = txtDescription.Text;
                 DatabaseHelper.db.SubmitChanges();
-                MetroSetMessageBox.Show(this, "Position with ID: " + txtID.Text + " was updated successfully!",
+                MessageBox.Show(this, "Position with ID: " + txtID.Text + " was updated successfully!",
                     "UPDATE POSITION", MessageBoxButtons.OK, MessageBoxIcon.Information);
             } 
             else
             {
-                MetroSetMessageBox.Show(this, "No ID is selected",
+                MessageBox.Show(this, "No ID is selected",
                     "WARNING", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
@@ -144,23 +135,14 @@ namespace POSWinforms.Maintenance
                 
                 if (btnAdd.Text.Equals("Save"))
                 {
-                    DialogResult dialogResult = MetroSetMessageBox.Show(this, "Would you like to cancel adding position?",
-                    "QUESTION", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (dialogResult == DialogResult.Yes)
-                    {
-                        btnAdd.Text = "Add";
-                    }
-                    else
-                    {
-                        return;
-                    }
+                    btnAdd.Text = "Add";
                 }
-                btnCancel.Text = "Cancel";
+                btnClose.Text = "Cancel";
                 dgvPositions.CellClick += new DataGridViewCellEventHandler(dgvPositions_CellClick);
             }
             else if(btnUpdate.Text.Equals("Save"))
             {
-                DialogResult dialogResult = MetroSetMessageBox.Show(this, "Would you like to update this position?",
+                DialogResult dialogResult = MessageBox.Show(this, "Would you like to update this position?",
                 "QUESTION", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if(dialogResult == DialogResult.Yes)
                 {
@@ -189,31 +171,38 @@ namespace POSWinforms.Maintenance
             DialogResult dialogResult;
             if(btnAdd.Text.Equals("Save"))
             {
-                 dialogResult = MetroSetMessageBox.Show(this, "Would you like to cancel adding new position?",
+                 dialogResult = MessageBox.Show(this, "Would you like to cancel adding new position?",
                     "QUESTION", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if(dialogResult == DialogResult.Yes)
                 {
                     clearFields();
                     btnAdd.Text = "Add";
-                    btnCancel.Text = "Close";
+                    btnClose.Text = "Close";
                 }
             }
             else if (btnUpdate.Text.Equals("Save"))
             {
-                dialogResult = MetroSetMessageBox.Show(this, "Would you like to cancel updating position?",
+                dialogResult = MessageBox.Show(this, "Would you like to cancel updating position?",
                     "QUESTION", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dialogResult == DialogResult.Yes)
                 {
                     clearFields();
                     btnUpdate.Text = "Update";
-                    btnCancel.Text = "Close";
+                    btnClose.Text = "Close";
                 }
             }
-            else if(btnCancel.Text.Equals("Close"))
+            else if(btnClose.Text.Equals("Close"))
             {
-                dialogResult = MetroSetMessageBox.Show(this, "Would you like to exit?",
-                    "QUESTION", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (dialogResult == DialogResult.Yes)
+                if (txtDescription.Text.Length > 0)
+                {
+                    dialogResult = MessageBox.Show(this, "Would you like to exit?",
+                        "QUESTION", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        Close();
+                    }
+                }
+                else
                 {
                     Close();
                 }

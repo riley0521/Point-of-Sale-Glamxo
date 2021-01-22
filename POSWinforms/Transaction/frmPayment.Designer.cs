@@ -29,37 +29,23 @@ namespace POSWinforms.Maintenance
         /// </summary>
         private void InitializeComponent()
         {
-            this.metroSetLabel1 = new MetroSet_UI.Controls.MetroSetLabel();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPayment));
             this.txtTotal = new MetroSet_UI.Controls.MetroSetTextBox();
-            this.btnConfirm = new MetroSet_UI.Controls.MetroSetButton();
-            this.btnCancel = new MetroSet_UI.Controls.MetroSetButton();
-            this.metroSetLabel2 = new MetroSet_UI.Controls.MetroSetLabel();
             this.txtCash = new MetroSet_UI.Controls.MetroSetTextBox();
-            this.metroSetLabel3 = new MetroSet_UI.Controls.MetroSetLabel();
             this.txtChange = new MetroSet_UI.Controls.MetroSetTextBox();
+            this.btnConfirm = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // metroSetLabel1
-            // 
-            this.metroSetLabel1.AutoSize = true;
-            this.metroSetLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.metroSetLabel1.IsDerivedStyle = true;
-            this.metroSetLabel1.Location = new System.Drawing.Point(15, 128);
-            this.metroSetLabel1.Name = "metroSetLabel1";
-            this.metroSetLabel1.Size = new System.Drawing.Size(96, 17);
-            this.metroSetLabel1.Style = MetroSet_UI.Enums.Style.Light;
-            this.metroSetLabel1.StyleManager = null;
-            this.metroSetLabel1.TabIndex = 0;
-            this.metroSetLabel1.Text = "Total Amount:";
-            this.metroSetLabel1.ThemeAuthor = "Narwin";
-            this.metroSetLabel1.ThemeName = "MetroLite";
             // 
             // txtTotal
             // 
             this.txtTotal.AutoCompleteCustomSource = null;
             this.txtTotal.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
             this.txtTotal.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
-            this.txtTotal.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
+            this.txtTotal.BorderColor = System.Drawing.Color.Sienna;
             this.txtTotal.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             this.txtTotal.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
             this.txtTotal.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
@@ -67,14 +53,15 @@ namespace POSWinforms.Maintenance
             this.txtTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.txtTotal.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.txtTotal.Image = null;
-            this.txtTotal.IsDerivedStyle = true;
+            this.txtTotal.IsDerivedStyle = false;
             this.txtTotal.Lines = null;
-            this.txtTotal.Location = new System.Drawing.Point(117, 115);
+            this.txtTotal.Location = new System.Drawing.Point(142, 70);
+            this.txtTotal.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtTotal.MaxLength = 32767;
             this.txtTotal.Multiline = false;
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.ReadOnly = false;
-            this.txtTotal.Size = new System.Drawing.Size(197, 30);
+            this.txtTotal.Size = new System.Drawing.Size(118, 30);
             this.txtTotal.Style = MetroSet_UI.Enums.Style.Light;
             this.txtTotal.StyleManager = null;
             this.txtTotal.TabIndex = 1;
@@ -84,95 +71,27 @@ namespace POSWinforms.Maintenance
             this.txtTotal.UseSystemPasswordChar = false;
             this.txtTotal.WatermarkText = "";
             // 
-            // btnConfirm
-            // 
-            this.btnConfirm.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btnConfirm.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btnConfirm.DisabledForeColor = System.Drawing.Color.Gray;
-            this.btnConfirm.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnConfirm.HoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
-            this.btnConfirm.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
-            this.btnConfirm.HoverTextColor = System.Drawing.Color.White;
-            this.btnConfirm.IsDerivedStyle = true;
-            this.btnConfirm.Location = new System.Drawing.Point(158, 223);
-            this.btnConfirm.Name = "btnConfirm";
-            this.btnConfirm.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btnConfirm.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btnConfirm.NormalTextColor = System.Drawing.Color.White;
-            this.btnConfirm.PressBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
-            this.btnConfirm.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
-            this.btnConfirm.PressTextColor = System.Drawing.Color.White;
-            this.btnConfirm.Size = new System.Drawing.Size(75, 29);
-            this.btnConfirm.Style = MetroSet_UI.Enums.Style.Light;
-            this.btnConfirm.StyleManager = null;
-            this.btnConfirm.TabIndex = 0;
-            this.btnConfirm.Text = "Confirm";
-            this.btnConfirm.ThemeAuthor = "Narwin";
-            this.btnConfirm.ThemeName = "MetroLite";
-            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btnCancel.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btnCancel.DisabledForeColor = System.Drawing.Color.Gray;
-            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnCancel.HoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
-            this.btnCancel.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
-            this.btnCancel.HoverTextColor = System.Drawing.Color.White;
-            this.btnCancel.IsDerivedStyle = true;
-            this.btnCancel.Location = new System.Drawing.Point(239, 223);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btnCancel.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btnCancel.NormalTextColor = System.Drawing.Color.White;
-            this.btnCancel.PressBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
-            this.btnCancel.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
-            this.btnCancel.PressTextColor = System.Drawing.Color.White;
-            this.btnCancel.Size = new System.Drawing.Size(75, 29);
-            this.btnCancel.Style = MetroSet_UI.Enums.Style.Light;
-            this.btnCancel.StyleManager = null;
-            this.btnCancel.TabIndex = 2;
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.ThemeAuthor = "Narwin";
-            this.btnCancel.ThemeName = "MetroLite";
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            // 
-            // metroSetLabel2
-            // 
-            this.metroSetLabel2.AutoSize = true;
-            this.metroSetLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.metroSetLabel2.IsDerivedStyle = true;
-            this.metroSetLabel2.Location = new System.Drawing.Point(67, 164);
-            this.metroSetLabel2.Name = "metroSetLabel2";
-            this.metroSetLabel2.Size = new System.Drawing.Size(44, 17);
-            this.metroSetLabel2.Style = MetroSet_UI.Enums.Style.Light;
-            this.metroSetLabel2.StyleManager = null;
-            this.metroSetLabel2.TabIndex = 0;
-            this.metroSetLabel2.Text = "Cash:";
-            this.metroSetLabel2.ThemeAuthor = "Narwin";
-            this.metroSetLabel2.ThemeName = "MetroLite";
-            // 
             // txtCash
             // 
             this.txtCash.AutoCompleteCustomSource = null;
             this.txtCash.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
             this.txtCash.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
-            this.txtCash.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
+            this.txtCash.BorderColor = System.Drawing.Color.Sienna;
             this.txtCash.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             this.txtCash.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
             this.txtCash.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
             this.txtCash.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.txtCash.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.txtCash.Image = null;
-            this.txtCash.IsDerivedStyle = true;
+            this.txtCash.IsDerivedStyle = false;
             this.txtCash.Lines = null;
-            this.txtCash.Location = new System.Drawing.Point(117, 151);
+            this.txtCash.Location = new System.Drawing.Point(142, 109);
+            this.txtCash.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtCash.MaxLength = 10;
             this.txtCash.Multiline = false;
             this.txtCash.Name = "txtCash";
             this.txtCash.ReadOnly = false;
-            this.txtCash.Size = new System.Drawing.Size(197, 30);
+            this.txtCash.Size = new System.Drawing.Size(118, 30);
             this.txtCash.Style = MetroSet_UI.Enums.Style.Light;
             this.txtCash.StyleManager = null;
             this.txtCash.TabIndex = 1;
@@ -183,27 +102,12 @@ namespace POSWinforms.Maintenance
             this.txtCash.WatermarkText = "";
             this.txtCash.TextChanged += new System.EventHandler(this.txtCash_TextChanged);
             // 
-            // metroSetLabel3
-            // 
-            this.metroSetLabel3.AutoSize = true;
-            this.metroSetLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.metroSetLabel3.IsDerivedStyle = true;
-            this.metroSetLabel3.Location = new System.Drawing.Point(50, 200);
-            this.metroSetLabel3.Name = "metroSetLabel3";
-            this.metroSetLabel3.Size = new System.Drawing.Size(61, 17);
-            this.metroSetLabel3.Style = MetroSet_UI.Enums.Style.Light;
-            this.metroSetLabel3.StyleManager = null;
-            this.metroSetLabel3.TabIndex = 0;
-            this.metroSetLabel3.Text = "Change:";
-            this.metroSetLabel3.ThemeAuthor = "Narwin";
-            this.metroSetLabel3.ThemeName = "MetroLite";
-            // 
             // txtChange
             // 
             this.txtChange.AutoCompleteCustomSource = null;
             this.txtChange.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
             this.txtChange.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
-            this.txtChange.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
+            this.txtChange.BorderColor = System.Drawing.Color.Sienna;
             this.txtChange.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             this.txtChange.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
             this.txtChange.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
@@ -211,14 +115,15 @@ namespace POSWinforms.Maintenance
             this.txtChange.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.txtChange.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.txtChange.Image = null;
-            this.txtChange.IsDerivedStyle = true;
+            this.txtChange.IsDerivedStyle = false;
             this.txtChange.Lines = null;
-            this.txtChange.Location = new System.Drawing.Point(117, 187);
+            this.txtChange.Location = new System.Drawing.Point(142, 148);
+            this.txtChange.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtChange.MaxLength = 32767;
             this.txtChange.Multiline = false;
             this.txtChange.Name = "txtChange";
             this.txtChange.ReadOnly = false;
-            this.txtChange.Size = new System.Drawing.Size(197, 30);
+            this.txtChange.Size = new System.Drawing.Size(118, 30);
             this.txtChange.Style = MetroSet_UI.Enums.Style.Light;
             this.txtChange.StyleManager = null;
             this.txtChange.TabIndex = 1;
@@ -228,21 +133,87 @@ namespace POSWinforms.Maintenance
             this.txtChange.UseSystemPasswordChar = false;
             this.txtChange.WatermarkText = "";
             // 
+            // btnConfirm
+            // 
+            this.btnConfirm.BackColor = System.Drawing.Color.MistyRose;
+            this.btnConfirm.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
+            this.btnConfirm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnConfirm.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConfirm.ForeColor = System.Drawing.Color.Maroon;
+            this.btnConfirm.Location = new System.Drawing.Point(156, 234);
+            this.btnConfirm.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnConfirm.Name = "btnConfirm";
+            this.btnConfirm.Size = new System.Drawing.Size(78, 34);
+            this.btnConfirm.TabIndex = 111;
+            this.btnConfirm.Text = "Confirm";
+            this.btnConfirm.UseVisualStyleBackColor = false;
+            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.BackColor = System.Drawing.Color.MistyRose;
+            this.btnCancel.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.ForeColor = System.Drawing.Color.Maroon;
+            this.btnCancel.Location = new System.Drawing.Point(238, 234);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(76, 34);
+            this.btnCancel.TabIndex = 112;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(19, 79);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(118, 21);
+            this.label1.TabIndex = 113;
+            this.label1.Text = "Total Amount:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(87, 118);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(50, 21);
+            this.label2.TabIndex = 113;
+            this.label2.Text = "Cash:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(65, 157);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(72, 21);
+            this.label3.TabIndex = 113;
+            this.label3.Text = "Change:";
+            // 
             // frmPayment
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(328, 267);
+            this.BackColor = System.Drawing.Color.DarkSalmon;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.ClientSize = new System.Drawing.Size(325, 279);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnConfirm);
             this.Controls.Add(this.txtChange);
-            this.Controls.Add(this.metroSetLabel3);
             this.Controls.Add(this.txtCash);
-            this.Controls.Add(this.metroSetLabel2);
             this.Controls.Add(this.txtTotal);
-            this.Controls.Add(this.metroSetLabel1);
-            this.MaximumSize = new System.Drawing.Size(328, 267);
-            this.MinimumSize = new System.Drawing.Size(328, 267);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MaximumSize = new System.Drawing.Size(325, 279);
+            this.MinimumSize = new System.Drawing.Size(325, 279);
             this.Name = "frmPayment";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Payment";
@@ -252,14 +223,13 @@ namespace POSWinforms.Maintenance
         }
 
         #endregion
-
-        private MetroSet_UI.Controls.MetroSetLabel metroSetLabel1;
         private MetroSet_UI.Controls.MetroSetTextBox txtTotal;
-        private MetroSet_UI.Controls.MetroSetButton btnConfirm;
-        private MetroSet_UI.Controls.MetroSetButton btnCancel;
-        private MetroSet_UI.Controls.MetroSetLabel metroSetLabel2;
         private MetroSet_UI.Controls.MetroSetTextBox txtCash;
-        private MetroSet_UI.Controls.MetroSetLabel metroSetLabel3;
         private MetroSet_UI.Controls.MetroSetTextBox txtChange;
+        private System.Windows.Forms.Button btnConfirm;
+        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }

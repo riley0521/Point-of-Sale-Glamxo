@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace POSWinforms
 {
-    public partial class frmOrders : MetroSetForm
+    public partial class frmOrders : Form
     {
         private List<tblOrder> orders = new List<tblOrder>();
 

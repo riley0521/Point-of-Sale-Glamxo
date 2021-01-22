@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace POSWinforms.Maintenance
 {
-    public partial class frmEditDiscount : MetroSetForm
+    public partial class frmEditDiscount : Form
     {
 
         private string itemCode = "";

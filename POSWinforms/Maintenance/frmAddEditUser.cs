@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace POSWinforms.Maintenance
 {
-    public partial class frmAddEditUser : MetroSetForm
+    public partial class frmAddEditUser : Form
     {
 
         private string currentUsername = "";
@@ -35,7 +35,6 @@ namespace POSWinforms.Maintenance
 
         public void addUser()
         {
-            this.Text = "Add User";
             txtStaffID.ReadOnly = true;
             var staffID = (from s in DatabaseHelper.db.tblUsers
                           orderby s.ID descending
@@ -54,12 +53,14 @@ namespace POSWinforms.Maintenance
         public void updateUser(tblUser user)
         {
             this.selectedUser = user;
-            this.Text = "Update User";
+            lbTitle.Text = "Update User";
+            btnSave.Text = "Update";
 
             contactNo = user.ContactNo;
 
             currentUsername = user.Username;
             txtStaffID.Enabled = false;
+            txtUsername.Enabled = false;
             txtStaffID.Text = user.ID.ToString();
             txtUsername.Text = user.Username;
             txtPassword.Text = user.Password;
@@ -80,7 +81,7 @@ namespace POSWinforms.Maintenance
         {
             if (ValidateChildren(ValidationConstraints.Enabled))
             {
-                if (this.Text.Equals("Add User"))
+                if (btnSave.Text.Equals("Save"))
                 {
                     var newUser = new tblUser
                     {
@@ -96,10 +97,10 @@ namespace POSWinforms.Maintenance
                     };
                     DatabaseHelper.db.tblUsers.InsertOnSubmit(newUser);
                     DatabaseHelper.db.SubmitChanges();
-                    MetroSetMessageBox.Show(this, "User created successfully!", "INFORMATION", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("User created successfully!", "INFORMATION", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Close();
                 }
-                else if (this.Text.Equals("Update User"))
+                else if (btnSave.Text.Equals("Update"))
                 {
 
                     selectedUser.Username = txtUsername.Text;
@@ -112,7 +113,7 @@ namespace POSWinforms.Maintenance
                     selectedUser.Position = cmbPositions.SelectedItem.ToString();
 
                     DatabaseHelper.db.SubmitChanges();
-                    MetroSetMessageBox.Show(this, "User updated successfully!", "INFORMATION", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("User updated successfully!", "INFORMATION", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Close();
                 }
             }
@@ -128,7 +129,7 @@ namespace POSWinforms.Maintenance
                 e.Cancel = true;
                 errorProvider1.SetError(txtUsername, "Please enter your username!");
             }
-            else if (this.Text.Equals("Update User"))
+            else if (btnSave.Text.Equals("Update"))
             {
                 if(isUserUnique != null && !currentUsername.Equals(isUserUnique.Username))
                 {
@@ -279,9 +280,9 @@ namespace POSWinforms.Maintenance
 
         private void txtContactNo_TextChanged(object sender, EventArgs e)
         {
-            if (long.TryParse(txtContactNo.Text, out long contactNo))
+            if (long.TryParse(txtContactNo.Text, out long c))
             {
-                this.contactNo = contactNo.ToString();
+                this.contactNo = txtContactNo.Text;
             }
         }
 

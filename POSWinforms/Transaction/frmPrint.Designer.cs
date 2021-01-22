@@ -111,10 +111,9 @@ namespace POSWinforms.Transaction
             // documentViewer1
             // 
             this.documentViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.documentViewer1.IsMetric = false;
-            this.documentViewer1.Location = new System.Drawing.Point(0, 45);
+            this.documentViewer1.Location = new System.Drawing.Point(0, 0);
             this.documentViewer1.Name = "documentViewer1";
-            this.documentViewer1.Size = new System.Drawing.Size(749, 390);
+            this.documentViewer1.Size = new System.Drawing.Size(749, 457);
             this.documentViewer1.TabIndex = 0;
             // 
             // documentViewerBarManager1
@@ -598,31 +597,31 @@ namespace POSWinforms.Transaction
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.documentViewerBarManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(749, 45);
+            this.barDockControlTop.Size = new System.Drawing.Size(749, 0);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 435);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 457);
             this.barDockControlBottom.Manager = this.documentViewerBarManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(749, 22);
+            this.barDockControlBottom.Size = new System.Drawing.Size(749, 0);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 45);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
             this.barDockControlLeft.Manager = this.documentViewerBarManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 390);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 457);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(749, 45);
+            this.barDockControlRight.Location = new System.Drawing.Point(749, 0);
             this.barDockControlRight.Manager = this.documentViewerBarManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 390);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 457);
             // 
             // bbiDocumentMap
             // 
@@ -897,6 +896,8 @@ namespace POSWinforms.Transaction
             // 
             // frmPrint
             // 
+            this.Appearance.BackColor = System.Drawing.Color.PeachPuff;
+            this.Appearance.Options.UseBackColor = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(749, 457);

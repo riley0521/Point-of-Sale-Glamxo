@@ -12,10 +12,10 @@ using System.Windows.Forms;
 
 namespace POSWinforms.Maintenance
 {
-    public partial class frmItemStockEdit : MetroSetForm
+    public partial class frmItemStockEdit : Form
     {
 
-        private string itemCode = "";
+        private tblItem editItemStock;
 
         public frmItemStockEdit()
         {
@@ -24,40 +24,26 @@ namespace POSWinforms.Maintenance
 
         public void setItemCode(string itemCode)
         {
-            this.itemCode = itemCode;
-        }
-
-        private void txtQuantity_Validating(object sender, CancelEventArgs e)
-        {
-            if(string.IsNullOrWhiteSpace(txtQuantity.Text))
-            {
-                e.Cancel = true;
-                MetroSetMessageBox.Show(this, "Please enter number of stocks that you would like to add.", "WARNING", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else if(!int.TryParse(txtQuantity.Text, out int j))
-            {
-                e.Cancel = true;
-                MetroSetMessageBox.Show(this, "Quantity must be number ex. 5", "WARNING", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else
-            {
-                e.Cancel = false;
-
-            }
+            editItemStock = (from s in DatabaseHelper.db.tblItems
+                              where s.ItemCode.Equals(itemCode)
+                              select s).FirstOrDefault();
         }
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            var editStocks = (from s in DatabaseHelper.db.tblItems
-                             where s.ItemCode.Equals(itemCode)
-                             select s).FirstOrDefault();
-            if(editStocks != null)
+            if(int.TryParse(txtQuantity.Text, out int stockNum))
             {
-                editStocks.Stocks += int.Parse(txtQuantity.Text);
+                editItemStock.Stocks += stockNum;
                 DatabaseHelper.db.SubmitChanges();
-                MetroSetMessageBox.Show(this, "Stocked in successfully!", "INFORMATION", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(this, "Stocked in successfully!", "INFORMATION", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Close();
             }
+            else
+            {
+                MessageBox.Show(this, "Stock should be number!", "WARNING", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtQuantity.Text = "";
+            }
+            
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

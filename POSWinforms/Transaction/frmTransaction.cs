@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace POSWinforms.Transaction
 {
-    public partial class frmTransaction : MetroSetForm
+    public partial class frmTransaction : Form
     {
         public static long invoiceNo = 1000000001;
         public static long customerNo = 1;
@@ -25,7 +25,9 @@ namespace POSWinforms.Transaction
         private string timeToday = "";
 
         private long ID;
-        
+
+        private DataGridViewCellEventArgs mouseLocation;
+
         public frmTransaction()
         {
             InitializeComponent();
@@ -62,13 +64,13 @@ namespace POSWinforms.Transaction
                 lbTotal.Text = total.ToString("C2");
                 enableButtons(false);
             }
+            btnRemoveItem.Enabled = false;
+            btnDiscountItem.Enabled = false;
         }
 
         public void enableButtons(bool flag)
         {
             btnNewTransaction.Enabled = flag;
-            btnRemoveItem.Enabled = flag;
-            btnDiscountItem.Enabled = flag;
             btnPayment.Enabled = flag;
         }
         
@@ -132,7 +134,7 @@ namespace POSWinforms.Transaction
         {
             if (DatabaseHelper.cartList.Count > 0)
             {
-                DialogResult dialogResult = MetroSetMessageBox.Show(this, "Are you sure want to add new transaction? Current transaction will be overwritten.", "EXIT FORM",
+                DialogResult dialogResult = MessageBox.Show(this, "Are you sure want to add new transaction? Current transaction will be overwritten.", "EXIT FORM",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dialogResult == DialogResult.Yes)
                 {
@@ -146,7 +148,7 @@ namespace POSWinforms.Transaction
         {
             if (DatabaseHelper.cartList.Count > 0)
             {
-                DialogResult dialogResult = MetroSetMessageBox.Show(this, "Are you sure to exit this form? All items from you cart will be deleted.", "EXIT FORM",
+                DialogResult dialogResult = MessageBox.Show(this, "Are you sure to exit this form? All items from your cart will be deleted.", "EXIT FORM",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dialogResult == DialogResult.Yes)
                 {
@@ -165,6 +167,23 @@ namespace POSWinforms.Transaction
             if(e.RowIndex >= 0)
             {
                 ID = DatabaseHelper.cartList[e.RowIndex].ID;
+                btnRemoveItem.Enabled = true;
+                btnDiscountItem.Enabled = true;
+            }
+        }
+
+        public void deleteSelectedItem(OrderDetail itemToDelete)
+        {
+            
+            DialogResult dialogResult = MessageBox.Show(this, "Are you sure to delete item '"+ itemToDelete.ItemCode +"'?", "DELETE ITEM",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dialogResult == DialogResult.Yes)
+            {
+               
+                DatabaseHelper.cartList.Remove(itemToDelete);
+                MessageBox.Show(this, "Item deleted from cart!", "INFORMATION", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ID = 0;
+                loadAllItemsFromCart();
             }
         }
 
@@ -172,20 +191,12 @@ namespace POSWinforms.Transaction
         {
             if(ID > 0)
             {
-                DialogResult dialogResult = MetroSetMessageBox.Show(this, "Are you sure to delete this item?", "DELETE ITEM", 
-                    MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if(dialogResult == DialogResult.Yes)
-                {
-                    OrderDetail currentItem = DatabaseHelper.cartList.Where(x => x.ID == ID).FirstOrDefault();
-                    DatabaseHelper.cartList.Remove(currentItem);
-                    MetroSetMessageBox.Show(this, "Item deleted from cart!", "INFORMATION", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    ID = 0;
-                    loadAllItemsFromCart();
-                }
+                OrderDetail currentItem = DatabaseHelper.cartList.Where(x => x.ID == ID).FirstOrDefault();
+                deleteSelectedItem(currentItem);
             }
             else
             {
-                MetroSetMessageBox.Show(this, "No item was selected!", "WARNING", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(this, "No item was selected!", "WARNING", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -202,7 +213,7 @@ namespace POSWinforms.Transaction
             }
             else
             {
-                MetroSetMessageBox.Show(this, "No item was selected!", "WARNING", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(this, "No item was selected!", "WARNING", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -219,37 +230,76 @@ namespace POSWinforms.Transaction
         {
             if(e.RowIndex >= 0)
             {
-                var editQty = DatabaseHelper.cartList.Where(x => x.ID == ID).FirstOrDefault();
-                var maxStock = (from s in DatabaseHelper.db.tblItems
-                                where s.ItemCode == editQty.ItemCode
-                                select s.Stocks).FirstOrDefault();
-                
-
-                if(dgvCart.Rows[e.RowIndex].Cells[2].Value == null)
+                if (e.ColumnIndex == 2)
                 {
-                    MessageBox.Show("You cannot leave this field empty.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    loadAllItemsFromCart();
-                    return;
-                }
+                    var editQty = DatabaseHelper.cartList.Where(x => x.ID == ID).FirstOrDefault();
+                    var maxStock = (from s in DatabaseHelper.db.tblItems
+                                    where s.ItemCode == editQty.ItemCode
+                                    select s.Stocks).FirstOrDefault();
 
-                int newQuantity = int.Parse(dgvCart.Rows[e.RowIndex].Cells[2].Value.ToString());
 
-                if (newQuantity > 99)
-                {
-                    MessageBox.Show("You cannot add more than 99 items of the same type in cart.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    if (dgvCart.Rows[e.RowIndex].Cells[2].Value == null)
+                    {
+                        MessageBox.Show("You cannot leave this field empty.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        loadAllItemsFromCart();
+                        return;
+                    }
+
+                    int newQuantity = int.Parse(dgvCart.Rows[e.RowIndex].Cells[2].Value.ToString());
+
+                    if (newQuantity > 99)
+                    {
+                        MessageBox.Show("You cannot add more than 99 items of the same type in cart.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        loadAllItemsFromCart();
+                        return;
+                    }
+                    if (newQuantity > maxStock)
+                    {
+                        MessageBox.Show("You have reached the maximum number of stocks available.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        loadAllItemsFromCart();
+                        return;
+                    }
+                    editQty.Quantity = newQuantity;
+                    editQty.Total = frmSelectItem.getGrandTotal(editQty.Price, newQuantity, editQty.Discount);
                     loadAllItemsFromCart();
-                    return;
                 }
-                if (newQuantity > maxStock)
+                else if (e.ColumnIndex == 4)
                 {
-                    MessageBox.Show("You have reached the maximum number of stocks available.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    var editDiscount = DatabaseHelper.cartList.Where(x => x.ID == ID).FirstOrDefault();
+
+
+                    if (dgvCart.Rows[e.RowIndex].Cells[4].Value == null)
+                    {
+                        MessageBox.Show("You cannot leave this field empty.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        loadAllItemsFromCart();
+                        return;
+                    }
+
+                    int newDiscount = int.Parse(dgvCart.Rows[e.RowIndex].Cells[4].Value.ToString());
+
+                    if (newDiscount < 0 || newDiscount > 100)
+                    {
+                        MessageBox.Show("Discount value should be from 0 to 100 only.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        loadAllItemsFromCart();
+                        return;
+                    }
+                    editDiscount.Discount = newDiscount;
+                    editDiscount.Total = frmSelectItem.getGrandTotal(editDiscount.Price, editDiscount.Quantity, newDiscount);
                     loadAllItemsFromCart();
-                    return;
                 }
-                editQty.Quantity = newQuantity;
-                editQty.Total = frmSelectItem.getGrandTotal(editQty.Price, newQuantity, editQty.Discount);
-                loadAllItemsFromCart();
             }
+        }
+
+        private void Delete_Click(object sender, EventArgs e)
+        {
+            string selectedItemCode = dgvCart.Rows[mouseLocation.RowIndex].Cells[0].Value.ToString();
+            OrderDetail currentItem = DatabaseHelper.cartList.Where(x => x.ItemCode.Equals(selectedItemCode)).FirstOrDefault();
+            deleteSelectedItem(currentItem);
+        }
+
+        private void dgvCart_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            mouseLocation = e;
         }
     }
 }
