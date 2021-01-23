@@ -32,6 +32,10 @@ namespace POSWinforms.Transaction
         {
             InitializeComponent();
             timer1.Start();
+            dateToday = DateTime.Now.ToString("dddd - MMMM dd, yyyy");
+            timeToday = DateTime.Now.ToString("hh:mm:ss tt");
+            lbDate.Text = "Date: " + dateToday.Trim();
+            lbTime.Text = "Time: " + timeToday.Trim();
         }
 
         private void loadAllItemsFromCart()
@@ -108,7 +112,7 @@ namespace POSWinforms.Transaction
         private void frmTransaction_Load(object sender, EventArgs e)
         {
             dateNow = DateTime.Now;
-            fullName = DatabaseHelper.user.LastName + ", " + DatabaseHelper.user.FirstName + " " + DatabaseHelper.user.MiddleName;
+            fullName = $"{DatabaseHelper.user.LastName}, {DatabaseHelper.user.FirstName} {DatabaseHelper.user.MiddleName}";
             lbUser.Text = "User: " + fullName.Trim();
             lbPosition.Text = "Position: " + DatabaseHelper.user.Position;
             lbTotal.Text = 0.ToString("C2");
@@ -139,6 +143,7 @@ namespace POSWinforms.Transaction
                 if (dialogResult == DialogResult.Yes)
                 {
                     DatabaseHelper.cartList.Clear();
+                    loadAllItemsFromCart();
                     newTransaction();
                 }
             }
@@ -179,7 +184,6 @@ namespace POSWinforms.Transaction
                     MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dialogResult == DialogResult.Yes)
             {
-               
                 DatabaseHelper.cartList.Remove(itemToDelete);
                 MessageBox.Show(this, "Item deleted from cart!", "INFORMATION", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ID = 0;
@@ -202,13 +206,12 @@ namespace POSWinforms.Transaction
 
         private void btnDiscountItem_Click(object sender, EventArgs e)
         {
-            if(ID > 0)
+            if(dgvCart.SelectedRows.Count > 0)
             {
-                string itemCode = DatabaseHelper.cartList.Where(x => x.ID == ID).Select(s => s.ItemCode).FirstOrDefault();
-                var frm = new frmEditDiscount();
-                frm.setItemCode(itemCode);
+                string itemCode = dgvCart.Rows[dgvCart.CurrentCell.RowIndex].Cells[0].Value.ToString();
+                OrderDetail selectedItem = DatabaseHelper.cartList.Where(x => x.ItemCode.Equals(itemCode)).FirstOrDefault();
+                var frm = new frmEditDiscount(selectedItem);
                 frm.ShowDialog();
-                ID = 0;
                 loadAllItemsFromCart();
             }
             else

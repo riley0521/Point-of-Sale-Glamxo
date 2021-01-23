@@ -23,11 +23,17 @@ namespace POSWinforms.Maintenance
         public frmItem()
         {
             InitializeComponent();
+            loadAllItems(null);
         }
 
-        public void addMode()
+        public frmItem(bool normalMode)
         {
-            dgvItems.CellDoubleClick -= new DataGridViewCellEventHandler(dgvItems_CellDoubleClick);
+            InitializeComponent();
+            loadAllItems(null);
+            btnAdd.Visible = normalMode;
+            btnUpdate.Visible = normalMode;
+            btnStockIn.Visible = normalMode;
+            dgvItems.CellDoubleClick += new DataGridViewCellEventHandler(dgvItems_CellDoubleClick);
         }
 
         private void loadAllItems(string searchItem)
@@ -80,11 +86,6 @@ namespace POSWinforms.Maintenance
             btnStockIn.Enabled = false;
         }
 
-        private void frmItem_Load(object sender, EventArgs e)
-        {
-            loadAllItems(null);
-        }
-
         private void dgvItems_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -107,20 +108,21 @@ namespace POSWinforms.Maintenance
             }
         }
 
-        public void selectItemMode()
-        {
-            btnAdd.Visible = false;
-            btnUpdate.Visible = false;
-            btnStockIn.Visible = false;
-        }
-
         private void dgvItems_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
                 itemCode = dgvItems.Rows[e.RowIndex].Cells[1].Value.ToString();
-                DatabaseHelper.item = allItems.Where(x => x.ItemCode.Equals(itemCode)).FirstOrDefault();
-                Close();
+                if (Convert.ToInt32(dgvItems.Rows[e.RowIndex].Cells["colQty"].Value) > 0)
+                {
+                    DatabaseHelper.item = allItems.Where(x => x.ItemCode.Equals(itemCode)).FirstOrDefault();
+                    Close();
+                }
+                else
+                {
+                    MessageBox.Show($"Item '{itemCode}' is not available anymore. Please select another item.", "WARNING",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
         }
 

@@ -21,6 +21,8 @@ namespace POSWinforms
         {
             InitializeComponent();
             timer1.Start();
+            string date = DateTime.Now.ToString("dddd MMMM dd, yyyy  hh:mm:ss tt");
+            lbTime.Text = date;
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -52,14 +54,7 @@ namespace POSWinforms
         private void itemToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             var frm = new frmItem();
-            frm.addMode();
             frm.ShowDialog();
-        }
-
-        private void frmMain_Load(object sender, EventArgs e)
-        {
-            User user = DatabaseHelper.user;
-            Console.WriteLine(user.LastName + ", " + user.FirstName + " " + user.MiddleName);
         }
 
         private void transactionToolStripMenuItem_Click(object sender, EventArgs e)

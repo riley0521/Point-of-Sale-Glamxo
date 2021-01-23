@@ -149,7 +149,7 @@ namespace POSWinforms.Maintenance
             this.dgvItems.Size = new System.Drawing.Size(1183, 281);
             this.dgvItems.TabIndex = 11;
             this.dgvItems.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvItems_CellClick);
-            this.dgvItems.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvItems_CellDoubleClick);
+            
             // 
             // Column4
             // 
@@ -309,7 +309,6 @@ namespace POSWinforms.Maintenance
             this.Name = "frmItem";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Items";
-            this.Load += new System.EventHandler(this.frmItem_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvItems)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

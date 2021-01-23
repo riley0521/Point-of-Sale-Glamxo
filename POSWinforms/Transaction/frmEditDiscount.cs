@@ -15,20 +15,13 @@ namespace POSWinforms.Maintenance
 {
     public partial class frmEditDiscount : Form
     {
-
-        private string itemCode = "";
         private int discount = 0;
         private OrderDetail editDiscount;
 
-        public frmEditDiscount()
+        public frmEditDiscount(OrderDetail selectedItem)
         {
+            editDiscount = selectedItem;
             InitializeComponent();
-        }
-
-        public void setItemCode(string itemCode)
-        {
-            this.itemCode = itemCode;
-            editDiscount = DatabaseHelper.cartList.Where(x => x.ItemCode.Equals(itemCode)).FirstOrDefault();
             numericUpDown1.Value = editDiscount.Discount;
             discount = editDiscount.Discount;
         }
@@ -56,6 +49,11 @@ namespace POSWinforms.Maintenance
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
             discount = int.Parse(numericUpDown1.Value.ToString());
+        }
+
+        private void frmEditDiscount_Load(object sender, EventArgs e)
+        {
+            numericUpDown1_ValueChanged(sender, e);
         }
     }
 }

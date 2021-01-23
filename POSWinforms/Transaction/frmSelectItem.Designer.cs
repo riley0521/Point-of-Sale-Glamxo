@@ -32,22 +32,23 @@ namespace POSWinforms.Transaction
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSelectItem));
             this.metroSetControlBox1 = new MetroSet_UI.Controls.MetroSetControlBox();
-            this.metroSetLabel1 = new MetroSet_UI.Controls.MetroSetLabel();
-            this.metroSetLabel2 = new MetroSet_UI.Controls.MetroSetLabel();
-            this.metroSetLabel3 = new MetroSet_UI.Controls.MetroSetLabel();
-            this.metroSetLabel4 = new MetroSet_UI.Controls.MetroSetLabel();
-            this.metroSetLabel5 = new MetroSet_UI.Controls.MetroSetLabel();
-            this.metroSetLabel6 = new MetroSet_UI.Controls.MetroSetLabel();
+            this.metroSetLabel1 = new System.Windows.Forms.Label();
+            this.metroSetLabel2 = new System.Windows.Forms.Label();
+            this.metroSetLabel3 = new System.Windows.Forms.Label();
+            this.metroSetLabel4 = new System.Windows.Forms.Label();
+            this.metroSetLabel5 = new System.Windows.Forms.Label();
+            this.metroSetLabel6 = new System.Windows.Forms.Label();
             this.txtItemDescription = new MetroSet_UI.Controls.MetroSetTextBox();
             this.txtItemCode = new MetroSet_UI.Controls.MetroSetTextBox();
             this.txtUnitPrice = new MetroSet_UI.Controls.MetroSetTextBox();
             this.txtTotal = new MetroSet_UI.Controls.MetroSetTextBox();
-            this.metroSetLabel7 = new MetroSet_UI.Controls.MetroSetLabel();
+            this.metroSetLabel7 = new System.Windows.Forms.Label();
             this.quantitySelector = new System.Windows.Forms.NumericUpDown();
             this.discountSelector = new System.Windows.Forms.NumericUpDown();
             this.btnSelectItem = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.btnAddToCart = new System.Windows.Forms.Button();
+            this.lbAvailStock = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.quantitySelector)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.discountSelector)).BeginInit();
             this.SuspendLayout();
@@ -60,7 +61,7 @@ namespace POSWinforms.Transaction
             this.metroSetControlBox1.CloseNormalForeColor = System.Drawing.Color.Gray;
             this.metroSetControlBox1.DisabledForeColor = System.Drawing.Color.DimGray;
             this.metroSetControlBox1.IsDerivedStyle = true;
-            this.metroSetControlBox1.Location = new System.Drawing.Point(291, 11);
+            this.metroSetControlBox1.Location = new System.Drawing.Point(355, 11);
             this.metroSetControlBox1.Margin = new System.Windows.Forms.Padding(2);
             this.metroSetControlBox1.MaximizeBox = false;
             this.metroSetControlBox1.MaximizeHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
@@ -83,97 +84,67 @@ namespace POSWinforms.Transaction
             // 
             this.metroSetLabel1.AutoSize = true;
             this.metroSetLabel1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.metroSetLabel1.IsDerivedStyle = false;
             this.metroSetLabel1.Location = new System.Drawing.Point(57, 77);
             this.metroSetLabel1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.metroSetLabel1.Name = "metroSetLabel1";
             this.metroSetLabel1.Size = new System.Drawing.Size(92, 21);
-            this.metroSetLabel1.Style = MetroSet_UI.Enums.Style.Custom;
-            this.metroSetLabel1.StyleManager = null;
             this.metroSetLabel1.TabIndex = 1;
             this.metroSetLabel1.Text = "Item Code:";
-            this.metroSetLabel1.ThemeAuthor = null;
-            this.metroSetLabel1.ThemeName = null;
             // 
             // metroSetLabel2
             // 
             this.metroSetLabel2.AutoSize = true;
             this.metroSetLabel2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.metroSetLabel2.IsDerivedStyle = false;
             this.metroSetLabel2.Location = new System.Drawing.Point(8, 111);
             this.metroSetLabel2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.metroSetLabel2.Name = "metroSetLabel2";
             this.metroSetLabel2.Size = new System.Drawing.Size(141, 21);
-            this.metroSetLabel2.Style = MetroSet_UI.Enums.Style.Custom;
-            this.metroSetLabel2.StyleManager = null;
             this.metroSetLabel2.TabIndex = 2;
             this.metroSetLabel2.Text = "Item Description:";
-            this.metroSetLabel2.ThemeAuthor = null;
-            this.metroSetLabel2.ThemeName = null;
             // 
             // metroSetLabel3
             // 
             this.metroSetLabel3.AutoSize = true;
             this.metroSetLabel3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.metroSetLabel3.IsDerivedStyle = false;
             this.metroSetLabel3.Location = new System.Drawing.Point(60, 146);
             this.metroSetLabel3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.metroSetLabel3.Name = "metroSetLabel3";
             this.metroSetLabel3.Size = new System.Drawing.Size(89, 21);
-            this.metroSetLabel3.Style = MetroSet_UI.Enums.Style.Custom;
-            this.metroSetLabel3.StyleManager = null;
             this.metroSetLabel3.TabIndex = 3;
             this.metroSetLabel3.Text = "Unit Price:";
-            this.metroSetLabel3.ThemeAuthor = null;
-            this.metroSetLabel3.ThemeName = null;
             // 
             // metroSetLabel4
             // 
             this.metroSetLabel4.AutoSize = true;
             this.metroSetLabel4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.metroSetLabel4.IsDerivedStyle = false;
             this.metroSetLabel4.Location = new System.Drawing.Point(68, 180);
             this.metroSetLabel4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.metroSetLabel4.Name = "metroSetLabel4";
             this.metroSetLabel4.Size = new System.Drawing.Size(81, 21);
-            this.metroSetLabel4.Style = MetroSet_UI.Enums.Style.Custom;
-            this.metroSetLabel4.StyleManager = null;
             this.metroSetLabel4.TabIndex = 4;
             this.metroSetLabel4.Text = "Quantity:";
-            this.metroSetLabel4.ThemeAuthor = null;
-            this.metroSetLabel4.ThemeName = null;
             // 
             // metroSetLabel5
             // 
             this.metroSetLabel5.AutoSize = true;
             this.metroSetLabel5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.metroSetLabel5.IsDerivedStyle = false;
             this.metroSetLabel5.Location = new System.Drawing.Point(67, 215);
             this.metroSetLabel5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.metroSetLabel5.Name = "metroSetLabel5";
             this.metroSetLabel5.Size = new System.Drawing.Size(82, 21);
-            this.metroSetLabel5.Style = MetroSet_UI.Enums.Style.Custom;
-            this.metroSetLabel5.StyleManager = null;
             this.metroSetLabel5.TabIndex = 5;
             this.metroSetLabel5.Text = "Discount:";
-            this.metroSetLabel5.ThemeAuthor = null;
-            this.metroSetLabel5.ThemeName = null;
             // 
             // metroSetLabel6
             // 
             this.metroSetLabel6.AutoSize = true;
             this.metroSetLabel6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.metroSetLabel6.IsDerivedStyle = false;
             this.metroSetLabel6.Location = new System.Drawing.Point(97, 249);
             this.metroSetLabel6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.metroSetLabel6.Name = "metroSetLabel6";
             this.metroSetLabel6.Size = new System.Drawing.Size(52, 21);
-            this.metroSetLabel6.Style = MetroSet_UI.Enums.Style.Custom;
-            this.metroSetLabel6.StyleManager = null;
             this.metroSetLabel6.TabIndex = 6;
             this.metroSetLabel6.Text = "Total:";
-            this.metroSetLabel6.ThemeAuthor = null;
-            this.metroSetLabel6.ThemeName = null;
             // 
             // txtItemDescription
             // 
@@ -303,17 +274,12 @@ namespace POSWinforms.Transaction
             // 
             this.metroSetLabel7.AutoSize = true;
             this.metroSetLabel7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.metroSetLabel7.IsDerivedStyle = true;
             this.metroSetLabel7.Location = new System.Drawing.Point(239, 208);
             this.metroSetLabel7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.metroSetLabel7.Name = "metroSetLabel7";
             this.metroSetLabel7.Size = new System.Drawing.Size(31, 25);
-            this.metroSetLabel7.Style = MetroSet_UI.Enums.Style.Light;
-            this.metroSetLabel7.StyleManager = null;
             this.metroSetLabel7.TabIndex = 13;
             this.metroSetLabel7.Text = "%";
-            this.metroSetLabel7.ThemeAuthor = null;
-            this.metroSetLabel7.ThemeName = null;
             // 
             // quantitySelector
             // 
@@ -387,11 +353,24 @@ namespace POSWinforms.Transaction
             this.btnAddToCart.Location = new System.Drawing.Point(279, 284);
             this.btnAddToCart.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddToCart.Name = "btnAddToCart";
-            this.btnAddToCart.Size = new System.Drawing.Size(112, 38);
-            this.btnAddToCart.TabIndex = 112;
+            this.btnAddToCart.Size = new System.Drawing.Size(176, 38);
+            this.btnAddToCart.TabIndex = 3;
             this.btnAddToCart.Text = "Add To Cart";
             this.btnAddToCart.UseVisualStyleBackColor = false;
             this.btnAddToCart.Click += new System.EventHandler(this.btnAddToCart_Click);
+            // 
+            // lbAvailStock
+            // 
+            this.lbAvailStock.AutoSize = true;
+            this.lbAvailStock.BackColor = System.Drawing.Color.DarkSalmon;
+            this.lbAvailStock.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbAvailStock.Location = new System.Drawing.Point(239, 180);
+            this.lbAvailStock.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbAvailStock.Name = "lbAvailStock";
+            this.lbAvailStock.Size = new System.Drawing.Size(161, 21);
+            this.lbAvailStock.TabIndex = 113;
+            this.lbAvailStock.Text = "(Available Stocks - )";
+            this.lbAvailStock.Visible = false;
             // 
             // frmSelectItem
             // 
@@ -399,7 +378,8 @@ namespace POSWinforms.Transaction
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkSalmon;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(402, 333);
+            this.ClientSize = new System.Drawing.Size(466, 333);
+            this.Controls.Add(this.lbAvailStock);
             this.Controls.Add(this.btnAddToCart);
             this.Controls.Add(this.btnSelectItem);
             this.Controls.Add(this.discountSelector);
@@ -418,8 +398,8 @@ namespace POSWinforms.Transaction
             this.Controls.Add(this.metroSetControlBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.MaximumSize = new System.Drawing.Size(402, 333);
-            this.MinimumSize = new System.Drawing.Size(402, 333);
+            this.MaximumSize = new System.Drawing.Size(466, 333);
+            this.MinimumSize = new System.Drawing.Size(466, 333);
             this.Name = "frmSelectItem";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Select Item";
@@ -436,18 +416,19 @@ namespace POSWinforms.Transaction
         private System.Windows.Forms.Button btnSelectItem;
         private System.Windows.Forms.NumericUpDown discountSelector;
         private System.Windows.Forms.NumericUpDown quantitySelector;
-        private MetroSet_UI.Controls.MetroSetLabel metroSetLabel7;
+        private System.Windows.Forms.Label metroSetLabel7;
         private MetroSet_UI.Controls.MetroSetTextBox txtTotal;
         private MetroSet_UI.Controls.MetroSetTextBox txtUnitPrice;
         private MetroSet_UI.Controls.MetroSetTextBox txtItemCode;
         private MetroSet_UI.Controls.MetroSetTextBox txtItemDescription;
-        private MetroSet_UI.Controls.MetroSetLabel metroSetLabel6;
-        private MetroSet_UI.Controls.MetroSetLabel metroSetLabel5;
-        private MetroSet_UI.Controls.MetroSetLabel metroSetLabel4;
-        private MetroSet_UI.Controls.MetroSetLabel metroSetLabel3;
-        private MetroSet_UI.Controls.MetroSetLabel metroSetLabel2;
-        private MetroSet_UI.Controls.MetroSetLabel metroSetLabel1;
+        private System.Windows.Forms.Label metroSetLabel6;
+        private System.Windows.Forms.Label metroSetLabel5;
+        private System.Windows.Forms.Label metroSetLabel4;
+        private System.Windows.Forms.Label metroSetLabel3;
+        private System.Windows.Forms.Label metroSetLabel2;
+        private System.Windows.Forms.Label metroSetLabel1;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button btnAddToCart;
+        private System.Windows.Forms.Label lbAvailStock;
     }
 }

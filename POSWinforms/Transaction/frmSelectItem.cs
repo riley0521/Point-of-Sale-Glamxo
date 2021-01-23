@@ -1,13 +1,7 @@
-﻿using MetroSet_UI.Forms;
-using POSWinforms.Maintenance;
+﻿using POSWinforms.Maintenance;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using POSWinforms.Models;
 
@@ -30,8 +24,7 @@ namespace POSWinforms.Transaction
 
         private void btnSelectItem_Click(object sender, EventArgs e)
         {
-            var frm = new frmItem();
-            frm.selectItemMode();
+            var frm = new frmItem(false);
             frm.ShowDialog();
             if(DatabaseHelper.item != null)
             {
@@ -40,6 +33,8 @@ namespace POSWinforms.Transaction
                 txtItemDescription.Text = item.ItemDescription;
                 txtUnitPrice.Text = item.UnitPrice.ToString("0.00");
                 quantitySelector.Maximum = item.Stocks;
+                lbAvailStock.Text = $"(Available Stocks - {item.Stocks})";
+                lbAvailStock.Visible = true;
                 btnAddToCart.Enabled = true;
             }
         }
@@ -136,7 +131,7 @@ namespace POSWinforms.Transaction
 
         private void quantitySelector_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Enter)
+            if(e.KeyCode == Keys.F)
             {
                 addToCart();
             }
@@ -144,7 +139,7 @@ namespace POSWinforms.Transaction
 
         private void discountSelector_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.F)
             {
                 addToCart();
             }

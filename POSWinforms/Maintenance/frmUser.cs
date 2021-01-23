@@ -23,6 +23,7 @@ namespace POSWinforms
         public frmUser()
         {
             InitializeComponent();
+            LoadAllUsers(null);
         }
 
         private void LoadAllUsers(string searchedUser)
@@ -46,7 +47,7 @@ namespace POSWinforms
             dgvUsers.Rows.Clear();
             foreach(var user in userList)
             {
-                string fullName = (user.LastName + ", " + user.FirstName + " " + user.MiddleName).Trim();
+                string fullName = $"{user.LastName}, {user.FirstName} {user.MiddleName}".Trim();
                 dgvUsers.Rows.Add(
                         user.ID,
                         fullName,
@@ -68,15 +69,8 @@ namespace POSWinforms
             LoadAllUsers(null);
         }
 
-        private void frmUser_Load(object sender, EventArgs e)
-        {
-            LoadAllUsers(null);
-        }
-
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            
-
             tblUser user = userList.Where(x => x.Username.Equals(username)).FirstOrDefault();
 
             if (user != null)
@@ -86,7 +80,6 @@ namespace POSWinforms
                 frm.ShowDialog();
                 LoadAllUsers(null);
             }
-            
         }
 
         private void txtSearch_TextChanged(object sender, EventArgs e)

@@ -84,7 +84,6 @@ namespace POSWinforms.Maintenance
             this.dgvPositions.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPositions.Size = new System.Drawing.Size(263, 203);
             this.dgvPositions.TabIndex = 99;
-            this.dgvPositions.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPositions_CellClick);
             // 
             // Column1
             // 
@@ -109,6 +108,7 @@ namespace POSWinforms.Maintenance
             this.txtID.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             this.txtID.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
             this.txtID.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            this.txtID.Enabled = false;
             this.txtID.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtID.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.txtID.Image = null;
@@ -136,9 +136,10 @@ namespace POSWinforms.Maintenance
             this.txtDescription.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
             this.txtDescription.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
             this.txtDescription.BorderColor = System.Drawing.Color.Sienna;
-            this.txtDescription.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.txtDescription.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
-            this.txtDescription.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            this.txtDescription.DisabledBackColor = System.Drawing.Color.Snow;
+            this.txtDescription.DisabledBorderColor = System.Drawing.Color.Sienna;
+            this.txtDescription.DisabledForeColor = System.Drawing.Color.Black;
+            this.txtDescription.Enabled = false;
             this.txtDescription.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDescription.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.txtDescription.Image = null;
@@ -266,7 +267,6 @@ namespace POSWinforms.Maintenance
             this.Name = "frmPosition";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Position";
-            this.Load += new System.EventHandler(this.frmPosition_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPositions)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);

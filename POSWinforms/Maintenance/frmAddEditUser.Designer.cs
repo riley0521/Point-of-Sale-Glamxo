@@ -31,23 +31,23 @@ namespace POSWinforms.Maintenance
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddEditUser));
-            this.metroSetLabel1 = new MetroSet_UI.Controls.MetroSetLabel();
-            this.metroSetLabel2 = new MetroSet_UI.Controls.MetroSetLabel();
-            this.metroSetLabel3 = new MetroSet_UI.Controls.MetroSetLabel();
-            this.metroSetLabel4 = new MetroSet_UI.Controls.MetroSetLabel();
+            this.metroSetLabel1 = new System.Windows.Forms.Label();
+            this.metroSetLabel2 = new System.Windows.Forms.Label();
+            this.metroSetLabel3 = new System.Windows.Forms.Label();
+            this.metroSetLabel4 = new System.Windows.Forms.Label();
             this.txtStaffID = new MetroSet_UI.Controls.MetroSetTextBox();
             this.txtFirstName = new MetroSet_UI.Controls.MetroSetTextBox();
             this.txtMI = new MetroSet_UI.Controls.MetroSetTextBox();
-            this.metroSetLabel5 = new MetroSet_UI.Controls.MetroSetLabel();
-            this.metroSetLabel6 = new MetroSet_UI.Controls.MetroSetLabel();
-            this.metroSetLabel7 = new MetroSet_UI.Controls.MetroSetLabel();
+            this.metroSetLabel5 = new System.Windows.Forms.Label();
+            this.metroSetLabel6 = new System.Windows.Forms.Label();
+            this.metroSetLabel7 = new System.Windows.Forms.Label();
             this.txtUsername = new MetroSet_UI.Controls.MetroSetTextBox();
             this.txtPassword = new MetroSet_UI.Controls.MetroSetTextBox();
             this.txtLastName = new MetroSet_UI.Controls.MetroSetTextBox();
-            this.metroSetLabel8 = new MetroSet_UI.Controls.MetroSetLabel();
+            this.metroSetLabel8 = new System.Windows.Forms.Label();
             this.txtContactNo = new MetroSet_UI.Controls.MetroSetTextBox();
-            this.metroSetLabel9 = new MetroSet_UI.Controls.MetroSetLabel();
-            this.metroSetLabel10 = new MetroSet_UI.Controls.MetroSetLabel();
+            this.metroSetLabel9 = new System.Windows.Forms.Label();
+            this.metroSetLabel10 = new System.Windows.Forms.Label();
             this.cmbPositions = new MetroSet_UI.Controls.MetroSetComboBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.txtAddress = new MetroSet_UI.Controls.MetroSetTextBox();
@@ -61,65 +61,45 @@ namespace POSWinforms.Maintenance
             // 
             this.metroSetLabel1.AutoSize = true;
             this.metroSetLabel1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.metroSetLabel1.IsDerivedStyle = false;
             this.metroSetLabel1.Location = new System.Drawing.Point(46, 109);
             this.metroSetLabel1.Name = "metroSetLabel1";
             this.metroSetLabel1.Size = new System.Drawing.Size(69, 21);
-            this.metroSetLabel1.Style = MetroSet_UI.Enums.Style.Custom;
-            this.metroSetLabel1.StyleManager = null;
             this.metroSetLabel1.TabIndex = 1;
             this.metroSetLabel1.Text = "Staff ID:";
             this.metroSetLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.metroSetLabel1.ThemeAuthor = "Narwin";
-            this.metroSetLabel1.ThemeName = "MetroLite";
             // 
             // metroSetLabel2
             // 
             this.metroSetLabel2.AutoSize = true;
             this.metroSetLabel2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.metroSetLabel2.IsDerivedStyle = false;
             this.metroSetLabel2.Location = new System.Drawing.Point(28, 145);
             this.metroSetLabel2.Name = "metroSetLabel2";
             this.metroSetLabel2.Size = new System.Drawing.Size(87, 21);
-            this.metroSetLabel2.Style = MetroSet_UI.Enums.Style.Custom;
-            this.metroSetLabel2.StyleManager = null;
             this.metroSetLabel2.TabIndex = 1;
             this.metroSetLabel2.Text = "Username:";
             this.metroSetLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.metroSetLabel2.ThemeAuthor = "Narwin";
-            this.metroSetLabel2.ThemeName = "MetroLite";
             // 
             // metroSetLabel3
             // 
             this.metroSetLabel3.AutoSize = true;
             this.metroSetLabel3.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.metroSetLabel3.IsDerivedStyle = false;
             this.metroSetLabel3.Location = new System.Drawing.Point(32, 181);
             this.metroSetLabel3.Name = "metroSetLabel3";
             this.metroSetLabel3.Size = new System.Drawing.Size(83, 21);
-            this.metroSetLabel3.Style = MetroSet_UI.Enums.Style.Custom;
-            this.metroSetLabel3.StyleManager = null;
             this.metroSetLabel3.TabIndex = 1;
             this.metroSetLabel3.Text = "Password:";
             this.metroSetLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.metroSetLabel3.ThemeAuthor = "Narwin";
-            this.metroSetLabel3.ThemeName = "MetroLite";
             // 
             // metroSetLabel4
             // 
             this.metroSetLabel4.AutoSize = true;
             this.metroSetLabel4.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.metroSetLabel4.IsDerivedStyle = false;
             this.metroSetLabel4.Location = new System.Drawing.Point(58, 260);
             this.metroSetLabel4.Name = "metroSetLabel4";
             this.metroSetLabel4.Size = new System.Drawing.Size(57, 21);
-            this.metroSetLabel4.Style = MetroSet_UI.Enums.Style.Custom;
-            this.metroSetLabel4.StyleManager = null;
             this.metroSetLabel4.TabIndex = 1;
             this.metroSetLabel4.Text = "Name:";
             this.metroSetLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.metroSetLabel4.ThemeAuthor = "Narwin";
-            this.metroSetLabel4.ThemeName = "MetroLite";
             // 
             // txtStaffID
             // 
@@ -130,6 +110,7 @@ namespace POSWinforms.Maintenance
             this.txtStaffID.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             this.txtStaffID.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
             this.txtStaffID.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            this.txtStaffID.Enabled = false;
             this.txtStaffID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.txtStaffID.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.txtStaffID.Image = null;
@@ -143,7 +124,7 @@ namespace POSWinforms.Maintenance
             this.txtStaffID.Size = new System.Drawing.Size(103, 30);
             this.txtStaffID.Style = MetroSet_UI.Enums.Style.Light;
             this.txtStaffID.StyleManager = null;
-            this.txtStaffID.TabIndex = 2;
+            this.txtStaffID.TabIndex = 0;
             this.txtStaffID.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtStaffID.ThemeAuthor = "Narwin";
             this.txtStaffID.ThemeName = "MetroLight";
@@ -216,46 +197,31 @@ namespace POSWinforms.Maintenance
             // 
             this.metroSetLabel5.AutoSize = true;
             this.metroSetLabel5.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.metroSetLabel5.IsDerivedStyle = false;
             this.metroSetLabel5.Location = new System.Drawing.Point(121, 227);
             this.metroSetLabel5.Name = "metroSetLabel5";
             this.metroSetLabel5.Size = new System.Drawing.Size(83, 21);
-            this.metroSetLabel5.Style = MetroSet_UI.Enums.Style.Custom;
-            this.metroSetLabel5.StyleManager = null;
             this.metroSetLabel5.TabIndex = 1;
             this.metroSetLabel5.Text = "Last name";
-            this.metroSetLabel5.ThemeAuthor = "Narwin";
-            this.metroSetLabel5.ThemeName = "MetroLite";
             // 
             // metroSetLabel6
             // 
             this.metroSetLabel6.AutoSize = true;
             this.metroSetLabel6.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.metroSetLabel6.IsDerivedStyle = false;
             this.metroSetLabel6.Location = new System.Drawing.Point(342, 227);
             this.metroSetLabel6.Name = "metroSetLabel6";
             this.metroSetLabel6.Size = new System.Drawing.Size(85, 21);
-            this.metroSetLabel6.Style = MetroSet_UI.Enums.Style.Custom;
-            this.metroSetLabel6.StyleManager = null;
             this.metroSetLabel6.TabIndex = 1;
             this.metroSetLabel6.Text = "First name";
-            this.metroSetLabel6.ThemeAuthor = "Narwin";
-            this.metroSetLabel6.ThemeName = "MetroLite";
             // 
             // metroSetLabel7
             // 
             this.metroSetLabel7.AutoSize = true;
             this.metroSetLabel7.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.metroSetLabel7.IsDerivedStyle = false;
             this.metroSetLabel7.Location = new System.Drawing.Point(572, 227);
             this.metroSetLabel7.Name = "metroSetLabel7";
             this.metroSetLabel7.Size = new System.Drawing.Size(30, 21);
-            this.metroSetLabel7.Style = MetroSet_UI.Enums.Style.Custom;
-            this.metroSetLabel7.StyleManager = null;
             this.metroSetLabel7.TabIndex = 1;
             this.metroSetLabel7.Text = "MI";
-            this.metroSetLabel7.ThemeAuthor = "Narwin";
-            this.metroSetLabel7.ThemeName = "MetroLite";
             // 
             // txtUsername
             // 
@@ -352,17 +318,12 @@ namespace POSWinforms.Maintenance
             // 
             this.metroSetLabel8.AutoSize = true;
             this.metroSetLabel8.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.metroSetLabel8.IsDerivedStyle = false;
             this.metroSetLabel8.Location = new System.Drawing.Point(41, 287);
             this.metroSetLabel8.Name = "metroSetLabel8";
             this.metroSetLabel8.Size = new System.Drawing.Size(74, 21);
-            this.metroSetLabel8.Style = MetroSet_UI.Enums.Style.Custom;
-            this.metroSetLabel8.StyleManager = null;
             this.metroSetLabel8.TabIndex = 5;
             this.metroSetLabel8.Text = "Address:";
             this.metroSetLabel8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.metroSetLabel8.ThemeAuthor = "Narwin";
-            this.metroSetLabel8.ThemeName = "MetroLite";
             // 
             // txtContactNo
             // 
@@ -399,33 +360,23 @@ namespace POSWinforms.Maintenance
             // 
             this.metroSetLabel9.AutoSize = true;
             this.metroSetLabel9.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.metroSetLabel9.IsDerivedStyle = false;
             this.metroSetLabel9.Location = new System.Drawing.Point(14, 367);
             this.metroSetLabel9.Name = "metroSetLabel9";
             this.metroSetLabel9.Size = new System.Drawing.Size(101, 21);
-            this.metroSetLabel9.Style = MetroSet_UI.Enums.Style.Custom;
-            this.metroSetLabel9.StyleManager = null;
             this.metroSetLabel9.TabIndex = 7;
             this.metroSetLabel9.Text = "Contact No.:";
             this.metroSetLabel9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.metroSetLabel9.ThemeAuthor = "Narwin";
-            this.metroSetLabel9.ThemeName = "MetroLite";
             // 
             // metroSetLabel10
             // 
             this.metroSetLabel10.AutoSize = true;
             this.metroSetLabel10.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.metroSetLabel10.IsDerivedStyle = false;
             this.metroSetLabel10.Location = new System.Drawing.Point(43, 398);
             this.metroSetLabel10.Name = "metroSetLabel10";
             this.metroSetLabel10.Size = new System.Drawing.Size(72, 21);
-            this.metroSetLabel10.Style = MetroSet_UI.Enums.Style.Custom;
-            this.metroSetLabel10.StyleManager = null;
             this.metroSetLabel10.TabIndex = 9;
             this.metroSetLabel10.Text = "Position:";
             this.metroSetLabel10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.metroSetLabel10.ThemeAuthor = "Narwin";
-            this.metroSetLabel10.ThemeName = "MetroLite";
             // 
             // cmbPositions
             // 
@@ -499,7 +450,7 @@ namespace POSWinforms.Maintenance
             this.btnSave.Location = new System.Drawing.Point(373, 445);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(129, 34);
-            this.btnSave.TabIndex = 15;
+            this.btnSave.TabIndex = 8;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -513,7 +464,7 @@ namespace POSWinforms.Maintenance
             this.btnCancel.Location = new System.Drawing.Point(508, 445);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(129, 34);
-            this.btnCancel.TabIndex = 16;
+            this.btnCancel.TabIndex = 9;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -585,16 +536,16 @@ namespace POSWinforms.Maintenance
         private MetroSet_UI.Controls.MetroSetTextBox txtAddress;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnSave;
-        private MetroSet_UI.Controls.MetroSetLabel metroSetLabel10;
-        private MetroSet_UI.Controls.MetroSetLabel metroSetLabel9;
-        private MetroSet_UI.Controls.MetroSetLabel metroSetLabel8;
-        private MetroSet_UI.Controls.MetroSetLabel metroSetLabel7;
-        private MetroSet_UI.Controls.MetroSetLabel metroSetLabel6;
-        private MetroSet_UI.Controls.MetroSetLabel metroSetLabel5;
-        private MetroSet_UI.Controls.MetroSetLabel metroSetLabel4;
-        private MetroSet_UI.Controls.MetroSetLabel metroSetLabel3;
-        private MetroSet_UI.Controls.MetroSetLabel metroSetLabel2;
-        private MetroSet_UI.Controls.MetroSetLabel metroSetLabel1;
+        private System.Windows.Forms.Label metroSetLabel10;
+        private System.Windows.Forms.Label metroSetLabel9;
+        private System.Windows.Forms.Label metroSetLabel8;
+        private System.Windows.Forms.Label metroSetLabel7;
+        private System.Windows.Forms.Label metroSetLabel6;
+        private System.Windows.Forms.Label metroSetLabel5;
+        private System.Windows.Forms.Label metroSetLabel4;
+        private System.Windows.Forms.Label metroSetLabel3;
+        private System.Windows.Forms.Label metroSetLabel2;
+        private System.Windows.Forms.Label metroSetLabel1;
         private System.Windows.Forms.Label lbTitle;
     }
 }

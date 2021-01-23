@@ -59,7 +59,6 @@ namespace POSWinforms.Maintenance
             contactNo = user.ContactNo;
 
             currentUsername = user.Username;
-            txtStaffID.Enabled = false;
             txtUsername.Enabled = false;
             txtStaffID.Text = user.ID.ToString();
             txtUsername.Text = user.Username;

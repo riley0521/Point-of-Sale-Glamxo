@@ -53,9 +53,10 @@ namespace POSWinforms.Maintenance
             this.txtDescription.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
             this.txtDescription.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
             this.txtDescription.BorderColor = System.Drawing.Color.Sienna;
-            this.txtDescription.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.txtDescription.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
-            this.txtDescription.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            this.txtDescription.DisabledBackColor = System.Drawing.Color.Snow;
+            this.txtDescription.DisabledBorderColor = System.Drawing.Color.Sienna;
+            this.txtDescription.DisabledForeColor = System.Drawing.Color.Black;
+            this.txtDescription.Enabled = false;
             this.txtDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.txtDescription.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.txtDescription.Image = null;
@@ -75,7 +76,6 @@ namespace POSWinforms.Maintenance
             this.txtDescription.ThemeName = null;
             this.txtDescription.UseSystemPasswordChar = false;
             this.txtDescription.WatermarkText = "";
-            this.txtDescription.Validating += new System.ComponentModel.CancelEventHandler(this.txtDescription_Validating);
             // 
             // txtItemCode
             // 
@@ -83,9 +83,10 @@ namespace POSWinforms.Maintenance
             this.txtItemCode.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
             this.txtItemCode.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
             this.txtItemCode.BorderColor = System.Drawing.Color.Sienna;
-            this.txtItemCode.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.txtItemCode.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
-            this.txtItemCode.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            this.txtItemCode.DisabledBackColor = System.Drawing.Color.Snow;
+            this.txtItemCode.DisabledBorderColor = System.Drawing.Color.Sienna;
+            this.txtItemCode.DisabledForeColor = System.Drawing.Color.Black;
+            this.txtItemCode.Enabled = false;
             this.txtItemCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.txtItemCode.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.txtItemCode.Image = null;
@@ -157,7 +158,6 @@ namespace POSWinforms.Maintenance
             this.dgvCategories.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCategories.Size = new System.Drawing.Size(511, 156);
             this.dgvCategories.TabIndex = 0;
-            this.dgvCategories.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCategories_CellClick);
             // 
             // Column1
             // 
@@ -251,7 +251,6 @@ namespace POSWinforms.Maintenance
             this.Name = "frmCategory";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Category";
-            this.Load += new System.EventHandler(this.frmCategory_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCategories)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);

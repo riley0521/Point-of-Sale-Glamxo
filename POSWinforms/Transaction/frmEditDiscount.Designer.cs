@@ -110,6 +110,7 @@ namespace POSWinforms.Maintenance
             this.Name = "frmEditDiscount";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Discount";
+            this.Load += new System.EventHandler(this.frmEditDiscount_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

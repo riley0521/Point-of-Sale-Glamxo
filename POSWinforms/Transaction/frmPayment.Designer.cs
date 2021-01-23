@@ -56,7 +56,7 @@ namespace POSWinforms.Maintenance
             this.txtTotal.IsDerivedStyle = false;
             this.txtTotal.Lines = null;
             this.txtTotal.Location = new System.Drawing.Point(142, 70);
-            this.txtTotal.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtTotal.Margin = new System.Windows.Forms.Padding(2);
             this.txtTotal.MaxLength = 32767;
             this.txtTotal.Multiline = false;
             this.txtTotal.Name = "txtTotal";
@@ -86,7 +86,7 @@ namespace POSWinforms.Maintenance
             this.txtCash.IsDerivedStyle = false;
             this.txtCash.Lines = null;
             this.txtCash.Location = new System.Drawing.Point(142, 109);
-            this.txtCash.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtCash.Margin = new System.Windows.Forms.Padding(2);
             this.txtCash.MaxLength = 10;
             this.txtCash.Multiline = false;
             this.txtCash.Name = "txtCash";
@@ -118,7 +118,7 @@ namespace POSWinforms.Maintenance
             this.txtChange.IsDerivedStyle = false;
             this.txtChange.Lines = null;
             this.txtChange.Location = new System.Drawing.Point(142, 148);
-            this.txtChange.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtChange.Margin = new System.Windows.Forms.Padding(2);
             this.txtChange.MaxLength = 32767;
             this.txtChange.Multiline = false;
             this.txtChange.Name = "txtChange";
@@ -141,7 +141,7 @@ namespace POSWinforms.Maintenance
             this.btnConfirm.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConfirm.ForeColor = System.Drawing.Color.Maroon;
             this.btnConfirm.Location = new System.Drawing.Point(156, 234);
-            this.btnConfirm.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnConfirm.Margin = new System.Windows.Forms.Padding(2);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.Size = new System.Drawing.Size(78, 34);
             this.btnConfirm.TabIndex = 111;
@@ -157,7 +157,7 @@ namespace POSWinforms.Maintenance
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.ForeColor = System.Drawing.Color.Maroon;
             this.btnCancel.Location = new System.Drawing.Point(238, 234);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(76, 34);
             this.btnCancel.TabIndex = 112;
@@ -211,7 +211,7 @@ namespace POSWinforms.Maintenance
             this.Controls.Add(this.txtCash);
             this.Controls.Add(this.txtTotal);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximumSize = new System.Drawing.Size(325, 279);
             this.MinimumSize = new System.Drawing.Size(325, 279);
             this.Name = "frmPayment";

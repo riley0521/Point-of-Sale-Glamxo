@@ -21,16 +21,12 @@ namespace POSWinforms.Maintenance
         public frmCategory()
         {
             InitializeComponent();
+            LoadAllCategories();
         }
 
         private void txtItemCode_Validating(object sender, CancelEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtItemCode.Text) && txtItemCode.Enabled)
-            {
-                e.Cancel = true;
-                errorProvider1.SetError(txtItemCode, "Please enter item code!");
-            }
-            else if (Regex.IsMatch(txtItemCode.Text, @"^[0-9]+$"))
+            if (Regex.IsMatch(txtItemCode.Text, @"^[0-9]+$"))
             {
                 e.Cancel = true;
                 errorProvider1.SetError(txtItemCode, "Please input letters only!");
@@ -42,29 +38,14 @@ namespace POSWinforms.Maintenance
             }
         }
 
-        private void txtDescription_Validating(object sender, CancelEventArgs e)
-        {
-
-            if (string.IsNullOrWhiteSpace(txtDescription.Text) && txtItemCode.Enabled)
-            {
-                e.Cancel = true;
-                errorProvider1.SetError(txtDescription, "Please enter the description!");
-            }
-            else
-            {
-                e.Cancel = false;
-                errorProvider1.SetError(txtDescription, null);
-            }
-        }
-
         private void clearFields()
         {
-            dgvCategories.ClearSelection();
             txtItemCode.Text = "";
             txtDescription.Text = "";
             txtItemCode.Enabled = false;
+            txtDescription.Enabled = false;
             btnClose.Text = "Close";
-            dgvCategories.Focus();
+            btnClose.Focus();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -75,10 +56,15 @@ namespace POSWinforms.Maintenance
                 if (btnUpdate.Text.Equals("Save"))
                 {
                     btnUpdate.Text = "Update";
-                    txtDescription.Text = "";
+                    
                 }
+                txtItemCode.Text = "";
+                txtDescription.Text = "";
                 txtItemCode.Enabled = true;
+                txtDescription.Enabled = true;
                 btnClose.Text = "Cancel";
+                dgvCategories.ClearSelection();
+                dgvCategories.Enabled = false;
                 dgvCategories.CellClick -= new DataGridViewCellEventHandler(dgvCategories_CellClick);
                 dgvCategories.ClearSelection();
             }
@@ -88,18 +74,25 @@ namespace POSWinforms.Maintenance
                 // Save new category here.
                 if (ValidateChildren(ValidationConstraints.Enabled))
                 {
-                    var newCategory = new tblCategory
+                    if (!string.IsNullOrWhiteSpace(txtDescription.Text))
                     {
-                        ItemCode = txtItemCode.Text,
-                        ItemDescription = txtDescription.Text
-                    };
-                    DatabaseHelper.db.tblCategories.InsertOnSubmit(newCategory);
-                    DatabaseHelper.db.SubmitChanges();
+                        var newCategory = new tblCategory
+                        {
+                            ItemCode = txtItemCode.Text,
+                            ItemDescription = txtDescription.Text
+                        };
+                        DatabaseHelper.db.tblCategories.InsertOnSubmit(newCategory);
+                        DatabaseHelper.db.SubmitChanges();
 
-                    MessageBox.Show(this, "Category added successfully!", "INFORMATION", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    btnAdd.Text = "Add";
-                    clearFields();
-                    LoadAllCategories();
+                        MessageBox.Show(this, "Category added successfully!", "INFORMATION", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        btnAdd.Text = "Add";
+                        clearFields();
+                        LoadAllCategories();
+                    }
+                    else
+                    {
+                        MessageBox.Show(this, "Category description should not be empty!", "WARNING", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                 }
             }
         }
@@ -114,8 +107,16 @@ namespace POSWinforms.Maintenance
                     btnAdd.Text = "Add";
                 }
                 txtItemCode.Enabled = false;
+                txtDescription.Enabled = true;
+                txtItemCode.Text = "";
+                txtDescription.Text = "";
+
                 btnClose.Text = "Cancel";
+                dgvCategories.Enabled = true;
                 dgvCategories.CellClick += new DataGridViewCellEventHandler(dgvCategories_CellClick);
+                dgvCategories.Rows[0].Selected = true;
+                DataGridViewCellEventArgs f = new DataGridViewCellEventArgs(0, 0);
+                dgvCategories_CellClick(sender, f);
             }
             else if (btnUpdate.Text.Equals("Save"))
             {
@@ -133,12 +134,19 @@ namespace POSWinforms.Maintenance
                     {
                         if (ValidateChildren(ValidationConstraints.Enabled))
                         {
-                            updateCategory.ItemDescription = txtDescription.Text;
-                            DatabaseHelper.db.SubmitChanges();
-                            MessageBox.Show(this, "Item '" + updateCategory.ItemCode + "' successfully!", "INFORMATION", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            btnUpdate.Text = "Update";
-                            clearFields();
-                            LoadAllCategories();
+                            if (!string.IsNullOrWhiteSpace(txtDescription.Text))
+                            {
+                                updateCategory.ItemDescription = txtDescription.Text;
+                                DatabaseHelper.db.SubmitChanges();
+                                MessageBox.Show(this, "Item '" + updateCategory.ItemCode + "' successfully!", "INFORMATION", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                btnUpdate.Text = "Update";
+                                clearFields();
+                                LoadAllCategories();
+                            }
+                            else
+                            {
+                                MessageBox.Show(this, "Category description should not be empty!", "WARNING", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
                         }
                     }
                     
@@ -162,12 +170,7 @@ namespace POSWinforms.Maintenance
                     );
             }
             dgvCategories.ClearSelection();
-        }
-
-        private void frmCategory_Load(object sender, EventArgs e)
-        {
-            dgvCategories.CellClick -= new DataGridViewCellEventHandler(dgvCategories_CellClick);
-            LoadAllCategories();
+            dgvCategories.Enabled = false;
         }
 
         private void dgvCategories_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -177,8 +180,6 @@ namespace POSWinforms.Maintenance
                 itemCode = dgvCategories.Rows[e.RowIndex].Cells[0].Value.ToString();
                 txtItemCode.Text = itemCode;
                 txtDescription.Text = dgvCategories.Rows[e.RowIndex].Cells[1].Value.ToString();
-
-                txtItemCode.Enabled = true;
             }
         }
 

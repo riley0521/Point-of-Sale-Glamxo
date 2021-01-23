@@ -22,13 +22,8 @@ namespace POSWinforms.Maintenance
         public frmPosition()
         {
             InitializeComponent();
-            txtDescription.Focus();
-        }
-
-        private void frmPosition_Load(object sender, EventArgs e)
-        {
-            dgvPositions.CellClick -= new DataGridViewCellEventHandler(dgvPositions_CellClick);
             LoadAllPositions();
+            btnClose.Focus();
         }
 
         private void LoadAllPositions()
@@ -45,6 +40,7 @@ namespace POSWinforms.Maintenance
                     );
             }
             dgvPositions.ClearSelection();
+            dgvPositions.Enabled = false;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -58,7 +54,10 @@ namespace POSWinforms.Maintenance
                     btnUpdate.Text = "Update";
                     txtDescription.Text = "";
                 }
+                txtDescription.Enabled = true;
                 btnClose.Text = "Cancel";
+                dgvPositions.ClearSelection();
+                dgvPositions.Enabled = false;
                 dgvPositions.CellClick -= new DataGridViewCellEventHandler(dgvPositions_CellClick);
                 dgvPositions.ClearSelection();
                 txtID.Enabled = false;
@@ -81,18 +80,25 @@ namespace POSWinforms.Maintenance
                 // Save new position here.
                 if (ValidateChildren(ValidationConstraints.Enabled))
                 {
-                    var newPos = new tblPosition
+                    if (!string.IsNullOrWhiteSpace(txtDescription.Text))
                     {
-                        ID = long.Parse(txtID.Text),
-                        Position = txtDescription.Text
-                    };
-                    DatabaseHelper.db.tblPositions.InsertOnSubmit(newPos);
-                    DatabaseHelper.db.SubmitChanges();
+                        var newPos = new tblPosition
+                        {
+                            ID = long.Parse(txtID.Text),
+                            Position = txtDescription.Text
+                        };
+                        DatabaseHelper.db.tblPositions.InsertOnSubmit(newPos);
+                        DatabaseHelper.db.SubmitChanges();
 
-                    MessageBox.Show(this, "Position added successfully!", "INFORMATION", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    btnAdd.Text = "Add";
-                    clearFields();
-                    LoadAllPositions();
+                        MessageBox.Show(this, "Position added successfully!", "INFORMATION", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        btnAdd.Text = "Add";
+                        clearFields();
+                        LoadAllPositions();
+                    }
+                    else
+                    {
+                        MessageBox.Show(this, "Position description should not be empty!", "WARNING", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                 }
             }
                  
@@ -102,11 +108,14 @@ namespace POSWinforms.Maintenance
         {
             txtID.Text = "";
             txtDescription.Text = "";
+            btnClose.Text = "Close";
+            txtDescription.Enabled = false;
+            btnClose.Focus();
         }
 
         private void updatePosition()
         {
-
+            btnUpdate.Text = "Update";
             var updatePosition = allPositions.Where(x=> x.ID == ID).FirstOrDefault();
 
             if(updatePosition != null)
@@ -137,8 +146,13 @@ namespace POSWinforms.Maintenance
                 {
                     btnAdd.Text = "Add";
                 }
+                txtDescription.Enabled = true;
                 btnClose.Text = "Cancel";
+                dgvPositions.Enabled = true;
                 dgvPositions.CellClick += new DataGridViewCellEventHandler(dgvPositions_CellClick);
+                dgvPositions.Rows[0].Selected = true;
+                DataGridViewCellEventArgs f = new DataGridViewCellEventArgs(0, 0);
+                dgvPositions_CellClick(sender, f);
             }
             else if(btnUpdate.Text.Equals("Save"))
             {
@@ -148,7 +162,10 @@ namespace POSWinforms.Maintenance
                 {
                     if (ValidateChildren(ValidationConstraints.Enabled))
                     {
-                        updatePosition();
+                        if(!string.IsNullOrWhiteSpace(txtDescription.Text))
+                            updatePosition();
+                        else
+                            MessageBox.Show(this, "Position description should not be empty!", "WARNING", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
             }
@@ -212,13 +229,7 @@ namespace POSWinforms.Maintenance
 
         private void txtDescription_Validating(object sender, CancelEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtDescription.Text))
-            {
-                e.Cancel = true;
-                txtDescription.Focus();
-                errorProvider1.SetError(txtDescription, "Please enter position description!");
-            }
-            else if (Regex.IsMatch(txtDescription.Text, @"^[0-9]+$"))
+            if (Regex.IsMatch(txtDescription.Text, @"^[0-9]+$"))
             {
                 e.Cancel = true;
                 txtDescription.Focus();

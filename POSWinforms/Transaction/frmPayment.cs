@@ -153,7 +153,6 @@ namespace POSWinforms.Maintenance
             }
             else
             {
-                change = 1;
                 txtCash.Text = "";
             }
         }
